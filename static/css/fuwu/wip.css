@@ -1,0 +1,22 @@
+/*IP*/
+.chengse2{ color: #EB0F0F;}
+.lanse2{ color: #2D71A5;}
+#p-focus{ position: relative;z-index: 1;}
+.g-layout{ position: relative;}
+.service-view{ overflow:visible;}
+.service-view-order{ float: left;padding: 10px;border: 1px dashed #ddd;margin:-10px 0px 0px -360px;border-radius: 5px;background:#f6f6f6;position: absolute;top: 30px;left: 1010px;z-index:999;}
+.service-view-order .right_scbk{ float: left;}
+.service-view-order .right_scbk .scly_gmsc{ font-size: 14px;}
+.service-view-order .right_scbk td{ width: 60px;float: left;}
+.service-view-order .right_scbk #ips{ border: 1px solid #DDDDDD; height: 25px; }
+.service-view-order .right_scbk .scly_bk2{ border: 1px solid #DDDDDD; display: block; height: 25px; text-indent: 3px; width: 258px;color:#666; }
+.service-view-order .right_scbk .titlexs{ width: 260px;float: left;height:30px;}
+.service-view-order .right_scbk .cixudate{ width: 270px;width: 250px;height:30px;}
+.service-view-order .right_scbk .scly_ljgm { background: url(../../images/fuwu/in_ico.png) no-repeat 0 -51px;border: medium none;cursor: pointer;display: block;height: 40px;line-height: 999px;margin-left: 60px;overflow: hidden;text-indent: 999px;width: 110px;}
+#set_adv{ display: none;width: 330px; margin: 0px auto}
+#set_adv .gjszliu{ float:left;width:270px;}
+#mdData p{ height:30px;}
+#mdData b{ color:red;margin:0 5px;}
+.scly_bk5 { border: 1px solid #DDDDDD;float: left;}
+.scly_bk5 .scly_tit { background: url(../../images/fuwu/in_ico.png) repeat-x 0 0;font-weight: bold;height: 35px;}
+.scly_bk5 .rwdt_bh4 { background: url(../../images/public/tx_ico.gif) no-repeat 0 -291px;width: 22px;height: 22px;float: left;}

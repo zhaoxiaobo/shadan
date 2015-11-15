@@ -1,0 +1,130 @@
+{teval
+
+	$title       = '购买小号 - {webName}';
+
+	$keywords    = '';
+
+	$description = '';
+
+	$title       = common::replaceVars($title);
+
+	$keywords    = common::replaceVars($keywords);
+
+	$description = common::replaceVars($description);
+
+	$cssList     = array(css::getUrl('member', 'member'));
+
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+
+}
+{sub ../header}
+<DIV id="content">
+
+  <!-- 左边栏 -->
+
+  {sub menu}
+
+<DIV class="right">
+
+<DIV class="bq_menu">
+
+<A {if $type==1} class="nov"{/if} href="{rewrite}/member/xiaohaobuy/?type=1">小号销售中心</A>
+
+<A {if $type==2} class="nov"{/if} href="{rewrite}/member/xiaohaobuy/?type=2">我购买的小号</A>
+
+</DIV>
+{if $type==1}
+<div>$sys_hash_code2</div>
+
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+  <TBODY>
+
+<tr class="tdbg" height="35">
+
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">
+    <div class='error_panel'><div style="color:blue;">
+    【注意】为防盗号购买后请立即修改邮箱密码 , 第一次登录异常包退换，严禁拿号直接登录旺旺，如果登录提示安全验证，支付宝绑定常用手机或者安装数字证书即可通过，小号适应IP再解绑。购买的小号，千万不要往里面的支付宝充钱，在支付时选网银支付，无需绑定银行卡的！毕境买来的小号，存在一定的风险！
+    </div></div></td>
+    </tr>
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">淘宝账号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">账号类型</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">账号注册日期</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">信誉值</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">支付宝账号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">单价</TD>
+    <TD class="strong" align="center" vAlign="middle" width="100">操作</TD>
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {loop $list $v}    
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{echo string::getXin3($v[taobaohao])}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[type]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[regTime]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[xinyuzhi]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{echo string::getXin3($v[zhifubao])}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[danjia]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="100">{if $v[status]==1}已出售{else}<a href="javascript:;" onclick="dialog(650,320,'购买淘宝小号','{rewrite}/dialog/buytaobao/?sid=$v[id]&uid=$uid');return false;"><img src="/images/Card_bt.gif" border="0" width="90" height="32" align="absmiddle"></a>{/if}</TD>
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {/loop}
+
+    <tr>
+        <td colspan="10">$multipage</td>
+    </tr>
+
+</TBODY></TABLE>
+{elseif $type=='2'}
+
+<div>$sys_hash_code2</div>
+
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+  <TBODY>
+
+<tr class="tdbg" height="35">
+
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">
+    <div class='error_panel'><div style="color:blue;">
+    【注意】为防盗号购买后请立即修改邮箱密码 , 第一次登录异常包退换，严禁拿号直接登录旺旺，如果登录提示安全验证，支付宝绑定常用手机或者安装数字证书即可通过，小号适应IP再解绑。购买的小号，千万不要往里面的支付宝充钱，在支付时选网银支付，无需绑定银行卡的！毕境买来的小号，存在一定的风险！
+    </div></div></td>
+
+    </tr>
+    <TR height="40">
+    <TD class="strong" align="center" vAlign="middle" width="120">淘宝账号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">账号类型</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">账号注册日期</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">信誉值</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">支付宝账号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">单价</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">淘宝密码</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">登录密码</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">支付密码</TD>    
+   </TR>
+ {loop $list $v}    
+  <TR height="40">
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[taobaohao]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[type]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[regTime]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[xinyuzhi]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[zhifubao]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[danjia]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[taobaomima]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[zhifubaomima]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="120">{$v[zhifumima]}</TD>    
+   </TR>
+ {/loop}
+    <tr>
+        <td colspan="10">$multipage</td>
+    </tr>
+</TBODY></TABLE>
+{/if}
+</DIV>
+<DIV class="cle"></DIV>
+
+{subtemplate ../footer}
+
+</BODY></HTML>

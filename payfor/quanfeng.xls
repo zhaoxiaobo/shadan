@@ -1,0 +1,22 @@
+<table width="1276" border="0" cellpadding="0" cellspacing="0" style="width:957.00pt;border-collapse:collapse;table-layout:fixed;">
+   <col width="133" class="xl22" style="mso-width-source:userset;mso-width-alt:4256;"/>
+   <col width="72" span="3" style="width:54.00pt;"/>
+   <col width="118" style="mso-width-source:userset;mso-width-alt:3776;"/>
+   <col width="809" style="mso-width-source:userset;mso-width-alt:25888;"/>
+   <tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;" x:str>快递单号</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>发货城市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>发货区/县</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>收货城市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>收货区/县</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>签收人</td>
+   </tr>
+<tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;vnd.ms-excel.numberformat:@;" x:str>420014252501</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>杭州市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>上城区</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>镇江市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>京口区</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>陈蓉</td>
+   </tr>
+</table>

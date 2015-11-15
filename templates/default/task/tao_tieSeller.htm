@@ -1,0 +1,210 @@
+{sub ../headerBase}
+<style type="text/css">
+.kd a:hover { text-decoration:underline;}
+.link_tt { display:block; width:52px; height:22px;color:#a68d8b; background:url(/images/sellers_btn.png) no-repeat; margin-bottom:2px;}
+</style>
+<style type="text/css">
+.bq_menu{
+	height:32px;
+	background:url(/images/fy_ico.jpg) 0 -1342px repeat;
+	}
+.bq_menu a{
+	float:left;
+	margin-right:3px;
+	background:url(/images/fy_ico.jpg)  -4px -806px no-repeat;
+	display:block;
+	font-size:14px;
+	text-align:center;
+	width:96px;
+	height:32px;
+	line-height:30px;
+	}
+.bq_menu a:hover,.bq_menu a.nov{
+	background:url(/images/fy_ico.jpg)  -4px -758px no-repeat;
+	font-weight:bold;
+	}
+.mh_bdbtn2 {margin-left:218px;}
+.tx_jl{
+	background:url(/images/tx_btn.gif) 0 -187px no-repeat;
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	font-weight:bold;
+	text-indent:25px;
+	}
+.txjl_bg1{background:url(/images/tx_btn.gif) 0 -225px no-repeat;}
+.txjl_bg2{
+	background:url(/images/tx_btn.gif) 0 -264px repeat-x;
+	color:#1996e6;
+	font-size:14px;
+	font-weight:bold;
+	}
+.txjl_bg3{background:url(/images/tx_btn.gif) right -303px no-repeat}
+</style>
+<div id="content">
+  <div class="taobaopage_detail">
+<style type="text/css">
+.gold .yred { color:#D61810;}
+</style>
+
+{sub tao_info}
+		{sub ../quick}
+		<div class="rwdt_bk2">
+			<a href="{rewrite}/member/safesz/" class="szsz_btn" target="_blank"></a>
+			<p class="ts">接实物任务后立即收货好评将 <span class="chengse">- 20 </span>信币</p>
+			<p class="ts">任务过程中旺旺聊到刷信誉平台相关字眼 <span class="chengse">- 5 </span>信币</p>
+			<p class="ts">为了您资金安全，接手方淘宝支付后务必在<span class="lanse">15</span>分钟内回到平台操作任务点击“已付款” </p>
+		</div>
+		<div class="rwdt_gg"><a href="{rewrite}/member/userjob/" target="_blank"><img src="/images/jrw.gif"></a></div>
+		<div class="rwdt_gg2"><a href="{rewrite}/member/spread/" target="_blank"><img src="/images/rgg.jpg"></a></div>
+
+<script type="text/javascript">
+					$(function() {
+						bechange('.sub_bt a','#buyboxcont>.task_header');
+						$("table > tr:odd").addClass("tcolor");
+					});
+					</script>
+		{sub tab}
+	<div class="cle"></div>
+	<div class="lst_info" style="background:none;"></div>
+	{if $_showmessage}<div class='error_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}
+	<div class="mh_tishi">
+				1、最多绑定30个掌柜号，每次添加需要收取5元手续费，首次绑定免费，<span class="chengse">VIP用户免费；掌柜号是您开店的淘宝登录帐号，不是店铺名，需要区分大小写，请一定注意！</span><br>
+2、如果您的帐号还没有发布过任务，可以联系客服QQ给予免费修改一次；发布过任务的帐号不提供修改！ 
+<br>
+
+			</div>
+			<div class="bq_menu">
+				<a href="{rewrite}/task/tao/?m=tieSeller" {if $action=='task' && $operation=='tao'} class="nov" {/if}>绑定淘宝掌柜</a>
+				
+			</div>
+			<form name="seller" method="post" id="seller" onSubmit="return checkseller();">
+			<div>$sys_hash_code2</div>
+			<table style="margin-top:20px;font-size:14px;" class="zg_tb" align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+              <tbody><tr>
+                <td align="left" height="30" valign="middle" width="20%"><span class="mh_taobao"></span></td>
+              </tr>
+			  
+	
+              <tr>
+                <td align="left" height="40" valign="middle" width="20%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody><tr>
+                    <td width="22%">淘宝掌柜名（旺旺名）：</td>
+                    <td width="78%" align="left"><input name="nickName" id="nickName" class="mh_bk" type="text" style="width:280px;"></td>
+                  </tr>
+                </tbody></table></td>
+              </tr>
+			 
+              <tr>
+                <td align="left" height="60" valign="middle"> <input class="mh_bdbtn2" type="submit" name="btnSave"></td>
+              </tr>
+			  
+              <tr>
+                <td class="mh_xian" align="left" height="40" valign="middle" width="20%">您目前是{$user_group[name]}用户，可以绑定{$maxTieCount}个掌柜！ <a href="{rewrite}/member/vip/" target="_blank" class="chengse2">申请皇冠VIP</a>最高可绑定{echo  cfg::getFloat('payment', 'vip3maxTieCount')}个掌柜！<a href="{rewrite}/member/vipinfo/" target="_blank" class="lanse">查看VIP限权</a></td>
+              </tr>
+            </tbody></table> 
+			</form>
+	        <table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+              <tbody><tr>
+                <td height="25">&nbsp;</td>
+              </tr>
+              <tr>
+                <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tbody><tr>
+                    <td class="txjl_bg1" height="37" width="10"></td>
+                    <td class="txjl_bg2" style="color:#333;" align="center" height="37" valign="middle" width="25%">淘宝掌柜帐号</td>
+					<td class="txjl_bg2" style="color:#333;" align="center" height="37" valign="middle" width="10%">总发布任务</td>
+                    <td class="txjl_bg2" style="color:#333;" align="center" height="37" valign="middle" width="30%">绑定时间</td>
+                    <td class="txjl_bg2" style="color:#333;" align="center" height="37" valign="middle" width="15%">是否激活</td>
+                    <td class="txjl_bg2" style="color:#333;" align="center" height="37" valign="middle" width="20%">&nbsp;</td>
+                    <td class="txjl_bg3" height="37" width="10"></td>
+                  </tr>
+				  {loop $sList $v}
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="mh_xxian" align="center" height="35" valign="middle">
+					<table style="margin:0 0 0 45px;" border="0" cellpadding="0" cellspacing="0" width="70%">
+                      <tbody><tr>
+                        <td align="center" valign="middle" width="25"><span class="zg_tbico"></span></td>
+                        <td align="left" valign="middle">$v[nickname]</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="chengse2" align="left" valign="middle">
+                        {if $v[status]}
+						<span class="hongse"> 已激活</span>
+                         {else} 激活掌柜 {/if}
+						</td>
+                      </tr>
+                    </tbody></table></td>
+					<td class="mh_xxian" align="center" valign="middle">0</td>
+                    <td class="mh_xxian" align="center" valign="middle">{date $v[timestamp1]}</td>
+                    <td class="mh_xxian" align="center" valign="middle">
+		<input checked="checked" onClick="return noactive($v[id]);" type="checkbox">
+		</td>
+                    <td class="mh_xxian" align="center" valign="middle"><a href="javascript:;" onClick="dialog(650,500,'设置掌柜发货地址','{rewrite}/dialog/sellerAddress/?id=$v[id]');return false;" class="link_tt">&nbsp;</a><a href="javascript:;" onClick="return IsDelAcc(this,$v[id]);" class="mh_cz"></a></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  {/loop}
+				  
+                </tbody></table></td>
+              </tr>
+            </tbody></table>
+	        <p>&nbsp;</p>
+	        <p>&nbsp;</p>
+            <div class="rwdt_dlm">
+			  <div id="page">
+
+			  </div>
+			</div>
+			<div class="cle"></div>
+			<!--结束-->
+			
+					
+	</div><!--taopage_detail end-->
+</div>
+
+<link type="text/css" rel="stylesheet" href="/images/jcalendar.css">
+<script type="text/javascript">
+function IsDelAcc(obj, id) {
+  if (confirm("您确定要删除此掌柜么？")) {
+    location.href='/task/tao/?m=tieSeller&del=' + id;
+    return true;
+  } else {
+    return false;
+  }
+}
+function checkseller() {
+  var nickname=$('#nickName').val();
+  if (nickname.length>1)
+		{
+		return true;
+		}
+		else {
+	    alert('淘宝掌柜帐号不能为空');
+		$('#nickName').focus();
+		return false;
+	}
+}
+function noactive(id)
+{
+	if (confirm('您确定要取消激活此帐号么？')) {
+    location.href='/task/tao/?m=tieSeller&noactive='+id;
+    return true;
+  } else {
+    return false;
+  }
+}
+function isactive(id)
+{
+	if (confirm('您确定要激活此帐号么？')) {
+    location.href='/task/tao/?m=tieSeller&isactive='+id;
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>
+
+<div class="cle"></div>
+{sub ../footer}

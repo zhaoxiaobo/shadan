@@ -1,0 +1,138 @@
+{teval
+
+	$title       = '购买小号 - {webName}';
+
+	$keywords    = '';
+
+	$description = '';
+
+	$title       = common::replaceVars($title);
+
+	$keywords    = common::replaceVars($keywords);
+
+	$description = common::replaceVars($description);
+
+	$cssList     = array(css::getUrl('member', 'member'));
+
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+
+}
+{sub ../header}
+<DIV id="content">
+
+  <!-- 左边栏 -->
+
+  {sub menu}
+
+<DIV class="right">
+
+<DIV class="bq_menu">
+
+<A {if $type==1} class="nov"{/if} href="{rewrite}/member/ipbuy/?type=1">软件卡密中心</A>
+
+<A {if $type==2} class="nov"{/if} href="{rewrite}/member/ipbuy/?type=2">我购买的卡密</A>
+
+</DIV>
+{if $type==1}
+<div>$sys_hash_code2</div>
+
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+  <TBODY>
+
+<tr class="tdbg" height="35">
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">
+    <div class='error_panel'><div style="color:blue;">
+【下载地址】： 国际版VPN换IP软件 国内版换IP软件 提醒：禁止使用迅雷等下加速软件下载，右健目标另存为即可（软件极小）<br>
+【版本说明】：国际版，可全球范围内更换您电脑的IP地址；国内版，可全中国范围内更新您的电脑IP地址；（两个版本都可全局电脑换IP）<br>
+【使用教程】：国际版VPN换IP软件使用说明 国内版换IP软件使用说明 提醒：购买软件前，请先观看使用教程中<br>
+【价格说明】：国际版原价20元/月，现优惠价15元/月,国内版16元一个月 买国际或国内换IP软件年版，即可获赠2个月，天版为1.2元每天<br>
+    </div></div></td>
+    </tr>
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">软件名称</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">卡密类型</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">卡号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">密码</TD>    
+    <TD class="strong" align="center" vAlign="middle" width="150">价格</TD>
+    <TD class="strong" align="center" vAlign="middle" width="100">操作</TD>
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {loop $list $v}    
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[ruanjian]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[type]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">{echo string::getXin3($v[kahao])}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{echo string::getXin3($v[mima])}</TD>    
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[danjia]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="100">{if $v[status]==1}已出售{else}<a href="javascript:;" onclick="dialog(650,360,'软件卡密详细浏览','{rewrite}/dialog/buyip/?sid=$v[id]');return false;"><img src="/images/Card_bt.gif" border="0" width="90" height="32" align="absmiddle"></a>{/if}</TD>
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {/loop}
+
+    <tr>
+        <td colspan="10">$multipage</td>
+    </tr>
+
+</TBODY></TABLE>
+{elseif $type=='2'}
+
+<div>$sys_hash_code2</div>
+
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+  <TBODY>
+
+<tr class="tdbg" height="35">
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">
+    <div class='error_panel'><div style="color:blue;">
+【下载地址】： 国际版VPN换IP软件 国内版换IP软件 提醒：禁止使用迅雷等下加速软件下载，右健目标另存为即可（软件极小）<br>
+【版本说明】：国际版，可全球范围内更换您电脑的IP地址；国内版，可全中国范围内更新您的电脑IP地址；（两个版本都可全局电脑换IP）<br>
+【使用教程】：国际版VPN换IP软件使用说明 国内版换IP软件使用说明 提醒：购买软件前，请先观看使用教程中<br>
+【价格说明】：国际版原价20元/月，现优惠价15元/月,国内版16元一个月 买国际或国内换IP软件年版，即可获赠2个月，天版为1.2元每天<br>
+【代理软件】：加盟代理分销《刷客网换IP软件》 提醒：想做本软件的分销代理，请先查看加盟代理说明，再联系指定客服<br>
+    </div></div></td>
+
+    </tr>
+   <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">软件名称</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">卡密类型</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">卡号</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">密码</TD>    
+    <TD class="strong" align="center" vAlign="middle" width="150">价格</TD>    
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {loop $list $v}    
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">{$v[ruanjian]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[type]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">{$v[kahao]}</TD>
+    <TD class="strong" align="center" vAlign="middle" width="200">{$v[mima]}</TD>    
+    <TD class="strong" align="center" vAlign="middle" width="150">{$v[danjia]}</TD>    
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {/loop}
+
+    <tr>
+
+        <td colspan="10">$multipage</td>
+
+    </tr>
+
+</TBODY></TABLE>
+
+{/if}
+
+</DIV>
+
+
+
+<DIV class="cle"></DIV>
+
+{subtemplate ../footer}
+
+</BODY></HTML>

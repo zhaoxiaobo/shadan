@@ -1,0 +1,82 @@
+﻿{sub h}
+{if $method == 'index'}
+	{adminList
+		删？|id|del
+        软件名称|ruanjian
+        卡密类型|type
+        卡号|kahao
+		密码|mima		
+        单价|danjia
+        购买人|username
+        购买时间|useTime|code,{if $v[useTime]>0}{echo date('Y-m-d H:i:s',$v[useTime])}{/if}		
+        状态|status|code,{if $v[status]==0}未购买{elseif $v[status]==1}已购买{/if}
+        编辑|bianji|code,<a href="$base_url&method=bianji&sid=$v[id]">编辑</a>		
+        
+	}
+{elseif $method == 'add'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>软件名称</th>
+			<td><input type="text" name="ruanjian" style="width:220px" maxlength="30"  /></td>
+		</tr>  
+ 		<tr>
+			<th>卡密类型</th>
+			<td><input type="text" name="type" style="width:220px" maxlength="30"  /></td>
+		</tr>  
+ 		<tr>
+			<th>卡号</th>
+			<td><input type="text" name="kahao" style="width:220px" maxlength="30"  /></td>
+		</tr>
+ 		<tr>
+			<th>密码</th>
+			<td><input type="text" name="mima" style="width:220px" maxlength="30"  /></td>
+		</tr>
+ 		<tr>
+			<th>价格</th>
+			<td><input type="text" name="danjia" style="width:220px" maxlength="30"  /></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{elseif $method == 'bianji'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>ID号</th>
+			<td>$ipbuy[id]</td>
+            <input type="hidden" name="qid" value="$ipbuy[id]"  />
+		</tr>
+ 		<tr>
+			<th>软件名称</th>
+			<td><input type="text" name="ruanjian" style="width:220px" maxlength="30" value="$ipbuy[ruanjian]"  /></td>            
+		</tr>
+ 		<tr>
+			<th>卡密类型</th>
+			<td><input type="text" name="type" style="width:220px" maxlength="30" value="$ipbuy[type]"  /></td>            
+		</tr>
+ 		<tr>
+			<th>卡号</th>
+			<td><input type="text" name="kahao" style="width:220px" maxlength="30" value="$ipbuy[kahao]"  /></td>            
+		</tr>
+ 		<tr>
+			<th>密码</th>
+			<td><input type="text" name="mima" style="width:220px" maxlength="30" value="$ipbuy[mima]"  /></td>            
+		</tr>
+ 		<tr>
+			<th>价格</th>
+			<td><input type="text" name="danjia" style="width:220px" maxlength="30" value="$ipbuy[danjia]"  /></td>            
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{/if}
+{sub f}

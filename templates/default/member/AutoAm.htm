@@ -1,0 +1,155 @@
+{teval
+	$title       = '会员中心 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('member', 'member'));
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+}
+{sub ../header}
+<DIV id="content"> 
+	 {sub menu}
+<div id="_right">
+{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}
+		{if $_showmessage}<div class='error_panel'><div>$_showmessage</div></div>{/if}
+<!-- 任务定制  -->
+<div id="taskDing">
+	<div class="mh_tishi">
+		
+			<p>您当前任务定制 <b style="color:green;">关闭</b> 中，<a href="{rewrite}/member/BuyPoint/" style="color: #1996E6;margin-left:10px;">购买定制任务</a></p>
+		
+		<span>当您成功保存配置信息后，请返回淘宝接任务大厅按F5刷新页面，刷新后新的配置才会生效哟！</span>
+	</div>
+	<div class="bq_menu2">
+		<a class="nov taobao" href="javascript:;">自动接淘宝任务</a>
+		<a class=" paipai" href="javascript:;">自动接拍拍任务</a>
+	</div>
+	
+	<form id="myformTB" method="post" >
+	$sys_hash_code2
+	<input type="hidden" name="type" value="1">
+	<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	    <tbody><tr>
+	        <td align="left">价格区间：</td>
+	        <td>
+                <input type="text" {if $datas[priceLow]} value="$datas[priceLow]"{else}value="0"{/if} style="width:40px;" maxlength="4" name="priceLow">
+                至
+                <input type="text" {if $datas[priceHigh]} value="$datas[priceHigh]"{else}value="50"{/if} style="width:40px;" maxlength="4" name="priceHigh">
+	        </td>
+	        <td>您期望所接任务的价格范围！注意：价格区间只支持整数。</td>
+	    </tr>
+	    <tr>
+	        <td align="left">最少信币：</td>
+	        <td><input type="text" {if $datas[point]} value="$datas[point]"{else}value="1"{/if} style="width:40px;" maxlength="4" name="point"></td>
+	        <td>您期望所接任务的最低信币奖励！注意：最少信币只支持整数。</td>
+	    </tr>
+	    <tr>
+	        <td align="left">过滤商保任务：</td>
+	        <td><span><input type="checkbox" name="NoSB" value="1" {if $datas[NoSB]}checked="checked"{/if}></span> </td>
+	        <td>选择后您将无法接商保任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤审核：</td>
+	        <td><input type="checkbox" name="NoAudit" value="1" {if $datas[NoAudit]}checked="checked"{/if}></td>
+	        <td>选择后您将无法接需要审核的任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤拍前聊：</td>
+	        <td><input type="checkbox" name="NoWW" value="1" {if $datas[NoWW]}checked="checked"{/if}></td>
+	        <td>选择后您将无法接需要拍前聊旺旺的任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤聊后收：</td>
+	        <td> <input type="checkbox" name="NoLHS" value="1" {if $datas[NoLHS]}checked="checked"{/if}> </td>
+	        <td>选择后您将无法接需要聊旺旺确认收货的任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤购物车：</td>
+	        <td><input type="checkbox" name="NoCart" value="1" {if $datas[NoCart]}checked="checked"{/if}></td>
+	        <td>选择后将无法接到购物车任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤套餐：</td>
+	        <td><input type="checkbox" name="NoMeal" value="1" {if $datas[NoMeal]}checked="checked"{/if}></td>
+	        <td>选择后将无法接到套餐任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">是否过滤来路：</td>
+	        <td><input type="checkbox" name="NoLaiLu" value="1" {if $datas[NoLaiLu]}checked="checked"{/if}></td>
+	        <td>选择后将无法接来路任务！</td>
+	    </tr>
+		<tr>
+	        <td align="left">是否过滤真实签收：</td>
+	        <td><input type="checkbox" name="NoExpress" value="1" {if $datas[NoExpress]}checked="checked"{/if}></td>
+	        <td>选择后将无法接真实签收任务！</td>
+	    </tr>
+		
+	    <tr>
+	        <td align="left">是否过滤评图：</td>
+	        <td><input type="checkbox" name="NoPinPic" value="1" {if $datas[NoPinPic]}checked="checked"{/if}></td>
+	        <td>选择后将无法接需要好评截图的任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">好评确认时间：</td>
+	        <td>
+	            <select name="times" class="taskBegin">
+					<option value="0" {if $datas[times]==0} selected{/if}>立即好评</option>
+					<option value="1" {if $datas[times]==1} selected{/if}>24小时好评</option>
+					<option value="2" {if $datas[times]==2} selected{/if}>48小时好评</option>
+					<option value="3" {if $datas[times]==3} selected{/if}>72小时好评</option>
+					<option value="4" {if $datas[times]==4} selected{/if}>96小时好评</option>
+					<option value="5" {if $datas[times]==5} selected{/if}>120小时好评</option>
+					<option value="6" {if $datas[times]==6} selected{/if}>144小时好评</option>
+					<option value="7" {if $datas[times]==7} selected{/if}>168小时好评</option>
+				</select>
+				
+	        </td>
+	        <td>您期望所接任务确认天数！</td>
+	    </tr>
+	     <tr>
+	        <td align="left">只接购物车：</td>
+	        <td><input type="checkbox" name="isCartOnly" value="1" {if $datas[isCartOnly]}checked="checked"{/if}> </td>
+	        <td>选择后将只能接到购物车任务！</td>
+	    </tr>
+	     <tr>
+	        <td align="left">只接套餐：</td>
+	        <td><input type="checkbox" name="isMealOnly" value="1" {if $datas[isMealOnly]}checked="checked"{/if}></td>
+	        <td>选择后将只能接到套餐任务！</td>
+	    </tr>
+	     <tr>
+	        <td align="left">只接来路：</td>
+	        <td><input type="checkbox" name="isLailuOnly" value="1" {if $datas[isLailuOnly]}checked="checked"{/if}></td>
+	        <td>选择后将只能接到来路任务！</td>
+	    </tr>
+		<tr>
+	        <td align="left">只接真实签收：</td>
+	        <td><input type="checkbox" name="isExOnly" value="1" {if $datas[isExOnly]}checked="checked"{/if}></td>
+	        <td>选择后将只能接到真实签收任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left">只接商保任务：</td>
+	        <td><span><input type="checkbox" name="isEnsureOnly" value="1" {if $datas[isEnsureOnly]}checked="checked"{/if}></span></td>
+	        <td>选择后将只能接到商保任务！</td>
+	    </tr>
+	     <tr>
+	        <td height="50" align="left">买号过滤：</td>
+	        <td>
+	            <input type="radio" name="isReal" value="1" {if $datas[isReal]==1}checked="checked"{/if}>普通买号
+	            <input type="radio" name="isReal" value="2" {if $datas[isReal]==2}checked="checked"{/if}>实名买号
+	        </td>
+	        <td valign="bottom">系统将自动过滤任务要求的买号的任务！</td>
+	    </tr>
+	    <tr>
+	        <td align="left" style="padding-top:20px;">&nbsp;</td>
+	        <td style="padding-top:20px;" colspan="2">
+	            <input type="submit" value="保存配置" name="submit" class="tbbcpz">
+	        </td>
+	    </tr>
+    </tbody></table>
+	</form>	
+</div></div>
+</div>
+<DIV class="cle"></DIV>
+{sub ../footer} 

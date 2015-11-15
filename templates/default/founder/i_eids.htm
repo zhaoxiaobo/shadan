@@ -1,0 +1,188 @@
+﻿{sub h}
+{if $method == 'index'}
+	{adminList
+		删？|id|del
+        快递公司|ename
+        添加时间|addTime|flag,date
+        下单时间|useTime|code,{if $v[useTime]>0}{echo date('Y-m-d H:i:s',$v[useTime])}{/if}
+		快递单号|eid
+		发货人|username
+        发货人电话|fatel
+        发货城市|fashi
+        发货县|faxian
+		收货人|shouname
+        收货人电话|shoutel
+        收货城市|shoushi
+        收货县|shouxian
+        收货地址|shoudizhi
+		是否使用|status|code,{if $v[status]}是{else}否{/if}
+        处理状态|daochu|code,{if $v[daochu]==0}未处理{elseif $v[daochu]==1}已处理{else}已完成{/if}
+        编辑|bianji|code,<a href="$base_url&method=bianji&sid=$v[id]">编辑</a>		
+        
+	}
+{elseif $method == 'add'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>注意：</th>
+            <td>开始快递单号一定要仔细核对后再输入，生成个数建议一次别生成太多，以免卡死。</td>			
+		</tr> 
+ 		<tr>
+			<th>快递公司</th>
+			<td>
+			 <select id="ename" class="txbk" name="ename">
+						{eval $__list = cfg::getList('sys', 'kuaidiType');}
+						{loop $__list $v}
+						<option value="$v[key]" {if $v[checked]} selected="selected"{/if}>$v[key]</option>
+						{/loop}
+			</select>
+            </td>
+		</tr> 
+ 		<tr>
+			<th>开始快递单号</th>
+			<td><input type="text" name="eid" style="width:220px" maxlength="30"  /></td>
+		</tr>  
+ 		<tr>
+			<th>生成个数（必须为数字）</th>
+			<td><input type="text" name="danhaogeshu"  class="txt" />            	
+            </td>
+		</tr>         
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{elseif $method == 'bianji'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>ID号</th>
+			<td>$eids[id]</td>
+            <input type="hidden" name="qid" value="$eids[id]"  />
+		</tr>
+ 		<tr>
+			<th>快递单号</th>
+			<td><input type="text" name="eid" style="width:220px" maxlength="30" value="$eids[eid]"  /></td>            
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{elseif $method == 'daochu'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>注意：</th>
+            <td>导出快递单号请先选择快递公司。</td>			
+		</tr> 
+ 		<tr>
+			<th>快递公司：</th>
+			<td>
+			 <select id="ename" class="txbk" name="ename">
+						{eval $__list = cfg::getList('sys', 'kuaidiType');}
+						{loop $__list $v}
+						<option value="$v[key]" {if $v[checked]} selected="selected"{/if}>$v[key]</option>
+						{/loop}
+			</select>
+            </td>
+		</tr> 
+ 		<tr>
+			<th>操作类型：</th>
+			<td>
+
+            批量处理<input type="radio" value="1" name="piliang" class="txbk" />
+            批量导出<input type="radio" checked="checked" value="2" name="piliang" class="txbk" />
+            批量完成<input type="radio" value="3" name="piliang" class="txbk" />
+            </td>
+		</tr> 
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{elseif $method == 'chaxun'}
+<script type="text/javascript" src="/javascript/index/WdatePicker.js"></script>
+<form enctype="application/x-www-form-urlencoded" method="post">
+$sys_hash_code
+	<table width="914" class="tab_view">
+ 		<tr>
+			<th width="68">注意：</th>
+            <td colspan="3">导出快递单号请先选择快递公司。</td>			
+		</tr> 
+ 		<tr>
+			<th>快递公司：</th>
+			<td colspan="3">
+			 <select id="ename" class="txbk" name="ename">
+						{eval $__list = cfg::getList('sys', 'kuaidiType');}
+						{loop $__list $v}
+						<option value="$v[key]" {if $v[checked]} selected="selected"{/if}>$v[key]</option>
+						{/loop}
+			</select>
+            </td>
+		</tr> 
+ 		<tr>
+			<th>快递单号：</th>
+			<td width="200"><input type="text" name="eid" style="width:120px" maxlength="30"  /></td>
+			<td width="180" align="center">&nbsp;&nbsp;发货人:</td>
+			<td width="188"><input type="text" name="fahuoren" style="width:120px" maxlength="30"  /></td>
+		</tr>  
+		<tr>
+			<th>开始时间：</th>
+			<td width="200"><input type="text" name="planDate" id="planDate" class="txbk" readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" /></td>
+			<td width="180" align="center">&nbsp;&nbsp;结束时间:</td>
+			<td width="188"><input type="text" name="planDate1" id="planDate1" class="txbk"  readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" /></td>
+		</tr>  		
+		<tr>
+			<th></th>
+			<td colspan="3"><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+	{adminList
+		删？|id|del
+        快递公司|ename
+        添加时间|addTime|flag,date
+        下单时间|useTime|code,{if $v[useTime]>0}{echo date('Y-m-d H:i:s',$v[useTime])}{/if}
+		快递单号|eid
+		发货人|username
+        发货人电话|fatel
+        发货城市|fashi
+		收货人|shouname
+        收货人电话|shoutel
+        收货城市|shoushi
+        收货地址|shoudizhi
+		是否使用|status|code,{if $v[status]}是{else}否{/if}		
+        处理状态|daochu|code,{if $v[daochu]==0}未处理{elseif $v[daochu]==1}已处理{else}已完成{/if}
+		编辑|bianji|code,<a href="$base_url&method=bianji&sid=$v[id]">编辑</a>	
+	}
+{elseif $method == 'dhshengyu'}
+<form enctype="application/x-www-form-urlencoded" method="post" onsubmit="return confirm('确定吗？')">
+$sys_hash_code
+	<table class="tab_view">
+ 		<tr>
+			<th>快递公司</th>
+            <td>剩余个数</td>			
+		</tr> 
+        {loop $sList $v}
+ 		<tr>
+       
+			<th>$v[kuaidiType]</th>
+			<td>$v[kuaidiTypeCount]</td>
+            
+		</tr>
+        {/loop}    
+		<tr>
+			<th></th>
+			<td><input type="submit" value="提交" class="btn" /><input type="button" value="返回" onclick="history.back(-1)" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{/if}
+{sub f}

@@ -1,0 +1,113 @@
+{teval
+	//$title       = '来路调查 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('member', 'member'));
+	echo string::getStaticCode(array('keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+}
+{sub ../header}
+<DIV class="cle"></DIV>
+<DIV id="content">
+<DIV class="wdtg_bg1"></DIV>
+<DIV class="wdtg_bg2">
+<script type="text/javascript" src="/javascript/index/WdatePicker.js"></script>
+
+<TABLE style="margin: 0px auto;" border="0" cellSpacing="0" cellPadding="0" width="875" align="center">
+  <TBODY>
+  <TR>
+    <TD height="80" colSpan="2">
+      <TABLE border="0" cellSpacing="0" cellPadding="0" width="80%" align="center">
+        <TBODY>
+        <TR>
+          <TD width="432">
+		  <INPUT id="txtlink" class="wdtg_inp" onFocus="this.select()" name="textfield" value="{echo common::getUrl('/member/reg.php?pusername='.urlencode($member[username]))} " type="text">
+		  </TD>
+          <TD align="left"><A id="btncopy" class="wdtg_btn" href="javascript:;"></A></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan="2">
+      <H4 class="wdtg_tit">推广介绍</H4>
+      <P style="font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们隆重邀请您参加我们<span style="color:red; font-weight:700; font-size:14px;">“您去推广，我来送钱”</span>活动。我们系统为您分配了一个链接地址，您可以在微博、QQ群消息、QQ群邮件、QQ签名、Qzone日志, 论坛发贴,msn消息等发布您的推广连接地址，每个通过链接地址在本站注册的新朋友，都属于您自己名下的用户。<br><SPAN class="chengse2" style="color:red; font-weight:700;font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此后当这个用户每发布一个任务，任务完成后，您将获得{echo cfg::getFloat('sys', 'point_reword')}个信币作为提成（永久有效）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;另外当这个用户购买VIP等服务，您可以得到{echo cfg::getFloat('sys', 'vipaddmoney') * 100}%的佣金（永久有效）！您可以把这些存款用于刷销量或者直接提现到自己的工行卡。是真金白银哦！</SPAN></P></TD></TR>
+  <TR>
+    <TD colSpan="2">
+      <H4 class="wdtg_tit">推广人数查看　( 总推荐人数：{$total}，当月推荐人数：{$month}，今日推荐人数：{$day} )</H4>
+      <H4 style="padding-left:80px; color:red; font-size:14px;padding-bottom:8px;">开始时间不能大于结束时间，否则不能查询！查询结果：{$dayjieguo}</H4><FORM>
+      <H4 style="padding-left:80px; padding-bottom:8px;">开始时间：<input type="text" name="planDate" id="planDate" class="task_text" readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" />&nbsp;&nbsp;&nbsp;&nbsp;结束时间：<input type="text" name="planDate1" id="planDate1" class="task_text"  readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" />&nbsp;&nbsp;<input type="submit" value="提交" id="zhuijiabt"  /></H4></FORM>
+      <TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+        <TBODY>
+        <TR>
+          <TD class="wdtg_tit1" height="39" width="2%">&nbsp;</TD>
+          <TD class="wdtg_tit2" height="39" width="19%" align="center">推广会员</TD>
+          <TD class="wdtg_tit2" height="39" width="19%" align="center">注册时间</TD>
+          <TD class="wdtg_tit2" height="39" width="15%" align="center">已接任务数</TD>
+          <TD class="wdtg_tit2" height="39" width="15%" align="center">已发任务数</TD>
+		</TR>
+		{loop $sList $v}
+                <tr>
+				<td class="phb_sx"></td>
+                  <td class="phb_sx">$v[username] <img src="$v[level][icon]" title="积分：$v[credits]" />{if $v[vip]}<span class="vip" title="VIP"></span>{/if}{if $v[vip2]}<span class="card" title="{echo language::get('card'.$v[vip2])}"></span>{/if}{if $v[isEnsure]}<span class='ensure' title='商保'></span>{/if}</td>
+                  <td class="phb_sx">{date $v[reg_timestamp]}</td>
+                  <td class="phb_sx" align="center">$v[jierenwugeshu]</td>
+                  <td class="phb_sx" align="center">$v[farenwugeshu]</td>
+                </tr>
+                {/loop}
+		<tr>
+			<td colspan="10">$multipage</td>
+		</tr>
+		</TBODY>
+	  </TABLE>
+      <DIV id="page"></DIV></TD></TR>
+  <TR>
+    <TD vAlign="top" width="100%">
+      <DIV class="wdtg_phb">
+      <H4 class="wdtg_ph">推广<SPAN class="lanse">总排行</SPAN></H4>
+      <UL style="background: rgb(255, 255, 255); border: currentColor;" class="phb_t2">
+        <LI class="phb_sx">用户名<SPAN class="phb_md1" style="padding-right:36px;">推广人数</SPAN>
+		</LI>
+		{loop $sList_top $v}
+        <LI class="phb_name">
+		<SPAN class="phb_nameico{$i++}"></SPAN>
+		<SPAN style="width: 120px; float: left; display: block;">
+		<A href="{rewrite}/member/info/?username=$v[username]" 
+        target="_blank">$v[username]</A>
+		</SPAN>
+		<SPAN style="width: 80px; text-align: center; float: left; display: block;" 
+        class="chengse2">$v[child1]
+		</SPAN>		
+		</LI>
+		{/loop}
+       </UL>
+	   </DIV>
+	   </TD>
+	   </TR></TBODY></TABLE></DIV>
+<DIV class="wdtg_bg3"></DIV></DIV>
+<DIV class="cle"></DIV>
+<SCRIPT type="text/javascript">
+$(document).ready(function(){
+    $("#btncopy").click(function(){
+	
+        copyToClipboard($("#txtlink").val());
+	
+        return false;
+    });
+});
+
+function copyToClipboard(text) {       
+     var userAgent = navigator.userAgent.toLowerCase();
+	   var is_opera = userAgent.indexOf("opera") != -1 && opera.version();
+	   var is_ie = (userAgent.indexOf("msie") != -1 && !is_opera) && userAgent.substr(userAgent.indexOf("msie") + 5, 3);
+	   if(is_ie) {
+		clipboardData.setData('Text', text);
+		alert('复制成功');
+	  }else if(prompt('请你使用 Ctrl+C 复制到剪贴板', text)) {
+	    alert('复制成功');	
+	  }else {
+	    alert('复制失败，请手动黏贴');	
+	  }
+} 
+</SCRIPT>
+
+<DIV class="cle"></DIV>
+{sub ../footer}

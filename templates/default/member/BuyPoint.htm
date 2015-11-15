@@ -1,0 +1,201 @@
+{teval
+	$title       = '信币购买--{webName}';
+	$keywords    = '{webName2}';
+	$description = '{webName}';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('index', 'index'));
+	$jsList      = array(javascript::getUrl('silde', 'index'));
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList, 'jsList'=>$jsList));
+}
+{subtemplate ../header}
+<link href="/css/shua.css" rel="stylesheet" type="text/css">
+<DIV class="cle"></DIV>
+<DIV style="background: rgb(236, 236, 236); margin: 0px auto; width: 1000px;" id="content">
+<DIV id="gm_kd">
+{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}
+{if $_showmessage}<div class='msg_panel' style="border: 1px dashed rgb(204, 204, 204); background:#FFC; margin-top:5px;padding:10px 5px; color:#0F3; font-weight:bold;"><div>$_showmessage</div></div>{/if}
+<FORM id="myForm" onSubmit="return checkForm();" method="post" name="myForm" action="">
+$sys_hash_code2
+  <DIV class="line">
+  <P style="left: 140px; top: 100px; height: 30px; line-height: 30px; font-weight: bold; position: absolute;">
+  <A href="{rewrite}/BuyPoint/#"></A>&nbsp;</P>
+  <P class="STYLE5">购买数量：</P>
+  <INPUT name="Type" value="1" type="hidden">
+  <input name="jiage" id="jiage" value="$paymentshangbi" type="hidden">
+  <INPUT id="nums" class="in_bk" name="nums" maxLength="4" value="20" type="text">
+  <P class="t2"><SPAN class="STYLE3">个</SPAN>
+  <SPAN class="STYLE4">(每个<STRONG id="jiage1">$paymentshangbi</STRONG>元)</SPAN></P>
+  <INPUT class="gm_btn" name="submit" value="提交查询内容" type="submit">
+  </DIV>
+</FORM>
+<FORM id="myForm1" onSubmit="return confirm('你确定购买VIP，立即享受18重平台特权吗？');" method="post" name="myForm1" >
+$sys_hash_code2
+<DIV class="line bg2">
+<P>
+<SELECT id="viptype" name="viptype">
+  <OPTION value="1">一级VIP客户</OPTION>
+  <OPTION value="2">钻石VIP客户</OPTION>
+  <OPTION value="3">皇冠VIP客户</OPTION>
+</SELECT>
+
+<SELECT name="months">
+  <OPTION id="months"  value=""></OPTION>
+  
+</SELECT>
+</P>
+<DIV class="jiage">
+<SPAN class="STYLE7">价格：
+<SPAN id="price"></SPAN>元</SPAN><A 
+class="tq" href="/static/vip.htm" 
+target="_blank">查看VIP服务介绍</A>
+</DIV>
+<INPUT name="Type" value="2" type="hidden">
+<INPUT class="gm_btn" name="submit" value="提交查询内容" type="submit">
+</DIV>
+</FORM>
+
+<DIV style="clear: both;"></DIV></DIV></DIV>
+<DIV class="cle"></DIV>
+{subtemplate ../footer} 
+<!--[if lte IE 6]>
+<script type="text/javascript" src="/javascript/cn/DD_belatedPNG_0.0.7a.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+<SCRIPT type="text/javascript">
+$(function() {
+    getvipjiage(1);
+    $('#viptype').change(function(){  
+    var viptype=$(this).children('option:selected').val();
+	getvipjiage(viptype);
+	var viprice=$('#months').children('option:selected').val();
+    });
+	
+	$('#months').change(function(){  
+    var vipmonths=$(this).children('option:selected').val();
+	getviptotal(vipmonths);
+    }); 
+
+});
+function getvipjiage(t) {
+		if(t){
+			$.ajax({
+				url: '/ajax/vipprice.php',
+				data: 'viptype='+t,
+				type: "POST",
+				cache: false,
+				dataType:"json",
+				success: function(data){
+					if(data!=false){
+					    $("#vipbuy").removeAttr("disabled");
+						$('#months').html(data.detailed);
+						$('#price').html(data.mounth);
+					} else {
+					    $('#vipbuy').attr({'disabled':'disabled'});
+						$('#months').html('读取数据失败');
+					}
+				}
+			});
+		}		
+}
+function getviptotal(m) {
+        var viptype=$('#viptype').children('option:selected').val();
+		if(m){
+			$.ajax({
+				url: '/ajax/viptotal.php',
+				data: 'vipmonths='+m+'&viptype='+viptype,
+				type: "POST",
+				cache: false,
+				dataType:"text",
+				success: function(data){
+					if(data!=false){
+					    $("#vipbuy").removeAttr("disabled");
+						$('#price').html(data);
+					} else {
+					    $('#vipbuy').attr({'disabled':'disabled'});
+						$('#price').html('参数错误');
+					}
+				}
+			});
+		}		
+}
+function checkForm() {
+   var n=$("#nums").val();
+   var j=$("#jiage").val();
+   var checks = [
+		["isNumber", "nums", "购买信币数量"] ];
+	var result = doCheck(checks);
+	if(n>9999){alert('购买数量不能超过9999');return false;}
+	if (result){
+	  if(confirm('请确定购买信息' + '\n信币价格：' + j + '\n信币数量：' + n + '\n消耗存款：'+ (j*n).toFixed(2)+'元')){
+	  return avoidReSubmit();
+	  }else{
+	  return false;}
+	}else{
+	  return result;
+	}
+}
+$(document).ready(function(){
+    var hash     =$("input[name=hash2]").val();
+	$('#forma').submit(function(){
+	return kefu_cx('a',hash,'购买一钻卡获得：260个信币 0.6元/个','156');
+    });
+	$('#formb').submit(function(){
+	return kefu_cx('b',hash,'购买二钻卡获得：501个信币 0.58元/个','290');
+    });
+	$('#formc').submit(function(){
+	return kefu_cx('c',hash,'购买三钻卡获得：1001个信币 0.57元/个','570');
+    });
+	$('#formd').submit(function(){
+	return kefu_cx('d',hash,'购买四钻卡获得：2001个信币 0.56元/个','1080');
+    });
+	$('#forme').submit(function(){
+	return kefu_cx('e',hash,'购买五钻卡获得：5001个信币 0.55元/个','2600');
+    });
+	$('#formf').submit(function(){
+	return kefu_cx('f',hash,'购买皇冠卡获得：10001个信币 0.5元/个','5000');
+    });
+	$('#formj').click(function(){
+	  if(confirm('新平台用户积分增长利器，早日成为万人敬仰的平台皇冠达人！\n购买后积分实效为24小时，\n不与会员等级相累计！您确定购买吗？')){
+	
+      document.formj.submit();  
+
+	  }
+    });
+	$('#formk').click(function(){
+	  if(confirm('新平台用户积分增长利器，早日成为万人敬仰的平台皇冠达人！\n购买后积分实效为7天，\n不与会员等级相累计！您确定购买吗？')){
+	 
+	   document.formk.submit();  
+	  }
+    });
+	$('#forml').click(function(){
+	  if(confirm('购买后您的平台有效投诉率将-1，确定购买吗？\n（此卡一月只可以购买一次）\n您确定购买吗？')){
+	 
+	   document.forml.submit();  
+	  }
+    });
+	$('#removegrade').click(function(){
+	  if(confirm('此卡仅限一月使用一次，购买后将清理您的一个中评，或者差评，让您的满意度提升！\n您确定购买吗？')){
+	 
+	   document.formm.submit();  
+	  }
+    });
+	$('#autotask').click(function(){
+	  if(confirm('平台任务那么快就被别人抢走了，又慢了一步？使用预定任务次卡可以享有单次任务优先预定权，坐等满足条件的任务自己送上门，节省宝贵时间省去麻烦的拼抢任务！\n您确定购买吗？')){
+	 
+	   document.formto.submit();  
+	  }
+    });
+});
+$('.web_qq').hover(function(){
+    $('.quick_qq').show();
+});
+</SCRIPT>
+<script type="text/javascript">
+function checkForm1() {
+    return confirm("您确定要购买么？");
+}
+</script>

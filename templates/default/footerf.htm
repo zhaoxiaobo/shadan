@@ -1,0 +1,38 @@
+﻿{if cfg::getBoolean('ad_duilian', 'openLeft') || cfg::getBoolean('ad_duilian', 'openRight')}
+<style type="text/css">
+.ad_float_left,.ad_float_right{float:right;position:fixed;top:200px;z-index:300;}
+* html .ad_float_left,* html .ad_float_right{position:absolute;top:expression(offsetParent.scrollTop+200);}
+.ad_float_left{left:10px;}
+.ad_float_right{right:10px;}
+.ad_close{
+	float:left;
+	font-size:12px;
+	margin-top:10px;
+}
+.ad_close a{text-decoration:none;color:#1D50A1;}
+.ad_close a:hover{text-decoration:underline;color:#F54100;}
+.ad_clear{clear:both};
+</style>
+{/if}
+{if cfg::getBoolean('ad_duilian', 'openLeft')}
+<div class="ad_float_left">
+	<div class="ad_code">{if cfg::get('ad_duilian', 'leftUrl')}<a href="{echo cfg::get('ad_duilian', 'leftUrl')}" target="_blank"><img src="{u}{echo cfg::get('ad_duilian', 'leftPic')}" /></a>{else}<img src="{u}{echo cfg::get('ad_duilian', 'leftPic')}" />{/if}</div>
+	<div class="ad_close"><a href="javascript:;" onclick="$(this).parent().parent().remove()">关闭</a></div>
+	<div class="ad_clear"></div>
+</div>
+{/if}
+{if cfg::getBoolean('ad_duilian', 'openRight')}
+<div class="ad_float_right">
+	<div class="ad_code">{if cfg::get('ad_duilian', 'rightUrl')}<a href="{echo cfg::get('ad_duilian', 'rightUrl')}" target="_blank"><img src="{u}{echo cfg::get('ad_duilian', 'rightPic')}" /></a>{else}<img src="{u}{echo cfg::get('ad_duilian', 'rightPic')}" />{/if}</div>
+	<div class="ad_close"><a href="javascript:;" onclick="$(this).parent().parent().remove()">关闭</a></div>
+	<div class="ad_clear"></div>
+</div>
+{/if}
+<div id="footer">
+		<p><span class="chengse">官方QQ群：{$kefu_qq_qun}</span> （加群请注明{$sys_gongsimc}）</p>
+		<p class="lanse"><a href="{rewrite}/info/aboutus.html">关于我们</a>|<a href="{rewrite}/info/agreement.html">服务条款</a>|<a href="{rewrite}/info/private.html">隐私保护</a>|<a href="{rewrite}/info/map.html">网站地图</a></p>
+		<p style="text-align:center;">
+	
+		<p class="lanse">客户服务QQ：{$sys_phone1} Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved    {$sys_gongsimc}版权所有 <a href="#" target="_blank">{$sys_beian}</a><span style="display:none">
+</span></p>
+	</div>

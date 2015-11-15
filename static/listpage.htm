@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>浏览</title>
+    <meta name="description" content="$description">
+    <meta name="keywords" content="{$keywords}">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/images/login/main.css">
+    <link rel="stylesheet" type="text/css" href="/images/login/twitter.css">
+<style>
+@charset "utf-8";
+body{ background:#fff;padding:0;margin:0;font:12px/23px "微软雅黑","雅黑",verdana,arial,"宋体";width:100%;color:#666;}
+div,h1,h2,h3,h4,p,form,label,input,img,span{ margin:0;padding:0;}
+ul{ margin:0;padding:0;list-style-type:none;}
+img{ border:none;}
+a{ color:#666;text-decoration:none;}
+a:hover{ color:#1996E6;}
+.fl{ float:left;}
+.fr{ float:right;}
+#bg{ position:absolute; width:100%; height:100%; z-index:-1}
+#bg .foot{ float: left;height: 85px;margin: 0 auto 0;padding-top: 12px;text-align: center;width: 100%;position: absolute;left: 0;bottom: 0;}
+#bg .foot p{ color:white;}
+#bg .foot p .chengse { color: #FE5500; padding-left: 26px;}
+#bg .foot p.lanse a { color:white;margin: 0 8px;}
+#bg .foot .chengse{ color:white; }
+#bg .foot .lanse{ color:white;}
+#bg .foot p a:hover{ text-decoration: underline;}
+input,button,select,textarea{ outline:none}
+.login_tip { height: 20px; left: 101px;  position: absolute; top: 60px; width: 260px;}
+.logo,.login,.register,.browse,.dloginz,.registerz,.dbrowsez{ background:url(/images/login/newssc.png);position: absolute;border: medium none;}
+#header{ position: relative;}
+#header .header{ width:700px;margin:0 auto;position: relative;}
+#header .header .logo{ width:300px;height:140px;background-position: -215px 0;left: 200px;}
+#header .header .login{ width:223px;height:43px;background-position: -17px -202px;left: 0px;top:190px;}
+#header .header .login:hover{ cursor:pointer;background-position: -17px -250px;}
+#header .header .register{ width:223px;height:43px;background-position: -250px -202px;left: 240px;top:190px;}
+#header .header .register:hover{ cursor:pointer;background-position: -250px -249px;}
+#header .header .browse{ width:223px;height:43px;background-position: -483px -202px;left: 480px;top:190px;}
+#header .header .browse:hover{ cursor:pointer;background-position: -483px -250px;}
+#dlogin{ background:#fff;width:100%;height:510px;position: absolute;left: 0px;top:380px;display:none;}
+#dlogin .loginc{ width:700px;margin:0 auto;position: relative;}
+#dlogin .loginc .dloginz{ width:43px;height:18px;background-position: -234px -315px;left: 90px;top:-16px;}
+#dregister{ background:#fff;width:100%;height:840px;position: absolute;left: 0px;top: 557px;display:none;}
+#dregister .registerc{ width:700px;margin:0 auto;position: relative;}
+#dregister .registerc .registerz{ width:43px;height:18px;background-position: -234px -315px;left: 330px;top:-16px;}
+#dbrowse{ background:#fff;width:100%;height:510px;position: absolute;left: 0px;top:380px;display:none;}
+#dbrowse .browsec{ width:700px;margin:0 auto;position: relative;}
+#dbrowse .browsec .dbrowsez{ width:43px;height:18px;background-position: -234px -315px;right: 90px;top:-16px;}
+#dbrowse .browsec .fuwu{ padding:70px 30px 120px 30px;}
+#dbrowse .browsec .fuwu li{ height:140px;width:115px;float:left;padding-left:35px;}
+.buypoint a,.tuoguan a,.guide a,.video a{ background:url(/images/login/newssc.png);display:block;height:140px;width:115px;text-indent: -9999em;overflow: hidden;}
+#dbrowse .browsec .buypoint a{ background-position: -82px -497px;}
+#dbrowse .browsec .tuoguan a{ background-position: -232px -497px;}
+#dbrowse .browsec .guide a{ background-position: -380px -497px;}
+#dbrowse .browsec .video a{ background-position: -530px -497px;}
+#dbrowse .browsec .buypoint a:hover{ background-position: -82px -646px;}
+#dbrowse .browsec .tuoguan a:hover{ background-position: -232px -646px;}
+#dbrowse .browsec .guide a:hover{ background-position: -380px -646px;}
+#dbrowse .browsec .video a:hover{ background-position: -530px -646px;}
+#reg_list { float: left; margin: 0px 120px 0 0;width:350px;}
+#reg_list .chengse { color: #fe5500;font-weight: bold;}
+#reg_list li { position: relative;margin-top: 12px;}
+#reg_list li.tit2 { font-size: 14px;height: 40px;line-height: 40px;}
+#reg_list li .tit3 { color: #666666;font-size: 12px;height: 40px;line-height: 40px;}
+#reg_list li .r_bk, #reg_list li .r_bk2, #reg_list li .r_bk3 { font-size: 16px; border: 2px solid #cbcdcb;color: #666666;height: 32px; line-height: 32px;padding-left: 5px;width: 297px;}
+#reg_list li .zq { height: 30px;left: 315px;line-height: 30px;position: absolute;top: 3px;width: 160px;}
+#reg_list li label.man{ background:url(/images/login/newssc.png);background-position: -232px -367px;width:23px;height:23px;padding-left:30px;}
+#reg_list li label.girl{ background:url(/images/login/newssc.png);background-position: -316px -367px;width:23px;height:23px;}
+#reg_list li .xyln{ position: absolute;top: 40px;display: block;width:308px;height: 1px;background: #e7e7e7;}		
+#reg_list li .xltxt{ position: absolute;top: 28px;left:100px;display: block;width: 110px;height: 30px;background: #fff;color: #aaa;}				
+#reg_list li .reg_btn{ background:url(/images/login/newssc.png);background-position: -40px -880px;position: absolute;left:0;top: 70px;display: block;width:310px;height:43px;border: medium none; cursor: pointer;}
+#reg_list li .reg_btn:hover{ background:url(/images/login/newssc.png);background-position: -40px -928px;}
+#regcontr { float: left;width: 190px;padding-top:20px;}
+#regcontr h3 { font-weight: normal;font-size:12px;padding-left:45px;color:#888888}
+#regcontr .others { position: relative;zoom: 1;float: left;}
+#regcontr .sepln { position: absolute;left: 0;top:10px;display: block;height:570px;width: 1px;background: #e7e7e7;}
+#regcontr .septxt { position: absolute;left: 0;top: 300px;margin: -8px 0 0 -6px;display: block;width: 20px;height: 20px;background: #fff;color: #aaa;}
+#regcontr .w-user{ padding:15px 45px;}
+#regcontr .w-user a{ background:url(/images/login/newssc.png);width:190px;height:40px;display: block;margin-top:10px;}
+#regcontr .w-user .qq a{ background-position: -19px -308px;text-indent: -9999em;overflow: hidden;}
+#regcontr .w-user .qq a:hover { display: block;width:190px;height:40px;background-position: -19px -352px;}
+#regcontr .w-user .sina a{ background-position: -18px -397px;text-indent: -9999em;overflow: hidden;}
+#regcontr .w-user .sina a:hover { display: block;width:190px;height:40px;background-position: -18px -444px;}
+
+#login_list { float: left; margin:10px 60px;width: 300px;}
+#login_list li { position: relative;}
+#login_list li.shuru{ width: 310px;margin-top: 12px;}
+#login_list li.tit2 { font-size: 14px;height: 40px;line-height: 40px;}
+#login_list li .tit3 { color: #666666;font-size: 12px;height: 40px;line-height: 40px;}
+#login_list li .r_bk{ font-size: 14px;font-family: Tahoma;letter-spacing: 1px;border: 2px solid #cbcdcb;color: #666666;height: 32px; line-height: 32px;padding-left: 5px;width: 297px;}
+#login_list li .fr{ padding-top:1px;}
+#logincontr { float: left;padding-top:20px;}
+#logincontr h3 { font-weight: normal;font-size:12px;margin:0 45px;}
+#logincontr .others { position: relative;zoom: 1;}
+#logincontr .sepln { position: absolute;left: 0;top:-20px;display: block;height:170px;width: 1px;background: #e7e7e7;}
+#logincontr .septxt { position: absolute;left: 0;top: 60px;margin: -8px 0 0 -6px;display: block;width: 20px;height: 20px;background: #fff;color: #aaa;}
+#logincontr .w-user{ padding:5px 45px;}
+#logincontr .w-user a{ background:url(/images/login/newssc.png);width:190px;height:40px;display: block;margin-top:10px;}
+#logincontr .w-user .qq a{ background-position: -19px -308px;text-indent: -9999em;overflow: hidden;}
+#logincontr .w-user .qq a:hover{ display: block;width:190px;height:40px;background-position: -19px -352px;}
+#logincontr .w-user .sina a{ background-position: -18px -397px;text-indent: -9999em;overflow: hidden;}
+#logincontr .w-user .sina a:hover{ display: block;width:190px;height:40px;background-position: -18px -444px;}
+#footer{ display: none;}
+#interlocution{ float: left;margin: 10px 60px 30px;width: 300px;}
+#interlocution .usertour{ height: 30px;float: left;font-size: 15px;width: 100%;line-height: 30px;}
+#interlocution .usertourText{ width: 100%;font-size: 12px;height: 40px;line-height: 40px;float: left;}
+#loginquestionid{ border: 2px solid #CBCDCB;color: #666;height: 30px;padding-left: 5px;width: 220px;}
+#loginpwd{ color: #666;font-size: 12px;height: 40px;line-height: 40px;}
+#trouble{ border: 2px solid #CBCDCB;color: #666;height: 25px;line-height: 25px;width: 220px;display: inline;}
+#usertourError{ position: absolute;color: #F03;top: 48px;left: 135px;}
+.login_btn{ float: left;width: 308px;margin-left: 58px;display: inline;margin-top: -10px;}
+.login_btn input{ background: url(/images/login/newssc.png);  background-position: -369px -310px;float: left; width: 306px;height: 43px;border: medium none;  cursor: pointer;}
+.login_btn input:hover{ background-position: -369px -358px;}
+#myForm li .error{ border: 2px solid #EE5F5B;}
+#myForm li .success{ border: 2px solid #7abd54;}
+#myForm li .zq{ color:#EE5F5B;}
+#myForm li #email-check { border: 1px solid #DDD;width: 302px;position: absolute;left: 0;top: 36px;background: #FFF;z-index: 100;display: none;}
+#myForm li #email-check h3 { margin: 6px;font-size: 14px;}
+#myForm li #email-check span { width: 297px;float: left;padding: 5px 0 5px 5px;cursor: pointer;}
+#myForm li #email-check span:hover{ background: #ddd;}
+
+</style>
+</head>
+<body>
+<div id="bg">
+	<img src="/images/login/newsbg.jpg" height="100%" width="100%">
+</div>
+<div id="header">
+	<div class="header" style="top: 125px;">
+	  <div class="logo">
+	  	<a href="{rewrite}/" style="float: left;width: 100%;height: 100%;"></a>
+	  </div>
+		<div><input type="button" name="btnSubmit1" class="login" onClick="location.href='/member/login/'"></div>
+		<div><input type="button" name="btnSubmit2" class="register" onClick="location.href='/member/reg/'"></div>
+		<div><input type="button" name="btnSubmit3" class="browse" onClick="location.href='/static/listpage.htm'"></div>
+	</div>
+</div>
+<div id="dbrowse" browse="2" style="display: block;">
+	<div class="browsec">
+		<div class="dbrowsez"></div>
+		<div class="fuwu">
+			<ul>
+				<li class="buypoint">
+					<a href="/member/BuyPoint/">购买麦点</a>
+				</li>
+				<li class="tuoguan">
+					<a href="/member/tuoguan/">订购托管</a>
+				</li>
+				<li class="guide">
+					<a href="/help/VideoCourses/">图文教程</a>
+				</li>
+				<li class="video">
+					<a href="/jc/sp.html">视频教程</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="dbrowse" browse="1" style="display: none;">
+	<div class="browsec">
+		<div class="dbrowsez"></div>
+		<div class="fuwu">
+			<ul>
+				<li class="buypoint">
+					<a href="{rewrite}/member/BuyPoint">购买麦点</a>
+				</li>
+				<li class="tuoguan">
+					<a href="{rewrite}/tuoguan">订购托管</a>
+				</li>
+				<li class="guide">
+					<a href="{rewrite}/help/VideoCourses/">图文教程</a>
+				</li>
+				<li class="video">
+					<a href="{rewrite}/jc/sp.html">视频教程</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="footer">
+	<p>
+		<span class="chengse">官方QQ群：{$kefu_qq_qun}</span>
+		（加群请注明大麦户）</p>
+	<p class="lanse">
+			<a href="{rewrite}/info/aboutus.html">关于我们</a>
+            <a href="{rewrite}/info/agreement.html">服务条款</a>
+            <a href="{rewrite}/info/private.html">隐私保护</a>
+            <a href="{rewrite}/info/map.html">网站地图</a>
+	</p><p class="lanse">客户服务热线：{$sys_phone1}   Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved  {$sys_gongsimc}版权所有 
+		<a href="#" target="_blank">{$sys_beian}</a>
+	</p>
+</div>
+</body></html>

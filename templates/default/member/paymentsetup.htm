@@ -1,0 +1,205 @@
+{teval
+	$title       = '申请提现 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('member', 'member'));
+	$jsList      = array(javascript::getUrl('task', 'index'));
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList,'jsList'=>$jsList));
+}
+{sub ../header}
+
+<!--菜单开始-->
+<DIV id="content">
+  <!-- 左边栏 -->
+  {sub menu}
+<DIV class="right">
+<DIV class="bq_menu">
+<A {if $type==1} class="nov"{/if} href="{rewrite}/member/paymentsetup/?type=1">银行卡设置</A>
+<A {if $type==2} class="nov"{/if} href="{rewrite}/member/paymentsetup/?type=2">支付宝设置</A>
+<A {if $type==3} class="nov"{/if} href="{rewrite}/member/paymentsetup/?type=3">提现帐号修改</A>
+</DIV>
+{if $type==1}
+<SCRIPT type="text/javascript">
+function is_number(str)
+{
+	exp=/[^0-9()-]/g;
+	if(str.search(exp) != -1)
+	{
+		return false;
+	}
+	return true;
+}
+function checkForm() {
+
+	if ($('#bankId').val()==''){
+		alert('请输入提现银行卡号!');
+		$('#bankId').focus(); 
+		return false;
+	}
+	if(!is_number($('#bankId').val())){
+		alert("银行卡号必须是数字！");
+		$('#bankId').focus();
+		return false;
+	}
+	if ($('#tusername').val()==''){
+		alert('请输入提现银行卡姓名!');
+		$('#tusername').focus(); 
+		return false;
+    }
+	if ($('#pwd2').val()==''){
+		alert('请输入操作码!');
+		$('#pwd2').focus(); 
+		return false;
+	}
+
+	return confirm('您确定要绑定了吗？');
+}
+</SCRIPT>
+<form method="post" name="myForm" id="myForm">
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+<div>$sys_hash_code2</div>
+<tbody><tr class="tdbg" height="35">
+  	<td height="4" colspan="2" align="left" style="color:blue; font-size:14px;">{if $_showmessage}<div class='msg_panel'><div style="color:blue;">$_showmessage</div></div>{/if}{if $indexMessage}<div class='error_panel'><div style="color:blue;">$indexMessage</div></div>{/if}</td>
+    </tr>
+
+<tr class="tdbg">
+	<td width="24%" height="40" align="right"><strong>银行类别：</strong></td>
+	<td>
+  <select id="bankType" class="txbk" name="bankType">
+    {eval $__list = cfg::getList('payment', 'bankType');}
+    {loop $__list $v}
+    <option value="$v[key]"{if $v[checked]} selected="selected"{/if}>$v[key]</option>
+    {/loop}
+  </select>
+  <span style="color:red;">（请选对应银行！）</span>
+    </td>
+</tr>
+<tr class="tdbg">
+	<td width="24%" height="34" align="right"><strong>提现银行卡号：</strong></td>
+	<td><input name="bankId" type="text" id="bankId" class="textbox" maxlength="30">
+    <span style="color:red;">（银行卡号必须为数字，不能有空格！）</span>
+    </td>
+</tr>
+<tr class="tdbg">
+	<td width="24%" height="40" align="right"><strong>持卡人姓名：</strong></td>
+	<td><input name="tusername" type="text" id="tusername" class="textbox" maxlength="50">
+    <span style="color:red;">（填对应持卡人姓名！）</span>
+    </td>
+</tr>
+</tbody></table>
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+  <tbody>    
+    <tr class="tdbg">
+      <td width="24%" height="29" align="right">操作码：</td>
+      <td><INPUT id="pwd2" class="aninput" name="pwd2" type="password"></td>
+    </tr>   
+    <tr>
+      <td colspan="2" align="left" bgcolor="#EEF1F1" style="height:60px; line-height:60px;"> 
+        <input type="image" name="Save" src="/images/ConfirmButton.gif" onclick="return checkForm();"></td>
+    </tr>
+    
+  </tbody>
+</table>
+</form>
+{elseif $type==2}
+<SCRIPT type="text/javascript">
+
+function checkForm() {
+	if ($('#bankId').val()==''){
+		alert('请输入支付宝帐号!');
+		$('#bankId').focus(); 
+		return false;
+	}
+	if ($('#tusername').val()==''){
+		alert('请输入支付宝姓名!');
+		$('#tusername').focus(); 
+		return false;
+    }
+	if ($('#pwd2').val()==''){
+		alert('请输入操作码!');
+		$('#pwd2').focus(); 
+		return false;
+	}
+
+	return confirm('您确定要绑定了吗？');
+}
+</SCRIPT>
+<form method="post" name="myForm" id="myForm">
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+<div>$sys_hash_code2</div>
+<tbody><tr class="tdbg" height="35">
+  	<td height="4" colspan="2" align="left" style="color:blue; font-size:14px;">  {if $_showmessage}<div class='msg_panel'><div style="color:blue;">$_showmessage</div></div>{/if}{if $indexMessage}<div class='error_panel'><div style="color:blue;">$indexMessage</div></div>{/if}</td>
+    </tr>
+
+<tr class="tdbg">
+	<td width="24%" height="40" align="right"><strong>提现类型：</strong></td>
+	<td>支付宝帐号</span>
+    </td>
+</tr>
+<tr class="tdbg">
+	<td width="24%" height="34" align="right"><strong>支付宝帐号：</strong></td>
+	<td><input name="bankId" type="text" id="bankId" class="textbox" maxlength="50">
+    <span style="color:red;">（支付宝账号必须为Email地址或是11位手机号码）</span>
+    </td>
+</tr>
+<tr class="tdbg">
+	<td width="24%" height="40" align="right"><strong>姓名：</strong></td>
+	<td><input name="tusername" type="text" id="tusername" class="textbox" maxlength="50">
+    <span style="color:red;">（支付宝姓名一般为您自己的姓名！）</span>
+    </td>
+</tr>
+</tbody></table>
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+  <tbody>    
+    <tr class="tdbg">
+      <td width="24%" height="29" align="right">操作码：</td>
+      <td><INPUT id="pwd2" class="aninput" name="pwd2" type="password"></td>
+    </tr>   
+    <tr>
+      <td colspan="2" align="left" bgcolor="#EEF1F1" style="height:60px; line-height:60px;"> 
+        <input type="image" name="Save" src="/images/ConfirmButton.gif" onclick="return checkForm();"></td>
+    </tr>
+    
+  </tbody>
+</table>
+</form>
+{elseif $type=='3'}
+<div>$sys_hash_code2</div>
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+  <TBODY>
+<tr class="tdbg" height="35">
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">{if $indexMessage}<div class='error_panel'><div style="color:blue;">$indexMessage</div></div>{/if}</td>
+    </tr>
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" vAlign="middle" width="120">提现类型</TD>    
+    <TD class="strong" vAlign="middle" width="220">提现卡号/支付宝</TD>
+    <TD class="strong" vAlign="middle" width="120">提现姓名</TD>
+    <TD class="strong" vAlign="middle" width="120">修改</TD>
+    <TD class="strong" vAlign="middle" width="120">删除</TD>
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {loop $list $v}    
+  <TR height="40">
+    <TD width="35">&nbsp;</TD>
+    <TD class="strong" vAlign="middle" width="120">{$v[type]}</TD>
+    <TD class="strong" vAlign="middle" width="220">{$v[cardnumber]}</TD>
+    <TD class="strong" vAlign="middle" width="120">{$v[tusername]}</TD>
+    <TD class="strong" vAlign="middle" width="120"><a href="javascript:;" onclick="dialog(650,320,'修改提现帐号','{rewrite}/dialog/xiugaitixian/?sid=$v[id]&uid=$v[uid]');return false;">修改</a></TD> 
+    <TD class="strong" vAlign="middle" width="120"><a href="javascript:;" onclick="dialog(650,320,'修改提现帐号','{rewrite}/dialog/deltixian/?sid=$v[id]&uid=$v[uid]');return false;">删除</a></TD>   
+    <TD width="35">&nbsp;</TD>
+   </TR>
+ {/loop}
+    <tr>
+        <td colspan="10">$multipage</td>
+    </tr>
+</TBODY></TABLE>
+{/if}
+</DIV>
+
+<DIV class="cle"></DIV>
+{subtemplate ../footer}
+</BODY></HTML>

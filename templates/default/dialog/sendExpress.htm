@@ -1,0 +1,65 @@
+{sub header}
+<div align="center"><b>填写正确的快递单号</b></div>
+ 
+  <table class="tbl" width='100%' border='0' cellspacing='0' cellpadding='6'>
+	
+    <tr>
+      <td width='80' class='f_b_red' valign="top" align="right"></td>
+      <td class="f_red">
+	  	<table>
+			<tr>
+				<td>任务编号：$task['id']</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>快递名称：$task['expressName']</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>快递单号：<input name="expressNum" id="expressNum" class="expressNum" maxlength="100" type="text" value="$expressNum"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>固定电话：</td>
+				<td></td>
+			</tr>
+		</table>
+	  </td>
+    </tr>
+    <tr>
+      <td class='f_b_blue' align="center">收件人信息</td>
+      <td class="f_blue">
+	  	<table>
+			<tr>
+				<td>姓　　名：$buyerExpress[nickname]</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>收货地址：$buyerExpress[area]$buyerExpress[address]</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>手机号码：$buyerExpress[mobilephone]</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>固定电话：</td>
+				<td></td>
+			</tr>
+		</table>
+	  </td>
+    </tr>
+    
+  </table>
+	<div style="padding-top:20px;text-align:center;">
+		<input name="goon" class="btn_2" type="submit" value="确定" />
+		<input name="goon" class="btn_2" type="button" id="goon" onclick="parent.doCut();" value="取消" />
+	</div>
+
+ <script type="text/javascript">
+	function checkForm() {
+	    
+		return true;
+	}
+</script>
+{sub footer}

@@ -1,0 +1,1 @@
+<?php !defined('IN_JB')&&exit('ERROR');$config=array('sys_user'=>'chuanshanling588','sys_pwd'=>'ac91ecbeb59ee91d13151b70eaa1ed73','auth_key'=>'72c95b7d837b54a3c7ae2b67e9760075','sys_admin_folder'=>'chuanshanuu66','db_host'=>'localhost','db_port'=>'3306','db_name'=>'chuanshan8866','db_user'=>'root','db_pwd'=>'123456','db_table_pre'=>'bf_','sys_salt'=>'f72456');?>

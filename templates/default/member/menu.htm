@@ -1,0 +1,54 @@
+<div class="left2">
+  <div class="left_tit" style="background-image: url(/images/bg_1.png);"> <img src="/images/ziti_1.png" width="182" height="44" />
+    <div class="left_alert">
+      <ul>
+        <li><a href="{rewrite}/task/tao/?m=CreateLaiLuMission">来路任务</a></li>
+        <li><a href="{rewrite}/task/tao/?m=CreateMealMission">套餐任务</a></li>
+        <li><a href="{rewrite}/task/tao/?m=add">标准任务</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="left_main">
+    <ul>
+      <li><a href="{rewrite}/member/topup/" style="background-position:13px 7px"><span class="STYLE7">></span>账号充值</a></li>
+      <li><a href="{rewrite}/member/paymentsetup/?type=1" style="background-position:13px -42px"><span class="STYLE7">></span>提现账户设置</a></li>
+      <li><a href="{rewrite}/member/payment/?m=alipay" style="background-position:13px -42px"><span class="STYLE7">></span>申请提现</a></li>
+      <li><a href="{rewrite}/member/PayDetails/?type=1" style="background-position:13px -92px"><span class="STYLE7">></span>收支明细</a></li>
+      <li><a href="{rewrite}/member/BuyPoint/" target="_blank" style="background-position:13px -145px"><span class="STYLE7">></span>购买信币</a></li>
+      <li><a href="{rewrite}/member/exchange/" style="background-position:13px -195px"><span class="STYLE7">></span>回收信币</a></li>
+      <li class="li_es"><a href="{rewrite}/member/vip/" style="background-position:13px -243px"><span class="STYLE7">></span>VIP申请</a></li>
+
+      <li><a href="{rewrite}/member/xiaohaobuy/?type=1" style="background-position:13px -295px"><span class="STYLE7">></span>购买小号</a></li>
+      <li><a href="{rewrite}/member/ipbuy/?type=1" style="background-position:13px -145px"><span class="STYLE7">></span>购买IP</a></li>
+      <li><a href="{rewrite}/member/express/?type=1" style="background-position:13px -145px"><span class="STYLE7">></span>低价空包</a></li>
+      <li><a href="{rewrite}/member/complain/?t=get" style="background-position:13px -347px"><span class="STYLE7">></span>任务申诉</a></li>
+      <li><a href="{rewrite}/member/exam/" style="background-position:13px -395px"><span class="STYLE7">></span>平台考试</a></li>
+      <li><a href="{rewrite}/member/black/?type=index" style="background-position:13px -445px"><span class="STYLE7">></span>任务黑名单</a></li>
+      <li class="li_es"><a href="{rewrite}/member/userdata/?type=index" style="background-position:-238px 7px"><span class="STYLE7">></span>资料密码</a></li>
+      <li><a href="{rewrite}/member/spread/" style="background-position:-238px -45px"><span class="STYLE7">></span>我的推广</a></li>
+      <li><a href="{rewrite}/member/SecKill/" style="background-position:-238px -93px"><span class="STYLE7">></span>信币秒杀</a></li>      
+      <li><a href="{rewrite}/member/ensure/"style="background-position:-238px -93px"><span class="STYLE7">></span>加入商保</a></li>
+      <li><a href="{rewrite}/member/thread/?type=thread"style="background-position:-238px -145px"><span class="STYLE7">></span>论坛帖子</a></li>
+      <li><a href="{rewrite}/member/verify/"style="background-position:-238px -192px"><span class="STYLE7">></span><font color="red">加V认证</font></a></li>
+      <li><a href="{rewrite}/member/message/?type=inSys"style="background-position:-238px -192px"><span class="STYLE7">></span>站内提醒</a></li>
+    </ul>
+  </div>
+  <div class="left_renwu"> <a href="javascript:;" onclick="showTyroTask();return false;">&nbsp;</a> </div>
+</div>
+<script type="text/javascript">
+{if $var->memberLogined && $var->memberFields['isTyro']}
+var showTyroTask = function(){
+	dialog(700,350,'$webName - 任务奖励大厅','{rewrite}/dialog/tyro/');
+}
+{/if}
+
+$(function(){
+  $(".left_tit").hover(function(){
+      $(this).css("background-image","url(/images/bg_2.png)");
+      $(".left_alert").css("display","block");
+      },function(){
+          $(this).css("background-image","url(/images/bg_1.png)");
+      $(".left_alert").css("display","none")
+          })
+  });
+</script> 

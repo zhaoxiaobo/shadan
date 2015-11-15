@@ -1,0 +1,79 @@
+{teval
+	$title       = '充值记录 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('member', 'member'));
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+}
+{sub ../header}
+<script language="javascript">
+$(function(){
+	$('#btnQuery').click(function(){
+		var oid=$('#oid').val();
+		var type=$('#type').val();
+		var url = type?'type='+type:'';
+		if (oid) {
+			if (url) url+='&';
+			url+='oid='+oid;
+		}
+		if (url) url = '?'+url
+		location.href='$baseUrl'+url;
+	});
+})
+</script>
+<DIV id="content">
+{sub menu}
+  <DIV class="right">
+    <DIV class="mh_tishi">1、该页面主要用来绑定和维护用来接任务，购买任务商品的淘宝买号； <A class="chengse" href="{rewrite}/member/buytao/#">什么是买号？</A><BR>
+      2、根据淘宝的最新安全策略，所有买号都要求必须是完整填写个人信息后才能进行绑定；为了您的买号与任务发布方网店安全请您先将买号信息完善； <A class="chengse" href="{rewrite}/member/buytao/#">如何更安全的使用买号?</A><BR>
+      3、注册的淘宝买号请不要使用同一个开头，后面跟一串排号的数字，这种买号很容易被淘宝封(类似短命的买号就是 
+      shua001，shua002，shua003......） <BR>
+      4、一个买号一天只可以接手6个任务，接手高于6个任务，系统将挂起买号，第二天才进行继续接手任务<BR>
+    </DIV>
+    <DIV class="bq_menu">
+	<A class="nov" href="{rewrite}/member/buytao/">绑定淘宝买号</A><A href="{rewrite}/member/buypai/">绑定拍拍买号</A></DIV>
+    <TABLE style="font-size: 14px; margin-top: 20px;" border="0" cellSpacing="0" cellPadding="0" width="95%" align="center">
+      <TBODY>
+        <TR>
+          <TD height="30" vAlign="middle" width="20%" align="left"><SPAN class="mh_taobao"></SPAN></TD>
+        </TR>
+      <FORM id="myForm" onSubmit="return checkForm();" method="post" name="myForm">
+        <div>$sys_hash_code2</div>
+        <TR>
+          <TD height="40" vAlign="middle" width="20%" align="left"><TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD width="160">淘宝买家帐号：</TD>
+                  <TD width="310"><INPUT id="nickname" class="mh_bk" name="nickname" 
+            type="text"></TD>
+                  <TD>&nbsp;</TD>
+                </TR>
+              </TBODY>
+            </TABLE></TD>
+        </TR>
+        <TR>
+          <TD height="60" vAlign="middle" align="left"><INPUT class="mh_bdbtn" value="提交查询内容" type="submit"></TD>
+        </TR>
+      </FORM>
+      <TR>
+        <TD class="mh_xian" height="40" vAlign="middle" width="20%" 
+      align="left">您目前是普通会员用户，可以绑定12个买号！ <A class="chengse2" href="{rewrite}/member/vip/" target="_blank">申请VIP</A>最高可绑定100个买号！ <A class="lanse" 
+  href="{rewrite}/member/vipinfo/" target="_blank">查看VIP限权</A>&nbsp;<A class="lanse" 
+  href="{rewrite}/task/tao/?m=tieBuyer" target="_blank" style="color:red; font-size:14px;">查看已绑定的号码</A></TD>
+      </TR>
+      </TBODY>
+    </TABLE>
+
+    <P>&nbsp;</P>
+    <P>&nbsp;</P>
+
+    <DIV class="cle"></DIV>
+    <!--结束-->
+  </DIV>
+</div>
+<DIV class="cle"></DIV>
+<DIV class="cle"></DIV>
+	{sub ../footer}

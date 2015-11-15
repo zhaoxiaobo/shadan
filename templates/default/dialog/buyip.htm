@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="../css/dialog.css" rel="stylesheet" />
+<style type="text/css">
+.tbl td {border-bottom:1px solid #E8F2FC;}
+.bar_dl {margin:0px !important;}
+</style>
+{teval
+echo css::get_css('dialog', 'dialog');
+echo css::get_css('task', 'task');
+echo javascript::get_js('task', 'index');
+}
+{js_select jquery,common}
+<title>购买IP卡密</title>
+</head>
+<body>
+<div class="main_dl">
+	{if $_showmessage}<div class='msg_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}
+
+	<div class="bar_dl">购买IP卡密</div>
+<form name="myForm" method="post" id="myForm">
+<div>$sys_hash_code2</div>
+
+  <table class="tbl" width='100%' border='0' cellspacing='0' cellpadding='6'>
+	
+    <tr>
+      <td width='134' class='f_b_green' valign="top" align="right">&nbsp;</td>
+      <td width="957">
+	  <span style="color:red; font-size:14px;">好消息！需要代理IP软件的朋友请直接购买即可！<br>
+软件绿色多线程，快速更换IP，刷钻必备工具！</span></td>
+    </tr>
+    <tr>
+      <td class='f_b_green' valign="top" align="right"><strong>卡号：</strong></td>      
+      <td>&nbsp;&nbsp;&nbsp;<span style="color:blue; font-size:14px;">{echo string::getXin3($ipbuy[kahao])}[购买后显示完整卡号]</span></td>
+    </tr>
+    <tr>
+      <td class='f_b_green' valign="top" align="right"><strong>密码：</strong></td>      
+      <td>&nbsp;&nbsp;&nbsp;<span style="color:blue; font-size:14px;">{echo string::getXin3($ipbuy[mima])}[购买后显示完整密码]</span></td>
+    </tr>    <tr>
+      <td class='f_b_green' valign="top" align="right"><strong>价 格：</strong></td>
+      <td><span class="f_b_red">&nbsp;&nbsp;&nbsp;{$ipbuy[danjia]}</span></td>
+    </tr>
+    
+
+
+    <tr>
+			<td class='f_b_green' valign="top" align="right"><strong>结算方式：</strong></td>
+			<td>&nbsp;&nbsp;&nbsp;<span style="color:red; font-size:14px;"><label><input name="PayType" type="radio" id="PayType" value="1" checked="checked">账户余额&nbsp;&nbsp;</label>您的余额:{$memberfields[money]}</span></td>
+    </tr>
+
+	<tr>
+			<td class='f_b_green' valign="top" align="right">&nbsp;</td>
+			<td>
+            <input type="hidden" name="uid" vaule="$uid" />
+            <input type="hidden" name="zongjine" vaule="$zongjine" />
+            <input type="hidden" name="sid" vaule="$sid" />   
+            <input type="image" name="Save" src="/images/ConfirmButton.gif" onclick="document.myForm.submit();">
+            </td>
+    </tr>
+	
+  </table>
+  </form>
+	<div style="padding-top:20px;text-align:center;">
+		<input name="goon" class="btn_2" type="button" id="goon" onclick="parent.doCut2();" value="关闭" />
+	</div>
+</div>
+</body>
+</html>

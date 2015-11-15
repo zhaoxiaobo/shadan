@@ -1,0 +1,166 @@
+<!-- 顶部 -->
+<div id="m_top">
+	<div class="TopBanner">
+	  <div class="TopBannerNotice" title="">
+	    
+	      <div id="closeTopBanner" title="关闭" style="position:absolute;top:5px;right:5px;width:23px;height:22px;background: url(/static/images/home/close_b.png) no-repeat;cursor:pointer">
+	  </div>
+	  </div>   
+	</div>
+	<div class="kd">
+		 <div class="kmain">
+			<div class="hy">
+				<div class="userdate">
+					<a href="{rewrite}/" title="首页" style="margin: 4px;float:left;width:15px;height:15px;background:url(/static/images/ico/home.gif) no-repeat;"></a>
+                    {if $memberLogined}
+ 					<!-- 登录后效果-->
+					<SPAN style="color:#1595DE">|</SPAN>                    
+                    <a href="{rewrite}/member/info/?username=$member[username]">$member[username]</a>
+                    <IMG title="积分：$memberfields[credits]" alt="积分" src="$memberLevel[icon]">
+                    <A class="col3" href="{rewrite}/member/logout/">退出</A>	
+                    {else}
+					<!-- 登录前效果-->
+					<a class="chengse login-before" href="{rewrite}/member/login/">亲，请登录</a>
+					<!-- <img width="16" height="16" src="/static/images/ico/sina_1.png" class="hzhl login-before"> -->
+					<a class="lvse login-before" href="{rewrite}/member/reg/">免费注册</a>
+					<a class="login-before" id='toLogin' href="javascript:;">
+						<img  width="16" height="16" title="QQ登录" src="/static/images/ico/qq_1.png" class="hzhl login-before">
+						QQ登录
+					</a>
+					<a class="login-after username" target="_blank" href="#"></a>
+					<img class="login-after exp" src="/static/images/ico/level/b_red_1.gif" title="经验:0" /> 　
+					<a class="login-after" href="{rewrite}/member/logout/" class="col3">退出</a>
+					{/if}	
+				</div>
+			</div>
+			<img class="head-loading" width="16" height="16" style="margin-top:4px;float:left;" src="/static/images/ico/head-loading.gif">
+			<div class="top_btn">
+				<ul class="quick-menu">
+					<li class="menu-item login-after">
+						<div class="menud">
+							<a class="menu-hd" target="_blank" href="{rewrite}/member/topup/">存款 <span class="chengse moneyAll money" style="font-weight:700;">0</span><b></b></a>
+							<div class="menu-0" class="menu-bd" style="width: 90px;">
+							  <div class="menu-bd-panel">
+								  <a href="{rewrite}/member/topup/" >账户充值</a>
+								  <a href="{rewrite}/member/PayDetails/?type=1" >存款明细</a>
+							  </div>
+							</div>
+						</div>
+					</li>
+					<li class="login-after" style="margin-top: -1px;">|</li>
+					<li class="menu-item login-after">
+						<div class="menud">
+							<a target="_blank" class="menu-hd" href="/BuyPoint">麦点 <span class="chengse moneyAll maidian" style="font-weight:700;">0</span><b></b></a>
+							<div class="menu-0" class="menu-bd" style="width: 90px;">
+							  <div class="menu-bd-panel">
+								  <a href="{rewrite}/member/BuyPoint/" >购买麦点</a>
+								  <a href="{rewrite}/member/PayDetails/?type=2" >麦点明细</a>
+							  </div>
+							</div>
+						</div>
+					</li>
+					<li class="login-after" style="margin-top: -1px;">|</li>
+					
+										<li class="menu-item">
+						<a class="login-before" style="margin:-4px 10px;float: left;" href="{rewrite}/">
+							<font color="#FE5500">{$sys_gongsimc}首页</font>
+						</a>
+					</li>
+					
+					<li class="menu-item login-after">
+						<div class="menud">
+							<a target="_blank" class="menu-hd" href="{rewrite}/member/message/">信息 <span class="chengse moneyAll message" style="font-weight:700;">0</span><b></b></a>
+							<div class="menu-0" class="menu-bd" style="width: 90px;">
+							  <div class="menu-bd-panel" >
+								  <a href="{rewrite}/member/message/?type=inUser" >私人收件箱</a>
+								  <a href="{rewrite}/member/message/?type=inSys" >官方收件箱</a>								  
+								  <a href="{rewrite}/member/message/?type=setting" >站内提醒</a>
+							  </div>
+							</div>
+						</div>
+					</li>
+					<li class="menu-item newdh heimg">
+						<a  href="{rewrite}/bbs/buyer/">
+							我是发布方
+						</a>
+						<span class="newdh_bor">
+							<b class="heimg">向上</b>
+							<ul>
+								<li class="heimg lie lieimg1"><a href="{rewrite}/help/VideoCourses/">图文教程</a></li>
+								<li class="heimg lie lieimg2"><a href="{rewrite}/jc/sp.html">视频教程</a></li>
+								<li class="heimg lie lieimg3"><a href="{rewrite}/member/topup/">帐号充值</a></li>
+								<li class="heimg lie lieimg4"><a href="{rewrite}/member/BuyPoint/">购买麦点</a></li>
+								<li class="heimg lie lieimg7"><a href="tencent://message/?uin={$kefu_qq}">客服帮助</a></li>
+							</ul>
+						</span>
+					</li>
+					<li class="menu-item newdh heimg">
+						<a  href="{rewrite}/bbs/t42/">
+							我是接手方
+						</a>
+						<span class="newdh_bor">
+							<b class="heimg">向上</b>
+							<ul>
+								<li class="heimg lie liejsf1"><a href="{rewrite}/help/VideoCourses/">图文教程</a></li>
+								<li class="heimg lie liejsf2"><a href="{rewrite}/jc/sp.html">视频教程</a></li>
+								<li class="heimg lie liejsf3"><a href="{rewrite}/member/payment/?m=bank">申请提现</a></li>
+								<li class="heimg lie liejsf4"><a href="{rewrite}/member/exchange/">回收麦点</a></li>
+								<li class="heimg lie liejsf8"><a href="tencent://message/?uin={$kefu_qq}">客服帮助</a></li>
+							</ul>
+						</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="menu_qq">
+			  <a class="qq_help" href="javascript:;">客服帮助</a>
+		</div>
+		<div style="display: none;" class="help_down" id="service_qq"></div>
+		<!-- 客服悬浮 -->
+	  	<div id="kuzhan">	  		
+	  		<a class="propose" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$kefu_qq}&amp;site=qq&amp;menu=yes" style="top: 23px;height: 105px;"></a>
+	  		<div class="rtop"></div>
+	  		<div class="services">        
+				<div class="con">        	
+					<ul>            	
+						<li class="qq">
+						<p><a href="javascript:;">{$kefu_qq}</a></p>          	
+						<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$kefu_qq}&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$kefu_qq}:41" alt="点击这里给我发消息" title="点击这里给我发消息"></a></p>
+						<p><a class="qun" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$kefu_qq}&amp;site=qq&amp;menu=yes">{$kefu_qq}</a></p>
+						<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$kefu_qq}&amp;site=qq&amp;menu=yes">
+								<img border="0" src="http://pub.idqqimg.com/wpa/images/group.png">
+							</a></p>
+							<p class="gtime">上班时间 9:00-21:00</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<p id="top-height"></p><!-- 配合IE7无法float -->
+<div id="p-header" action-index="fuwu">
+    <div class="g-layout a-relative">
+        <div id="p-logo"><a href="{rewrite}/"><img src="/static/images/fuwu/logo.gif" alt="大麦户"/><b></b></a></div>
+        <div id="p-header-search">
+            <input class="header-search-input" type="text" value="搜索服务"/>
+            <button type="button">搜索</button>
+        </div>
+        <div id="p-header-act">
+            <a class="btn-cz" href="{rewrite}/member/topup/">账户充值</a>
+        </div>
+    </div>
+</div>
+<div class="header-shadow">
+    <div class="topdao">
+        <ul>
+            <li class="state"><a href="{rewrite}/fuwu/">全部卖家服务</a></li>
+            <li class="borderImg1"><a href="{rewrite}/fuwu/">首页</a></li>
+            <li class="borderImg"><a href="{rewrite}/fuwu/plan/">服务套餐</a></li>
+            <li class="borderImg"><a href="{rewrite}/fuwu/allservice/">推荐服务</a></li>
+            <li class="borderImg"><a href="{rewrite}/fuwu/baobei/">宝贝排名</a></li>
+            <li class="borderImg"><a href="{rewrite}/fuwu/sales/">我要销量</a></li>
+            <li class="borderImg"><a href="{rewrite}/fuwu/commission/">我要佣金</a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="../css/dialog.css" rel="stylesheet" />
+<style type="text/css">
+.tbl td {border-bottom:1px solid #E8F2FC;}
+.bar_dl {margin:0px !important;}
+</style>
+{teval
+echo css::get_css('dialog', 'dialog');
+echo css::get_css('task', 'task');
+echo javascript::get_js('task', 'index');
+}
+{js_select jquery,common}
+<title>上传截图如下：</title>
+</head>
+<body>
+<div class="main_dl">
+	{if $_showmessage}<div class='msg_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}	
+	<div class="bar_dl">上传的截图如下</div>  
+  <table class="tbl" width='100%' border='0' cellspacing='0' cellpadding='6'>
+    <tr>
+      <td class='f_b_green' valign="top" align="right"></td>
+      <td align="center">{$tudizhizong}</td>
+    </tr>    
+  </table>
+</div>
+</body>
+</html>

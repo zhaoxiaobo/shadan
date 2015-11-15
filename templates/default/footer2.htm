@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$title</title>
+<meta name="description" content="$description" />
+<meta name="keywords" content="$keywords" />
+<script type="text/javascript" src="rt.js" async=""></script>
+<script type="text/javascript" src="jquery_002.js"></script>
+{if $cssList}
+{loop $cssList $v}
+<link rel="stylesheet" type="text/css" href="$v" />
+{/loop}
+{else}
+{teval
+echo css::get_css('bbs', 'bbs');
+}
+{/if}
+{js_select jquery,common}
+{loop $jsList $v}
+<script type="text/javascript" src="$v"></script>
+{/loop}
+<script type="text/javascript">
+{if $showMessage }
+alert('{echo common::bf_addcslashes($showMessage)}');
+{/if}
+$.ajaxSetup({cache:false});
+var memberLogined={echo $memberLogined?'true':'false'};
+var loginUsername='{echo $memberLogined?$member['username']:''}';
+var weburl='$weburl';
+var weburl2='$weburl2';
+var sys_hash2='$sys_hash2';
+</script>
+</head>
+<div id="footer">
+		<p><span class="chengse">官方QQ群：{$kefu_qq_qun}</span> （加群请注明{$sys_gongsimc}）</p>
+		<p class="lanse"><a href="{rewrite}/info/aboutus.html">关于我们</a>|<a href="{rewrite}/info/agreement.html">服务条款</a>|<a href="{rewrite}/info/private.html">隐私保护</a>|<a href="{rewrite}/info/map.html">网站地图</a></p>
+		<p style="text-align:center;">
+	
+		<p class="lanse">客户服务QQ：{$sys_phone1} Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved    {$sys_gongsimc}版权所有 <a href="#" target="_blank">{$sys_beian}</a><span style="display:none">
+</span></p>
+	</div>
+    
+	</div>
+    </div>

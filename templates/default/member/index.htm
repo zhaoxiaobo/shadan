@@ -1,0 +1,243 @@
+{teval
+	$title       = '我的个人中心 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);	
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description));
+}
+{sub ../header}
+<link href="/css/bbs/layout_huiyuan.css" rel="stylesheet" type="text/css" />
+<!--main star-->
+<div class="wrap">
+	<div class="main">
+    {sub menu}
+    <div class="mid">
+      <div class="mid_top"> </div>
+      <div class="mid_main">
+        <h1 class="STYLE1"> 我的资料<SPAN style=" padding-left:30px;">{if $memberfields[vip]==1 || $memberfields[vip]==2 || $memberfields[vip]==3}<span style="padding-left:50px; color:red; font-size:14px;">{$vip}&nbsp;&nbsp;到期日期：  {echo  string::fun_date('Y-m-d',$memberfields[vip_expire])}</span>{else}<span style="padding-left:50px; color:red; font-size:14px;">普通会员</span>{/if}</SPAN></h1>
+        <div class="main_1">
+          <div class="main_1_left"> <img src="$memberfields[avatar]" width="115" height="117" class="touxiang"/> </div>
+          <div class="main_1_right"> <a href="http://wp.qq.com/set.html" target="_blank" class="a_father_0" title="激活QQ">
+            <div class="a_son_0" >激活QQ</div>
+            </a> <a href="{rewrite}/member/exam/" class="a_father_1" title="在线考试" style="margin-right: 10px; background-image: url(/images/icon_23.png);">
+            <div class="a_son_1" style="display: none;">通过考试</div>
+            </a> <a href="/member/active/"  class="a_father_2" style="background-image: url(/images/icon_24.png);">
+            <div class="a_son_2" style="display: none;">手机激活</div>
+            </a> <a href="{rewrite}/member/info/?username=$member[username]" target="_blank">$member[truename]</a> {if $member[sex]==1}先生{elseif $member[sex]==2}女士{/if} <br class="cle">
+                存款：<span>$memberfields[money]</span> 元 <a href="{rewrite}/member/topup/">充值</a> <a href="{rewrite}/member/payment/">提现</a> <a href="{rewrite}/member/PayDetails/">明细</a> <br />
+                信币：<span>{echo $memberfields[fabudian]}</span> 枚 <br />
+                身份：{if $memberfields[vip]==1 || $memberfields[vip]==2 || $memberfields[vip]==3}<b style="color:#F00;">{$vip}</b> 至 <b>{echo date('Y-m-d', $memberfields[vip_expire])}</b> 结束{else}普通会员 <a href="{rewrite}/member/vip/">VIP申请</a> {/if}<br />
+                IP地址：<a href="http://www.baidu.com/s?wd={$ip}" target="_blank" title="$iparr[0]">{$ip}</a> 　　　 
+                <!--异地登陆 <a href="/user/?Authentication=open"><img align="texttop" width="53" height="18" title="点击开启异地登陆验证" alt="点击开启异地登陆验证" src="/img/yclose.jpg"></a>--> </div>
+          <div class="cls"></div>
+        </div>
+      </div>
+      <div class="mid_bottom"> </div>
+      <div class="mid_top mid_margin"> </div>
+      <div class="mid_main">
+        <h1>我的概况</h1>
+        <div class="main_2">
+          <p><span class="STYLE3">未读站内信：</span><span class="green">官方站内信 <a href="{rewrite}/member/message/?type=inSys" class="link_o_b">{echo msg::getCount(1)}</a></span>　　　<span class="red">私人站内信 <a href="{rewrite}/member/message/?type=inUser" class="link_o_b">{echo msg::getCount(0)}</a></span></p>
+          <p><span class="STYLE3">待解决的申诉</span> <span class="blue STYLE4">(<a href="{rewrite}/member/complain/?t=post" class="link_o_b">{echo db::data_count('complain',"fuid='$uid' and status not in('1','2')")}</a>)</span>　<span class="STYLE3">我要处理的申诉</span> <span class="blue STYLE4">(<a href="{rewrite}/member/complain/?t=get" class="link_o_b">{echo db::data_count('complain',"tuid='$uid' and status not in('1','2')")}</a>)</span> </p>
+        </div>
+      </div>
+      <div class="mid_bottom"> </div>
+      <div class="mid_top mid_margin"> </div>
+      <div class="mid_main">
+        <h1>我的动态</h1>
+        <div class="main_3"  id="scrollDiv">
+          <ul>
+          {loop $task_list $v}
+            <li>
+              <h6>{echo date('Y-m-d H:i:s', $v[stimestamp])}</h6>
+              <span class="STYLE3">发布任务$v[id]</span> <span class="red">用了$v[point] 个信币</span></li>
+          {/loop}
+        </div>
+        <div class="main_btn"> <span id="btn2"><img src="/images/icon_22.png" width="11" height="8" /></span> <span id="btn1"><img src="/images/icon_21.png" width="11" height="8" /></span> </div>
+      </div>
+      <div class="mid_bottom"> </div>
+      <!--<div class="mid_tongji">
+     <h1 class="STYLE2">我的统计</h1>
+     <img src="/images/login/pic_2.jpg" width="473" height="185" />
+  </div>--> 
+    </div>
+    <div class="right">
+      <div class="right_1">
+      
+        {eval
+            $forumSimple=bbs_forums::getForumSimple('gonggao', 'ename');
+            $list=bbs_thread::getThreadList2("fid='$forumSimple[id]'",'timestamp desc',1,6);
+         }
+        <div class="right_1_tit">
+          <h1><a href="{rewrite}/bbs/$forumSimple[ename]/">更多</a>平台公告</h1>
+        </div>
+        <ul>
+          {loop $list $thread}
+          <li><a href="{rewrite}/bbs/t$thread[id]/" target="_blank" title="$thread[title]">{cutstr $thread[title],15}</a></li>
+          {/loop}
+        </ul>
+      </div>
+      <div class="right_1" style="margin-top:15px;">
+      {eval
+      $forumSimple=bbs_forums::getForumSimple('seller', 'ename');
+      $list=bbs_thread::getThreadList2("fid='$forumSimple[id]'",'timestamp desc',1,6);
+      }
+        <div class="right_1_tit">
+          <h1><a href="{rewrite}/bbs/$forumSimple[ename]/">更多</a>$forumSimple[name]</h1>
+        </div>
+        <div class="right_2_main">
+          <ul>
+            {loop $list $thread}
+               <li><a href="{rewrite}/bbs/t$thread[id]/" class="link_g" target="_blank" title="$thread[title]">{cutstr $thread[title],16}</a></li>
+            {/loop}
+          </ul>
+        </div>
+      </div>
+      <div class="right_3">
+        <ul>
+          <li><a href="{rewrite}/member/exam/" style="background-position:-238px -243px">新手考试</a></li>
+          <li><a href="/member/active/"  style="background-position:-238px -292px">手机认证</a></li>
+          <li><a href="/member/from/"  style="background-position:-238px -343px">小调查</a></li>
+          <li><a href="http://wp.qq.com/set.html" target="_blank"  style='background-attachment: scroll;
+background-color: transparent;
+background-image: url(http://pub.idqqimg.com/wpa/images/counseling_style_51.png);
+background-repeat: no-repeat;
+background-position: 10px center;
+}'>激活在线QQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="cls"></div>
+  
+  <!--foot star--> 
+  
+</div>
+<div class="cle"></div>
+{subtemplate ../footer} 
+{if cfg::get('sys', 'huiyuantishi')>$memberfields[credits]}
+<script type='text/javascript'>dialog(860,398,'会员公告','/dialog/membertishi/');</script>
+{/if} 
+<script type="text/javascript">
+$(function(){
+    $(".a_father_1").each(function(i){
+        $(this).hover(function(){
+            $(this).eq(i).css("background-image","url(/images/icon_17.png)");
+            $(".a_son_1").css("display","block");
+            },function(){
+                $(this).eq(i).css("background-image","url(/images/icon_23.png)");
+            $(".a_son_1").css("display","none");
+            })
+        })
+    });
+</script> 
+<script type="text/javascript">
+$(function(){
+    $(".a_father_0").each(function(i){
+        $(this).hover(function(){
+            $(this).eq(i).css("background-image","url(http://pub.idqqimg.com/wpa/images/counseling_style_51.png)");
+            $(".a_son_0").css("display","block");
+            },function(){
+                $(this).eq(i).css("background-image","url(http://pub.idqqimg.com/wpa/images/counseling_style_51.png)");
+            $(".a_son_0").css("display","none");
+            })
+        })
+    });
+</script> 
+<script type="text/javascript">
+    $(function(){
+    $(".a_father_2").each(function(e){
+        $(this).hover(function(){
+            $(this).eq(e).css("background-image","url(/images/icon_18.png)");
+            $(".a_son_2").css("display","block");
+            },function(){
+                $(this).eq(e).css("background-image","url(/images/icon_24.png)");
+            $(".a_son_2").css("display","none");
+            })
+        })
+    });
+</script> 
+<script type="text/javascript">
+(function($){
+$.fn.extend({
+    Scroll:function(opt,callback){
+            //参数初始化
+            if(!opt) var opt={};
+            var _btnUp = $("#"+ opt.up);//Shawphy:向上按钮
+            var _btnDown = $("#"+ opt.down);//Shawphy:向下按钮
+            var timerID;
+            var _this=this.eq(0).find("ul:first");
+            var     lineH=_this.find("li:first").height(), //获取行高
+                    line=opt.line?parseInt(opt.line,10):parseInt(this.height()/lineH,10), //每次滚动的行数，默认为一屏，即父容器高度
+                    speed=opt.speed?parseInt(opt.speed,10):500; //卷动速度，数值越大，速度越慢（毫秒）
+                    timer=opt.timer //?parseInt(opt.timer,10):3000; //滚动的时间间隔（毫秒）
+            if(line==0) line=1;
+            var upHeight=0-line*lineH;
+            //滚动函数
+            var scrollUp=function(){
+                    _btnUp.unbind("click",scrollUp); //Shawphy:取消向上按钮的函数绑定
+                    _this.animate({
+                            marginTop:upHeight
+                    },speed,function(){
+                            for(i=1;i<=line;i++){
+                                    _this.find("li:first").appendTo(_this);
+                            }
+                            _this.css({marginTop:0});
+                            _btnUp.bind("click",scrollUp); //Shawphy:绑定向上按钮的点击事件
+                    });
+
+
+            }
+            //Shawphy:向下翻页函数
+            var scrollDown=function(){
+                    _btnDown.unbind("click",scrollDown);
+                    for(i=1;i<=line;i++){
+                            _this.find("li:last").show().prependTo(_this);
+                    }
+                    _this.css({marginTop:upHeight});
+                    _this.animate({
+                            marginTop:0
+                    },speed,function(){
+                            _btnDown.bind("click",scrollDown);
+                    });
+            }
+           
+             //鼠标事件绑定
+            
+            _btnUp.css("cursor","pointer").click( scrollUp );//Shawphy:向上向下鼠标事件绑定
+            _btnDown.css("cursor","pointer").click( scrollDown );
+
+
+    }       
+})
+})(jQuery);
+
+
+$(document).ready(function(){
+    $("#scrollDiv").Scroll({line:4,speed:500,timer:3000,up:"btn1",down:"btn2"});
+});
+</script> 
+
+<script>
+$(function(){
+    fangpian_cookie = $.cookie('fangpian_cookie');
+    
+    if(fangpian_cookie == null){
+        $.dialog({
+            title: false,
+            content: "<img width=520 height=162 src='/images/fangpian.png' style='color: Red; position: absolute; top: -45px; left: 6px;'>",
+            fixed: true,
+            lock: true,
+            cancelValue: '关闭',
+            cancel: function () { return true;}
+        });
+        $('.d-titleBar').empty();
+        $('.d-main').height('105');
+        $('.d-buttons').prepend("<a style='float: left; color: rgb(58, 110, 165);' href='/bbs/t1247/'>查看防盗锦囊</a>亲，平台充值是没有活动的，更不会要求备注活动编码。");
+        
+        $.cookie('fangpian_cookie', '1', { expires: 1 });
+    }
+})
+</script>

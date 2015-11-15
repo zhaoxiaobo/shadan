@@ -1,0 +1,37 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="../css/dialog.css" rel="stylesheet" />
+<style type="text/css">
+.tbl td {border-bottom:1px solid #E8F2FC;}
+.bar_dl {margin:0px !important;}
+</style>
+{teval
+echo css::get_css('dialog', 'dialog');
+echo css::get_css('task', 'task');
+echo javascript::get_js('task', 'index');
+}
+{js_select jquery,common}
+<title>加V认证图片如下：</title>
+</head>
+<body>
+<div class="main_dl">
+	{if $_showmessage}<div class='msg_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}	
+	<div class="bar_dl">加V认证图片</div>
+  <div style="height:500px;width:880px;overflow:auto;">  
+  <table class="tbl" width='100%' border='0' cellspacing='0' cellpadding='6'>
+    <tr>
+      <td class='f_b_green' valign="top" align="right"></td>
+      <td align="center">$taskpinimage</td>
+    </tr>    
+  </table>
+  </div>
+	<div style="padding-top:20px;text-align:center;">
+		<input name="goon" class="btn_2" type="button" id="goon" onclick="parent.doCut2();" value="关闭" />
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<table width="1276" border="0" cellpadding="0" cellspacing="0" style="width:957.00pt;border-collapse:collapse;table-layout:fixed;">
+   <col width="133" class="xl22" style="mso-width-source:userset;mso-width-alt:4256;"/>
+   <col width="72" span="3" style="width:54.00pt;"/>
+   <col width="118" style="mso-width-source:userset;mso-width-alt:3776;"/>
+   <col width="809" style="mso-width-source:userset;mso-width-alt:25888;"/>
+   <tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;" x:str>快递单号</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>发货省</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>发货区</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>收货市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>收货人姓名</td>
+    <td width="809" style="border:.5pt solid blue;width:606.75pt;" x:str>收货人地址</td>
+   </tr>
+<tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;vnd.ms-excel.numberformat:@;" x:str>4002993051101</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>浙江省</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>杭州市</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>东莞市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>唐红菊</td>
+    <td width="809" style="border:.5pt solid blue;width:606.75pt;" x:str>唐红菊 ，15992765588 ，， 广东省 东莞市  长安镇涌头海怡路11号明泰彩色包装印刷有限公司，523000</td>
+   </tr>
+<tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;vnd.ms-excel.numberformat:@;" x:str>4002993051102</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>浙江省</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>杭州市</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>漳州市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>黄美勤</td>
+    <td width="809" style="border:.5pt solid blue;width:606.75pt;" x:str>黄美勤 ，18159738113 ，， 福建省 漳州市 龙海市 角美镇漳州台商投资区 龙池 白礁 漳州康桥学校，363107</td>
+   </tr>
+<tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;vnd.ms-excel.numberformat:@;" x:str>4002993051103</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>河南省</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>周口市</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>哈尔滨市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>zhu5858022</td>
+    <td width="809" style="border:.5pt solid blue;width:606.75pt;" x:str>李明，15514466555，黑龙江省 哈尔滨市 道里区 高宜街47/1 ，150000</td>
+   </tr>
+<tr height="19" style="height:14.25pt;">
+    <td class="xl22" height="19" width="133" style="border:.5pt solid blue;height:14.25pt;width:99.75pt;vnd.ms-excel.numberformat:@;" x:str>4002993051104</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>安徽省</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>安庆市</td>
+    <td width="72" style="border:.5pt solid blue;width:54.00pt;" x:str>无锡市</td>
+    <td width="118" style="border:.5pt solid blue;width:88.50pt;" x:str>唐建兴</td>
+    <td width="809" style="border:.5pt solid blue;width:606.75pt;" x:str>顾山镇 工业集中区 锡张路122号 无锡锡钻地质装备有限公司</td>
+   </tr>
+</table>

@@ -1,0 +1,53 @@
+{sub header}
+<div style="padding:10px;line-height:20px;font-weight:bold;">
+<tr>
+              <td width="80">任务编号：</td>
+              <td align="left">$task[id]</td>
+            </tr>
+			<tr>
+              <td>接收方：</td>
+              <td align="left">$task[busername]</td>
+            </tr>
+            <tr>
+              <td>商品名称：</td>
+              <td align="left">$task[title]</td>
+            </tr>
+</div>
+
+    <table class="tbl" width="100%" border="0" cellspacing="0" cellpadding="8">
+     
+      <tr>
+        <td align="center">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="80">追加评论内容：</td>
+              <td align="left"></td>
+            </tr>
+          
+          </table></td>
+        <td>
+          <p style="padding-top:5px;">
+            <textarea name="review" cols="30" rows="6" id="review">$grade[review]</textarea> 
+            </p>
+          </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+			
+          <input name="btnSubmit" type="submit" class="btn_2" id="btnSubmit" value="确认追平" />
+		  
+          <input name="btnCancel" type="button" class="btn_2" onclick="parent.doCut();" id="btnCancel" value="取消" />
+          </td>
+      </tr>
+    </table>
+	<script type="text/javascript">
+function checkForm() {
+    if (getObj("radio3").checked && getValue("remark").length<20) {
+        alert("差评的评论不能少于20个字");
+        return false;
+    }
+	return true;
+}
+</script>
+{sub footer}

@@ -1,0 +1,80 @@
+@charset "utf-8";/* CSS Document */
+* {
+	padding:0;
+	margin:0
+}
+body {
+	background:#fff;
+	padding:0;
+	margin:0;
+	font:12px/23px "微软雅黑", "雅黑", verdana, arial, "宋体";
+	width:100%;
+	color:#666;
+}
+div, h1, h2, h3, h4, p, form, label, input, img, span {
+	margin:0;
+	padding:0;
+}
+ul,li{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+img {
+	border:none;
+}
+a {
+	color:#666;
+	text-decoration:none;
+}
+a:hover {
+	color:#1996E6;
+}
+.z{float:left;}
+.y{float:right;}
+.cle {
+	clear:both;
+	line-height:0px;
+	height:0px;
+	font-size:0px;
+}
+.regall{text-align: left;}
+#regTitle {
+float: left;
+width: 980px;
+padding: 20px 25px;
+}
+#regTitle span {
+width: 44px;
+height: 65px;
+background: url(/images/glb.png) no-repeat;
+float: left;
+}
+#regTitle a {
+display: block;
+width: 160px;
+height: 37px;
+line-height: 37px;
+overflow: hidden;
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+color: #FFF;
+background: url(/images/glb.png) no-repeat 0 -90px;
+text-decoration: none;
+margin: 15px 0 80px 18px;
+float: left;
+}
+#regTitle .ms {
+float: left;
+margin-left: 25px;
+width: 880px;
+height: 25px;
+}
+#regTitle h2 {
+float: left;
+margin-left: 18px;
+font-size: 18px;
+width: 880px;
+height: 25px;
+}

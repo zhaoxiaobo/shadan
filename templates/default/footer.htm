@@ -1,0 +1,67 @@
+﻿<div class="clear"></div>
+<div id="footer">
+<p><a href="{rewrite}/info/aboutus.html">关于我们</a>|<a href="{rewrite}/info/agreement.html">服务条款</a>|<a href="{rewrite}/info/private.html">隐私保护</a>|<a href="{rewrite}/info/map.html">网站地图</a></p>
+<p>客户服务QQ：{$sys_phone1} Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved {$sys_gongsimc}版权所有 {$sys_beian}</p>
+</div>
+<!-- 右侧悬浮客服 -->
+<link href="/images/mainQQ.css" rel="stylesheet" type="text/css" />
+<script src="/images/ShowQQ.js" language="javascript"></script>
+<div id="sideBuoy2">
+    <div class="g1">
+        <p class="p1">我是新手求叫兽</p>
+        <div class="btns">
+            <a class="btn1" class="dianwoyc" href="javascript:dianwoyc();">点我隐藏</a>            
+            <a class="btn-qq btn2" href="http://wpa.qq.com/msgrd?v=3&uin={teval echo kefu::getcateqq(2);}&site=qq&menu=yes" target="_blank"><i></i>客服1</a>            
+            <a class="btn-qq btn2" href="http://wpa.qq.com/msgrd?v=3&uin={teval echo kefu::getcateqq(3);}&site=qq&menu=yes" target="_blank"><i></i>客服2</a>
+            <a class="btn-qq btn2" href="http://wpa.qq.com/msgrd?v=3&uin={teval echo kefu::getcateqq(4);}&site=qq&menu=yes" target="_blank"><i></i>客服3</a>           
+        </div>
+    </div>
+    <div class="g2">        
+        <div class="btns">
+            <a class="btn3 sideBuoy-top" href="#">返回顶部</a>
+        </div>
+    </div>
+    <a id="sideBuoyClose2" href="javascript:dianwoyc();"></a>
+</div>
+
+<div id="xianshikefu" style="display:none;">
+    <div class="g1">
+        <a class="dianwoxs" href="javascript:dianwoxs();" >点我显示</a>
+    </div>
+</div>
+
+<script>
+
+	function dianwoyc()
+	{
+		document.getElementById("sideBuoy2").style.display="none";		
+        document.getElementById("xianshikefu").style.display="block";
+	}
+	
+	function dianwoxs()
+	{
+		document.getElementById("xianshikefu").style.display="none";		
+        document.getElementById("sideBuoy2").style.display="block";
+	}
+
+
+    //返回顶部
+    $('.sideBuoy-top').click(function(){
+        $("body,html").animate({scrollTop:0},400);
+        return false
+    });
+
+    $('#sideBuoyClose').click(function(){
+        $('#sideBuoy').fadeOut(100);
+    });	
+</script>
+<!-- 右侧悬浮客服 end -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8f694d288213326759c7d627b3389ebd";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>

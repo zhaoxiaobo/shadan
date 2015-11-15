@@ -1,0 +1,606 @@
+{teval
+	$title       = '请登录 - {webName} -中国最好的免费刷信誉,互刷信誉平台';
+	$keywords    = '您还尚未登录{webName}刷信誉平台，请登录，登录后网站将为你提供最好的淘宝刷信誉服务、淘宝刷钻功能，同时还可以享受淘宝刷收藏，淘宝刷流量等互刷平台的专业服务';
+	$description = '刷信誉,刷信用,互刷信誉平台,刷收藏,刷流量,{webName2}';
+	$title       = addcslashes(common::replaceVars($title), '\'\\');
+	$keywords    = addcslashes(common::replaceVars($keywords), '\'\\');
+	$description = addcslashes(common::replaceVars($description), '\'\\');
+	echo '
+<?php $title=\''.$title.'\';$keywords=\''.$keywords.'\';$description=\''.$description.'\';?>
+';
+}
+<script language="javascript">
+var setQuestion=function(){
+	var questionid = parseInt($('#questionid').val());
+	if (questionid > 0 ) {
+		$('#tr_an').show();
+	} else {
+		$('#tr_an').hide();
+	}
+}
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title> {$sys_gongsimc}</title>
+    <meta name="description" content="$description">
+    <meta name="keywords" content="{$keywords}">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/images/login/main.css">
+    <link rel="stylesheet" type="text/css" href="/images/login/twitter.css">
+<style>
+@charset "utf-8";
+body{ background:#fff;padding:0;margin:0;font:12px/23px "微软雅黑","雅黑",verdana,arial,"宋体";width:100%;color:#666;}
+div,h1,h2,h3,h4,p,form,label,input,img,span{ margin:0;padding:0;}
+ul{ margin:0;padding:0;list-style-type:none;}
+img{ border:none;}
+a{ color:#666;text-decoration:none;}
+a:hover{ color:#1996E6;}
+.fl{ float:left;}
+.fr{ float:right;}
+#bg{ position:absolute; width:100%; height:100%; z-index:-1}
+#bg .foot{ float: left;height: 85px;margin: 0 auto 0;padding-top: 12px;text-align: center;width: 100%;position: absolute;left: 0;bottom: 0;}
+#bg .foot p{ color:white;}
+#bg .foot p .chengse { color: #FE5500; padding-left: 26px;}
+#bg .foot p.lanse a { color:white;margin: 0 8px;}
+#bg .foot .chengse{ color:white; }
+#bg .foot .lanse{ color:white;}
+#bg .foot p a:hover{ text-decoration: underline;}
+input,button,select,textarea{ outline:none}
+.login_tip { height: 20px; left: 101px;  position: absolute; top: 60px; width: 260px;}
+.logo,.login,.register,.browse,.dloginz,.registerz,.dbrowsez{ background:url(/images/login/newssc.png);position: absolute;border: medium none;}
+#header{ position: relative;}
+#header .header{ width:700px;margin:0 auto;position: relative;}
+#header .header .logo{ width:300px;height:140px;background-position: -215px 0;left: 200px;}
+#header .header .login{ width:223px;height:43px;background-position: -17px -202px;left: 0px;top:190px;}
+#header .header .login:hover{ cursor:pointer;background-position: -17px -250px;}
+#header .header .register{ width:223px;height:43px;background-position: -250px -202px;left: 240px;top:190px;}
+#header .header .register:hover{ cursor:pointer;background-position: -250px -249px;}
+#header .header .browse{ width:223px;height:43px;background-position: -483px -202px;left: 480px;top:190px;}
+#header .header .browse:hover{ cursor:pointer;background-position: -483px -250px;}
+#dlogin{ background:#fff;width:100%;height:510px;position: absolute;left: 0px;top:380px;display:none;}
+#dlogin .loginc{ width:700px;margin:0 auto;position: relative;}
+#dlogin .loginc .dloginz{ width:43px;height:18px;background-position: -234px -315px;left: 90px;top:-16px;}
+#dregister{ background:#fff;width:100%;height:840px;position: absolute;left: 0px;top: 557px;display:none;}
+#dregister .registerc{ width:700px;margin:0 auto;position: relative;}
+#dregister .registerc .registerz{ width:43px;height:18px;background-position: -234px -315px;left: 330px;top:-16px;}
+#dbrowse{ background:#fff;width:100%;height:510px;position: absolute;left: 0px;top:380px;display:none;}
+#dbrowse .browsec{ width:700px;margin:0 auto;position: relative;}
+#dbrowse .browsec .dbrowsez{ width:43px;height:18px;background-position: -234px -315px;right: 90px;top:-16px;}
+#dbrowse .browsec .fuwu{ padding:70px 30px 120px 30px;}
+#dbrowse .browsec .fuwu li{ height:140px;width:115px;float:left;padding-left:35px;}
+.buypoint a,.tuoguan a,.guide a,.video a{ background:url(/images/login/newssc.png);display:block;height:140px;width:115px;text-indent: -9999em;overflow: hidden;}
+#dbrowse .browsec .buypoint a{ background-position: -82px -497px;}
+#dbrowse .browsec .tuoguan a{ background-position: -232px -497px;}
+#dbrowse .browsec .guide a{ background-position: -380px -497px;}
+#dbrowse .browsec .video a{ background-position: -530px -497px;}
+#dbrowse .browsec .buypoint a:hover{ background-position: -82px -646px;}
+#dbrowse .browsec .tuoguan a:hover{ background-position: -232px -646px;}
+#dbrowse .browsec .guide a:hover{ background-position: -380px -646px;}
+#dbrowse .browsec .video a:hover{ background-position: -530px -646px;}
+#reg_list { float: left; margin: 0px 120px 0 0;width:350px;}
+#reg_list .chengse { color: #fe5500;font-weight: bold;}
+#reg_list li { position: relative;margin-top: 12px;}
+#reg_list li.tit2 { font-size: 14px;height: 40px;line-height: 40px;}
+#reg_list li .tit3 { color: #666666;font-size: 12px;height: 40px;line-height: 40px;}
+#reg_list li .r_bk, #reg_list li .r_bk2, #reg_list li .r_bk3 { font-size: 16px; border: 2px solid #cbcdcb;color: #666666;height: 32px; line-height: 32px;padding-left: 5px;width: 297px;}
+#reg_list li .zq { height: 30px;left: 315px;line-height: 30px;position: absolute;top: 3px;width: 160px;}
+#reg_list li label.man{ background:url(/images/login/newssc.png);background-position: -232px -367px;width:23px;height:23px;padding-left:30px;}
+#reg_list li label.girl{ background:url(/images/login/newssc.png);background-position: -316px -367px;width:23px;height:23px;}
+#reg_list li .xyln{ position: absolute;top: 40px;display: block;width:308px;height: 1px;background: #e7e7e7;}		
+#reg_list li .xltxt{ position: absolute;top: 28px;left:100px;display: block;width: 110px;height: 30px;background: #fff;color: #aaa;}				
+#reg_list li .reg_btn{ background:url(/images/login/newssc.png);background-position: -40px -880px;position: absolute;left:0;top: 70px;display: block;width:310px;height:43px;border: medium none; cursor: pointer;}
+#reg_list li .reg_btn:hover{ background:url(/images/login/newssc.png);background-position: -40px -928px;}
+#regcontr { float: left;width: 190px;padding-top:20px;}
+#regcontr h3 { font-weight: normal;font-size:12px;padding-left:45px;color:#888888}
+#regcontr .others { position: relative;zoom: 1;float: left;}
+#regcontr .sepln { position: absolute;left: 0;top:10px;display: block;height:570px;width: 1px;background: #e7e7e7;}
+#regcontr .septxt { position: absolute;left: 0;top: 300px;margin: -8px 0 0 -6px;display: block;width: 20px;height: 20px;background: #fff;color: #aaa;}
+#regcontr .w-user{ padding:15px 45px;}
+#regcontr .w-user a{ background:url(/images/login/newssc.png);width:190px;height:40px;display: block;margin-top:10px;}
+#regcontr .w-user .qq a{ background-position: -19px -308px;text-indent: -9999em;overflow: hidden;}
+#regcontr .w-user .qq a:hover { display: block;width:190px;height:40px;background-position: -19px -352px;}
+#regcontr .w-user .sina a{ background-position: -18px -397px;text-indent: -9999em;overflow: hidden;}
+#regcontr .w-user .sina a:hover { display: block;width:190px;height:40px;background-position: -18px -444px;}
+
+#login_list { float: left; margin:10px 60px;width: 300px;}
+#login_list li { position: relative;}
+#login_list li.shuru{ width: 310px;margin-top: 12px;}
+#login_list li.tit2 { font-size: 14px;height: 40px;line-height: 40px;}
+#login_list li .tit3 { color: #666666;font-size: 12px;height: 40px;line-height: 40px;}
+#login_list li .r_bk{ font-size: 14px;font-family: Tahoma;letter-spacing: 1px;border: 2px solid #cbcdcb;color: #666666;height: 32px; line-height: 32px;padding-left: 5px;width: 297px;}
+#login_list li .fr{ padding-top:1px;}
+#logincontr { float: left;padding-top:20px;}
+#logincontr h3 { font-weight: normal;font-size:12px;margin:0 45px;}
+#logincontr .others { position: relative;zoom: 1;}
+#logincontr .sepln { position: absolute;left: 0;top:-20px;display: block;height:170px;width: 1px;background: #e7e7e7;}
+#logincontr .septxt { position: absolute;left: 0;top: 60px;margin: -8px 0 0 -6px;display: block;width: 20px;height: 20px;background: #fff;color: #aaa;}
+#logincontr .w-user{ padding:5px 45px;}
+#logincontr .w-user a{ background:url(/images/login/newssc.png);width:190px;height:40px;display: block;margin-top:10px;}
+#logincontr .w-user .qq a{ background-position: -19px -308px;text-indent: -9999em;overflow: hidden;}
+#logincontr .w-user .qq a:hover{ display: block;width:190px;height:40px;background-position: -19px -352px;}
+#logincontr .w-user .sina a{ background-position: -18px -397px;text-indent: -9999em;overflow: hidden;}
+#logincontr .w-user .sina a:hover{ display: block;width:190px;height:40px;background-position: -18px -444px;}
+#footer{ display: none;}
+#interlocution{ float: left;margin: 10px 60px 30px;width: 300px;}
+#interlocution .usertour{ height: 30px;float: left;font-size: 15px;width: 100%;line-height: 30px;}
+#interlocution .usertourText{ width: 100%;font-size: 12px;height: 40px;line-height: 40px;float: left;}
+#loginquestionid{ border: 2px solid #CBCDCB;color: #666;height: 30px;padding-left: 5px;width: 220px;}
+#loginpwd{ color: #666;font-size: 12px;height: 40px;line-height: 40px;}
+#trouble{ border: 2px solid #CBCDCB;color: #666;height: 25px;line-height: 25px;width: 220px;display: inline;}
+#usertourError{ position: absolute;color: #F03;top: 48px;left: 135px;}
+.login_btn{ float: left;width: 308px;margin-left: 58px;display: inline;margin-top: -10px;}
+.login_btn input{ background: url(/images/login/newssc.png);  background-position: -369px -310px;float: left; width: 306px;height: 43px;border: medium none;  cursor: pointer;}
+.login_btn input:hover{ background-position: -369px -358px;}
+#myForm li .error{ border: 2px solid #EE5F5B;}
+#myForm li .success{ border: 2px solid #7abd54;}
+#myForm li .zq{ color:#EE5F5B;}
+#myForm li #email-check { border: 1px solid #DDD;width: 302px;position: absolute;left: 0;top: 36px;background: #FFF;z-index: 100;display: none;}
+#myForm li #email-check h3 { margin: 6px;font-size: 14px;}
+#myForm li #email-check span { width: 297px;float: left;padding: 5px 0 5px 5px;cursor: pointer;}
+#myForm li #email-check span:hover{ background: #ddd;}
+
+/*客服悬浮*/
+#kuzhan { background:url(/images/login/cgnh.png) no-repeat;top: 186px;right: 130px;position: fixed;width: 82px;height: 130px;_position: absolute;_top: expression(eval(document.documentElement.scrollTop));}
+#kuzhan .services{ float: left;width:148px;height:189px;margin-left: -148px;float: left;display: none;}
+#kuzhan .services .con{ background: url(/images/login/cc.gif) no-repeat;width: 148px;position: relative;float: left;}
+#kuzhan .services li{ text-align: center;float: left;width: 148px;}
+#kuzhan .services .qq{ padding-top: 46px;}
+#kuzhan .services .qq p{ height:30px;}
+#kuzhan .services .qq p a{ color:white;text-decoration:none;font-size:11px;float: left;padding-left: 10px;}
+#kuzhan .services .qq p a:hover{ color:#8c9ba2;}
+#kuzhan .services .qq p a.qun{ color:#8c9ba2;margin-left: 40px;font-size:12px;}
+#kuzhan .services .qq p.gtime{ color:#8c9ba2;} 
+#kuzhan .services .qq p a.qun:hover,#m_top #kuzhan .services .qq p.gtime:hover{ color:white;}
+#kuzhan .services .qq img { vertical-align: top;}
+#kuzhan .propose{ top: 0;cursor: pointer;height: 20px;left: 0;position: absolute;width: 100%;}
+#kuzhan .rtop{ bottom: 0;cursor: pointer;height: 20px;left: 0;position: absolute;width: 100%;display: none;}
+#login_list li .playhover,#reg_list li .playhover{ position: absolute;left: 8px;top: 2px;font-size: 16px;color: #AAA;height: 32px;line-height: 32px;}
+.newsbg_bottom{ text-align: center;width: 100%;height: 110px;position: absolute;bottom: 0px;}
+</style><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="main" src="/images/login/main.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="jquery" src="/images/login/jquery-1.7.2.min.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="artDialog" src="/images/login/artDialog.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="header" src="/images/login/header.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="cookie" src="/images/login/jquery.cookie.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="verify" src="/images/login/verify.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="reg" src="/images/login/reg.js"></script><script type="text/javascript" charset="utf-8" async data-requirecontext="_" data-requiremodule="loginVerify" src="/images/login/loginVerify.js"></script></head>
+
+<body>
+<div id="bg">
+	<img src="/images/login/newsbg.jpg" height="100%" width="100%">
+	<div class="foot">
+		<p>
+		<span class="chengse">官方QQ群：{$kefu_qq_qun}</span>
+		（加群请注明{$sys_gongsimc}）</p>
+		<p class="lanse">
+			<a href="{rewrite}/info/aboutus.html">关于我们</a>
+            <a href="{rewrite}/info/agreement.html">服务条款</a>
+            <a href="{rewrite}/info/private.html">隐私保护</a>
+            <a href="{rewrite}/info/map.html">网站地图</a>
+		</p>
+		<p class="lanse">客户服务QQ：{$sys_phone1}   Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved  {$sys_gongsimc}版权所有</p>
+	</div>
+</div>
+<div id="header">
+	<div class="header" style="top: 125px;">
+	  <div class="logo">
+	  	<a href="{rewrite}/" style="float: left;width: 100%;height: 100%;"></a>
+	  </div>
+		<div><input type="button" name="btnSubmit1" class="login" onClick="location.href='{rewrite}/member/login/'"></div>
+		<div><input type="button" name="btnSubmit2" class="register" onClick="location.href='{rewrite}/member/reg/'"></div>
+		<div><input type="button" name="btnSubmit3" class="browse" onClick="location.href='{rewrite}/member/reg/'"></div>
+	</div>
+</div>
+<div id="dlogin" login="2" style="display: block;">
+	<div class="loginc">
+		<div class="dloginz"></div>
+			<div id="userentry">
+				<ul id="login_list">
+					<li style="margin-top: 6px;">使用会员帐号登录</li>
+                    {if $indexMessage}<li style="margin-top: 6px;">$indexMessage</li>{/if}
+                    <form method="post" name="myForm" id="myForm" onSubmit="return checkForm();">
+                    $sys_hash_code2
+					<li class="shuru">
+						<p id="loginaccount" class="tit3 playhover"></p>
+						<input type="text" maxlength="26" name="username" class="r_bk" id="username" value="{echo isset($username) ? $username : (isset($cookie[loginUsername]) ? $cookie[loginUsername] : '')}" style="margin-left: 0px;" onKeyDown="KeyDown()">
+						<p class="zq" id="miaoname"></p>
+					</li>
+					<li class="shuru">
+						<p id="loginpwd" class="tit3 playhover"></p>
+						<input type="password" maxlength="16" name="password" class="r_bk" id="password" onKeyDown="KeyDown()">
+						<p id="miaopwd" class="zq"></p>
+					</li>
+					<li><a href="{rewrite}/member/forgotpwd/" target="_blank" class="fr">忘记密码？</a></li>
+				</ul>
+			</div>		
+			<div id="interlocution" style="display:none;">
+				<span class="usertour">您的账户设置了安全提问。</span>
+				<b class="usertourText">安全提问：</b>
+				<span id="usertourError"></span>
+				<select id="loginquestionid" width="213" name="questionid">
+					<option value="0">请选择问题</option>
+					<option value="1">早上几点起床？</option>
+					<option value="2">TA最爱吃的菜？</option>
+					<option value="3">好朋友的名字？</option>
+					<option value="4">你理想的体重？</option>
+					<option value="5">爱人的生日？</option>
+				</select>
+				<b id="loginpwd" class="answer" style="width: 100%;float: left;">答案：</b>
+				<span><input type="text" maxlength="20" value="" id="trouble" class="answerCont"></span>
+			</div>
+		<div id="logincontr">
+			<h3>使用社交帐号登录</h3>
+			<div class="others">
+				<span class="sepln"></span>
+				<span class="septxt">或</span>
+				<ul class="w-user">
+					<li class="qq">
+						<a href="{rewrite}/member/qqLogin/" target="_blank">使用腾讯QQ登录</a>
+					</li>
+					<!-- <li class="sina">
+						<a href="#">使用新浪登录</a>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="login_btn">
+			<input type="button" name="btnSubmit" id="login_btn" onClick="logomdj();">
+		</div></form>
+	</div>
+</div>
+
+<script type="text/javascript">
+function KeyDown()
+{
+    if (event.keyCode == 13)
+    {
+        event.returnValue=false;
+        event.cancel = true;
+        document.myForm.submit();
+    }
+}
+function logomdj(){
+document.myForm.submit();
+}
+</script>
+
+<div id="dregister" reg="1" style="top: 380px; display: none;">
+	<div class="registerc">
+		<div class="registerz"></div>
+		<div id="content">
+			<form id="myForm" method="post" action="{rewrite}/member/logutreg?s=reg" onSubmit="return _dm.submit(this);">
+				<ul id="reg_list">
+					<li class="tit2"><span class="chengse">30秒</span>，加入全国最大的互动平台！</li>
+					<li>
+						<p class="tit3 playhover">账号</p>
+						<input type="text" maxlength="26" name="regForm[username]" class="r_bk" id="username" style="margin-left: 0px;">
+						<p class="zq" id="username-info"></p>
+					</li>
+					<li>
+						<p class="tit3 playhover">密码</p>
+						<input type="password" maxlength="16" name="regForm[password]" class="r_bk" id="password">
+						<div id="password-info" class="zq"></div>
+					</li>
+					<li>
+						<p class="tit3 playhover">密码确认</p>
+						<input type="password" maxlength="16" name="regForm[pass]" class="r_bk" vali="pass=password nulls=1" id="pass">
+						<div id="pass-info" class="zq"></div>
+					</li>
+					<li>
+						<p class="tit3 playhover">手机号码</p>
+						<input type="text" maxlength="11" name="regForm[mobilephone]" class="r_bk" vali="mobilephone nulls=1" id="phone">
+						<div id="phone-info" class="zq"></div>
+					</li>
+					<li>
+						<p class="tit3 playhover">QQ</p>
+						<input type="text" maxlength="10" name="regForm[qq]" class="r_bk" vali="qq nulls=1" id="qq">
+						<div id="qq-info" class="zq"></div>
+					</li>
+					<li style="z-index:100;">
+						<p class="tit3 playhover">E-MAIL</p>
+						<input type="text" maxlength="30" name="regForm[email]" class="r_bk" vali="email nulls=1" id="email">
+						<div id="email-info" class="zq"></div>
+						<div id="email-check"></div>
+					</li>
+					<li>
+						<input type="radio" checked="checked" value="0" name="regForm[sex]"> 男 
+						<label class="man">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="radio" value="1" name="regForm[sex]">  女
+						<label class="girl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					</li>
+					<li>
+						<p class="tit3 playhover">推荐人(没有可不填写)</p>
+						<input type="text" maxlength="26" class="r_bk" name="regForm[parent]" id="parent">
+						<div id="parent-info" class="zq"></div>
+					</li>
+					<li style="float: left;margin-top: -20px;">
+						<div class="xyln"></div>
+						<div class="xltxt"><a id="agreement" href="javascript:;">《{$sys_gongsimc}服务协议》</a></div>
+					</li>
+					<li style="margin-top: -30px;"><input type="submit" name="formReturn" class="reg_btn" value=""></li>
+					
+				</ul>
+			</form>		
+		</div>
+		<div id="regcontr">
+			<h3>使用社交帐号登录</h3>
+			<div class="others">
+				<span class="sepln"></span>
+				<span class="septxt">或</span>
+				<ul class="w-user">
+					<li class="qq">
+						<a href="{rewrite}/member/qqLogin/" target="_blank">使用腾讯QQ登录</a>
+					</li>
+					<!-- <li class="sina">
+						<a href="#">使用新浪登录</a>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="dbrowse" browse="1" style="display: none;">
+	<div class="browsec">
+		<div class="dbrowsez"></div>
+		<div class="fuwu">
+			<ul>
+				<li class="buypoint">
+					<a href="{rewrite}/member/BuyPoint">购买麦点</a>
+				</li>
+				<li class="tuoguan">
+					<a href="{rewrite}/tuoguan">订购托管</a>
+				</li>
+				<li class="guide">
+					<a href="{rewrite}/help/VideoCourses/">图文教程</a>
+				</li>
+				<li class="video">
+					<a href="{rewrite}/jc/sp.html">视频教程</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 客服悬浮 -->
+<div id="kuzhan" style="height: 130px;">
+	<a class="propose" href="{rewrite}/bbs/"></a>
+	<a class="propose" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$kefu_qq}&site=qq&menu=yes" style="top: 23px;height: 105px;"></a>
+	<div class="rtop" style="display: none;"></div>
+	<div class="services">        
+		<div class="con">        	
+			<ul>            	
+				<li class="qq">
+					<p><a href="tencent://message/?uin={$kefu_qq}">{$kefu_qq}</a></p>          	
+					<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$kefu_qq}&site=qq&menu=yes"><img border="0" src="/images/login/pa" alt="点击这里给我发消息" title="点击这里给我发消息"></a></p>
+					<p><a class="qun" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$kefu_qq}&site=qq&menu=yes">{$kefu_qq}</a></p>
+					<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$kefu_qq}&site=qq&menu=yes">
+						<img border="0" src="/images/login/group.png">
+					</a></p>
+					<p class="gtime">上班时间 9:00-21:00</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+var _delay = [];
+	_delay.push(function(){
+		require(['verify','reg','loginVerify']);
+
+		/*底部面板*/
+		require(['cookie'],function(){
+			if($.cookie('spread_name')){
+				$("#parent").attr('disabled','disabled')
+			}
+		});
+
+		$('#header .header').css({ 'top':$(window).height()*0.22});
+		//根据不同的?打开相应操作
+		var request = new RegExp("(^|&)s=([^&]*)(&|$)", "i");
+    	var sr = window.location.search.substr(1).match(request);
+    	if(sr != null){
+    		var select = unescape(sr[2]);
+    		if(select == 'log'){
+    			var login = $('#dlogin').attr('login');
+				if(login==1){
+					$('.logo').show();
+					$('#dregister').hide();
+					$('#dbrowse').hide();
+					$('#header .header').animate({ 'top':125}, 300);
+					$('#dlogin').show();
+					$('#dlogin').attr('login',2);
+					$('#dregister').attr('reg',1);
+					$('#dbrowse').attr('browse',1);
+					$('#lusername').focus();
+				}
+				if(login==2){
+					$('#dregister').hide();
+					$('#dbrowse').hide();
+					$('.logo').show();
+					$('#dlogin').hide();
+					$('#header .header').animate({ 'top':125}, 300);
+					$('#dlogin').attr('login',1);
+					$('#dregister').attr('reg',1);
+					$('#dbrowse').attr('browse',1);
+				}
+    		}
+    		if(select == 'reg'){
+    			var reg = $('#dregister').attr('reg');
+				if(reg==1){
+					$('.logo').hide();
+					$('#dlogin').hide();
+					$('#dbrowse').hide();
+					$('#header .header').animate({ 'top':-150}, 300);
+					$('#dregister').show().animate({ 'top':120}, 300);
+					$('#dregister').attr('reg',2);
+					$('#dlogin').attr('login',1);
+					$('#dbrowse').attr('browse',1);
+					$('#username').focus();
+				}
+				if(reg==2){
+					$('.logo').show();
+					$('#dlogin').hide();
+					$('#dbrowse').hide();
+					$('#dregister').hide();
+					$('#header .header').animate({ 'top':125}, 300);
+					$('#dregister').attr('reg',1);
+					$('#dlogin').attr('login',1);
+					$('#dbrowse').attr('browse',1);
+				}
+    		}
+    	}
+
+		$(".login").click(function(){
+			var login = $('#dlogin').attr('login');
+			if(login==1){
+				$('.logo').show();
+				$('#dregister').hide();
+				$('#dbrowse').hide();
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dlogin').show();
+				$('#dlogin').attr('login',2);
+				$('#dregister').attr('reg',1);
+				$('#dbrowse').attr('browse',1);
+				$('#lusername').focus();
+			}
+			if(login==2){
+				$('#dregister').hide();
+				$('#dbrowse').hide();
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dlogin').attr('login',1);
+				$('#dregister').attr('reg',1);
+				$('#dbrowse').attr('browse',1);
+			}
+		});
+		$('.register').click(function(){
+			var reg = $('#dregister').attr('reg');
+			if(reg==1){
+				$('.logo').hide();
+				$('#dlogin').hide();
+				$('#dbrowse').hide();
+				$('#header .header').animate({ 'top':-150}, 300);
+				$('#dregister').show().animate({ 'top':120}, 300);
+				$('#dregister').attr('reg',2);
+				$('#dlogin').attr('login',1);
+				$('#dbrowse').attr('browse',1);
+				$('#username').focus();
+			}
+			if(reg==2){
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#dbrowse').hide();
+				$('#dregister').hide();
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dregister').attr('reg',1);
+				$('#dlogin').attr('login',1);
+				$('#dbrowse').attr('browse',1);
+			}
+		});
+		$('.browse').click(function(){
+			var browse = $('#dbrowse').attr('browse');
+			if(browse==1){
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#dregister').hide();
+				$('#dbrowse').hide();
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dbrowse').show();
+				$('#dbrowse').attr('browse',2);
+				$('#dlogin').attr('login',1);
+				$('#dregister').attr('reg',1);
+			}
+			if(browse==2){
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#dregister').hide();
+				$('#dbrowse').hide();
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dbrowse').attr('browse',1);
+				$('#dregister').attr('reg',1);
+				$('#dlogin').attr('login',1);
+			}
+		});
+		// $('.r_bk').click(function(){
+		// 	$(this).css({ 'border':'2px solid #7abd54','background':'#faffbd'});
+		// });
+		// $(".r_bk").focusout(function(){
+		// 	$(this).css({ 'border':'2px solid #cbcdcb','background':'#fff'});
+		// });
+
+		$("#bg").click(function(){
+			if($('#dbrowse').attr('browse') == 2){
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#dregister').hide();
+				$('#dbrowse').animate({ height: 'toggle'}, 300);
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dbrowse').attr('browse',1);
+				$('#dregister').attr('reg',1);
+				$('#dlogin').attr('login',1);
+			}
+			if($('#dregister').attr('reg') == 2){
+				$('.logo').show();
+				$('#dlogin').hide();
+				$('#dbrowse').hide();
+				$('#dregister').animate({ height: 'toggle'}, 300);
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dregister').attr('reg',1);
+				$('#dlogin').attr('login',1);
+				$('#dbrowse').attr('browse',1);
+			}
+			if($('#dlogin').attr('login') == 2){
+				$('#dregister').hide();
+				$('#dbrowse').hide();
+				$('.logo').show();
+				$('#dlogin').animate({ height: 'toggle'}, 100);
+				$('#header .header').animate({ 'top':125}, 300);
+				$('#dlogin').attr('login',1);
+				$('#dregister').attr('reg',1);
+				$('#dbrowse').attr('browse',1);
+			}
+		})
+
+		/*获取滚动条滚动驱使返回顶部出现*/
+		$(window).scroll( function() {
+			if($(document).scrollTop() > 0){
+				$("#kuzhan").height(152).children(".rtop").show();
+			}else{
+				$("#kuzhan").height(130).children(".rtop").hide();
+			}
+		});
+		$("#kuzhan .rtop").click(function(){
+			$("html, body").animate({ scrollTop: 0 }, 120);
+		});
+
+		//按钮性别
+		$('.man').click(function(){
+			$(this).prev().attr('checked','checked');
+		})
+		$('.girl').click(function(){
+			$(this).prev().attr('checked','checked');
+		})
+
+		$("#lusername,#lpassword,#username,#password,#pass,#phone,#qq,#email,#parent").keyup(function(){
+			if($(this).val()){
+				$(this).prev('.playhover').hide();
+			}else{
+				$(this).prev('.playhover').show();
+			}
+		});
+		$('.playhover').click(function(){
+			$(this).next('input').focus();
+		})
+
+	});
+</script>
+<div id="footer">
+	<p>
+		<span class="chengse">官方QQ群：{$kefu_qq_qun}</span>
+		（加群请注明大麦户）</p>
+	<p class="lanse">
+			<a href="{rewrite}/info/aboutus.html">关于我们</a>
+            <a href="{rewrite}/info/agreement.html">服务条款</a>
+            <a href="{rewrite}/info/private.html">隐私保护</a>
+            <a href="{rewrite}/info/map.html">网站地图</a>
+	</p><p class="lanse">客户服务热线：{$sys_phone1}   Copyright © 2012-2020 {$sys_gongsiwangzhi} All RightsReserved  {$sys_gongsimc}版权所有 
+		<a href="#" target="_blank">{$sys_beian}</a>
+	</p>
+</div>
+<script type="text/javascript" data-main="/static/js/main" src="/images/login/require.js"></script>
+</body></html>

@@ -1,0 +1,229 @@
+
+body{background:0;}
+.wrap{position:relative;z-index:0;height:406px}
+
+
+#content{margin:0 auto;width:1000px;position:relative}
+#content #maimai{margin-top:10px;background:url(/images/shouye/maimai.png);width:1000px;height:76px}
+
+.choice{width:1000px;float:left;margin-top:10px;clear:both;position:relative}
+.choice .allimg{background:url(/images/shouye/home-ico-d.png) no-repeat}
+.choice .namehead{width:235px;height:30px;float:left; margin-bottom:25px;}
+.choice .rigdata .namehead .left{float:left;height:28px;width:235px;background-position:-568px 0;text-indent:-9999px}
+.choice .yelkuang{width:718px;height:382px;float:left}
+.choice .yelkuang li{float:left;width:358px;height:90px;background:#9cd8fd;margin:0 1px 1px 0;cursor:pointer}
+.choice .yelkuang li:hover{background:#71c7fa}
+.choice .yelkuang .li_first{background:#9cd8fd;color:white;font-size:24px;text-align:center;height:181px;line-height:181px}
+.choice .yelkuang li span{text-indent:-9999px}
+.choice .yelkuang li .bgtxt0{width:190px;height:35px;float:left;background-position:0 0;margin:73px 0 0 85px}
+.choice .yelkuang li .bgtxt1{width:160px;height:35px;float:left;background-position:0 -110px;margin:30px 0 0 105px}
+.choice .yelkuang li .bgshow1{width:280px;height:35px;float:left;background-position:-215px -115px;margin:30px 0 0 40px}
+.choice .yelkuang li .bgtxt2{width:135px;height:35px;float:left;background-position:0 -170px;margin:30px 0 0 115px}
+.choice .yelkuang li .bgshow2{width:320px;height:35px;float:left;background-position:-210px -175px;margin:30px 0 0 15px}
+.choice .yelkuang li .bgtxt3{width:150px;height:35px;float:left;background-position:0 -55px;margin:73px 0 0 100px}
+.choice .yelkuang li .bgshow3{width:170px;height:35px;float:left;background-position:-210px -55px;margin:70px 0 0 95px}
+.choice .yelkuang li .bgtxt4{width:160px;height:35px;float:left;background-position:0 -225px;margin:30px 0 0 105px}
+.choice .yelkuang li .bgshow4{width:315px;height:35px;float:left;background-position:-210px -235px;margin:35px 0 0 18px}
+.choice .yelkuang li .bgtxt5{width:130px;height:55px;float:left;background-position:0 -265px;margin:17px 0 0 120px}
+.choice .yelkuang li .bgshow5{width:190px;height:35px;float:left;background-position:-210px -285px;margin:25px 0 0 90px}
+.choice .rigdata{float:left;width:245px;height:378px;margin-left:37px}
+.choice .rigdata .zhanggui{width:172px;float:left;height:115px;color:#1996e6;margin-left:30px;overflow:hidden}
+.choice .rigdata .zhanggui li{height:20px}
+.choice .rigdata .zhanggui span{float:right;color:#666}
+.choice .rigdata .zhanggui a{color:#1996e6;width:100px;float:left;overflow:hidden}
+.choice .rigdata .zhanggui a:hover{text-decoration:underline}
+.choice .rigdata .tuig{width:210px;height:210px;margin:15px 0 0 10px;float:left;background-position:-588px -62px;position:relative}
+.choice .rigdata .tuig span{margin:3px 7px;float:left;color:#f90}
+.choice .rigdata .tuig span b{font-size:22px}
+.choice .rigdata .tuig a{position:absolute;width:62px;top:150px;left:5px;overflow:hidden;color:#fff;font-weight:bold;text-align:center;font-size:12px}
+.choice .rigdata .tuig a:hover{text-decoration:underline}
+.choice .rigdata .tuig a.one{left:75px;top:145px}
+.choice .rigdata .tuig a.three{top:150px;left:144px}
+.choice .rigdata .tuig a.tg_btn{position:absolute;top:175px;left:1px;width:210px;height:35px}
+.choice .rigdata .tuig a.tg_btn:hover{background:url(http://www.damaihu.com.cn/static/images/home/home-ico-d.png) no-repeat -588px -278px}
+.choice .whatjdh{width:1000px;float:left;margin-top:10px;height:135px}
+.choice .whatjdh .txt{float:left;height:35px;width:150px;text-indent:-9999px;background-position:0 -335px}
+.choice .whatjdh .xzthree{width:100%;height:100px;float:left;border-top:2px solid #ddd}
+.choice .whatjdh .xzthree a{float:left;width:246px;height:60px;background-position:0 -375px;text-indent:-9999px;margin:20px}
+.choice .whatjdh .xzthree a.noleft{margin-left:90px;background-position:-330px -375px}
+.choice .whatjdh .xzthree a.noright{margin-left:90px;background-position:-600px -375px}
+
+#fontImg{width:1000px;float:left;margin-top:10px;margin-bottom:30px;position:relative}
+#fontImg .depict{width:100%;float:left;border-bottom: 2px solid #ddd;padding-bottom: 10px}
+#fontImg .bricks{position:relative;width:1000px;float:left;margin-top:15px;height:240px;border-radius:5px}
+#fontImg .bricks a{display:block;overflow:hidden;position:absolute}
+#fontImg .bricks a:hover{box-shadow:0 0 10px rgba(0,0,0,.5)}
+#fontImg .bricks a img{display:block;width:100%;height:100%;-ms-interpolation-mode:bicubic}
+#fontImg .bricks .itm-L{width:250px;height:240px}
+#fontImg .bricks .itm-M{width:250px;height:240px}
+#fontImg .bricks .itm-S{width:250px;height:240px}
+#fontImg .bricks .itm-N{width:250px;height:240px}
+#fontImg .bricks .itm1{left:0;top:0}
+#fontImg .bricks .itm2{left:251px;top:0}
+#fontImg .bricks .itm3{left:501px;top:0}
+#fontImg .bricks .itm4{left:751px;top:0}
+
+#content #c_bk{margin-bottom:20px}
+#content #course{float:left;margin-bottom:10px;margin-top:10px;background:url(/images/shouye/course-bg.png);height:328px;position:relative;width:1000px}
+#course .course-f,#course .course-c,#course .course-fbf .fbf-1,#course .course-fbf .fbf-2,#course .course-fbf .fbf-3,#course .course-jsf .jsf-1,#course .course-jsf .jsf-2,#course .course-jsf .jsf-3{background:url(/images/shouye/course-qh.png) no-repeat}
+#course .course-f{background-position:-365px 0;height:30px;left:102px;position:absolute;top:34px;width:220px}
+#course .course-c{background-position:-9px -84px;height:321px;left:370px;position:absolute;top:5px;width:208px}
+#course .course-fbf{position:absolute;top:65px;left:64px}
+#course .course-fbf li{margin-left:50px}
+#course .course-fbf li a,#course .course-jsf li a{display:block;width:150px;height:25px}
+#course .course-fbf .fbf-1{background-position:10px 5px;margin-top:13px}
+#course .course-fbf .fbf-1:hover{background-position:-150px 5px;margin-top:13px}
+#course .course-fbf .fbf-2{background-position:12px -16px;margin-top:30px}
+#course .course-fbf .fbf-2:hover{background-position:-149px -16px;margin-top:30px}
+#course .course-fbf .fbf-3{background-position:11px -45px;margin-top:35px}
+#course .course-fbf .fbf-3:hover{background-position:-150px -45px;margin-top:35px}
+#course .course-fbf .fbf-4{margin-top:30px}
+#course .fbf-p{position:absolute;top:238px;left:65px;width:293px;height:55px}
+#course .fbf-p a{width:293px;height:55px;display:block}
+#course .course-jsf{position:absolute;top:65px;left:815px}
+#course .course-jsf .jsf-1{background-position:10px -91px;margin-top:14px}
+#course .course-jsf .jsf-1:hover{background-position:-150px -91px;margin-top:14px;margin-left:-2px}
+#course .course-jsf .jsf-2{background-position:12px -116px;margin-top:35px}
+#course .course-jsf .jsf-2:hover{background-position:-148px -116px;margin-top:35px;margin-left:-2px}
+#course .course-jsf .jsf-3{background-position:11px -145px;margin-top:34px}
+#course .course-jsf .jsf-3:hover{background-position:-149px -145px;margin-top:34px;margin-left:-2px}
+#course .course-jsf .jsf-4{margin-top:32px}
+#course .jsf-p{position:absolute;top:238px;left:634px;width:293px;height:55px}
+#course .jsf-p a{width:293px;height:55px;display:block}
+
+.main_image{width:100%;height:406px;border-top:1px solid #d7d7d7;overflow:hidden;margin:0 auto;position:relative}
+.main_image ul{width:9999px;height:406px;overflow:hidden;position:absolute;top:0;left:0}
+.main_image .bannerbg1{background:#29233b}
+.main_image .bannerbg2{background:#140c3d}
+.main_image .bannerbg3{background:url(/images/shouye/banner/bannerbg3.gif) repeat-x;height:406px}
+.main_image .bannerbg5{background:black;}
+.main_image li{float:left;width:100%;height:406px}
+.main_image li span{display:block;width:1000px;margin:0 auto;height:406px}
+.main_image li span .sorttg{margin:auto;position:absolute;margin-left:25px;top:300px;color:white}
+.main_image li span .sorttg:hover{text-decoration:underline}
+.flicking_con{width:980px;margin:0 auto;position:relative;z-index:1}
+.flicking_con .flicking_inner{position:absolute;top:375px;left:275px;z-index:999;width:300px;height:21px}
+.flicking_con a{float:left;width:12px;height:12px;margin-left:15px;padding:0;background:url(/images/shouye/banner-ico.png) -106px -45px no-repeat;display:block;text-indent:-9999em}
+.flicking_con a.on{background-position:-108px -31px}
+#btn_prev,#btn_next{z-index:11111;position:absolute;display:block;width:30px!important;height:70px!important;top:50%;margin-top:-37px;display:none;background:url(/images/shouye/banner-ico.png) no-repeat}
+#btn_prev{background-position:-64px -74px;left:30px}
+#btn_next{background-position:-64px -147px;right:30px}
+.banner-button{z-index:1;position:relative;width:1000px;margin:0 auto}
+.button-1,.button-2,.button-3{z-index:10;background:url(/images/shouye/banner_home_ico.png) no-repeat;width:205px;height:56px}
+.button-1{position:absolute;left:0;top:187px;background-position:0 0;margin-left:25px}
+.button-2{position:absolute;left:0;top:158px;background-position:0 -64px;margin-left:15px}
+.button-3{position:absolute;left:0;top:193px;background-position:0 -127px;margin-left:15px}
+.button-4{position:absolute;left:341px;top:138px;width:112px;height:69px}
+.button-1:hover{position:absolute;left:0;top:187px;background-position:-216px 0}
+.button-2:hover{position:absolute;left:0;top:158px;background-position:-216px -64px}
+.button-3:hover{position:absolute;left:0;top:193px;background-position:-216px -127px}
+.button-5{z-index: 10;background: url(/images/shouye/banner/banner-4-4.png) no-repeat;width: 205px;height: 56px;position: absolute;left: 64px;top: 193px;margin-left:15px;}
+.button-5:hover{background-position: 0px -53px;}
+/*登录*/
+#jdh-login{width:980px;margin:0 auto;position:relative;z-index:1}
+#jdh-login .login{height:293px;width:311px;position:absolute;top:32px;right:0;z-index:9;background:url(/images/shouye/login_bg.png) no-repeat;}
+#jdh-login .login p{height:0}
+#jdh-login .login .join{height:40px;line-height:40px;color:#e5e5e5;text-align:center}
+#jdh-login .login a.reg-btn{background:url(/images/shouye/reg.png) no-repeat;display:block;height:47px;width:263px;margin-left:24px;text-align:center}
+#jdh-login .login a.login-btn{background:url(/images/shouye/b_login.png) no-repeat;display:block;height:47px;width:263px;margin-left:24px;text-align:center;margin-top:55px}
+#jdh-login .login .ui-p .ui-label{width:39px;height:38px;display:block;float:left;cursor:pointer}
+#jdh-login .login .ui-p{float:left;padding-left:28px;padding-top:15px;color:#d7ddd9;text-align:center}
+#jdh-login .login .ui-p .ui-name-icon,#jdh-login .login .ui-p .ui-pass-icon{width:39px;height:38px;display:block;text-indent:-9999em;overflow:hidden;background-color:#aaabab;background-image:url(/images/shouye/banner-ico.png);background-repeat:no-repeat}
+#jdh-login .login .ui-p .ui-name-icon{background-position:10px 10px}
+#jdh-login .login .ui-p .ui-pass-icon{background-position:-30px 10px}
+#jdh-login .login .ui-p .ui-label:hover .ui-name-icon,#jdh-login .login .ui-p .ui-label:hover .ui-pass-icon{cursor:pointer;background-color:#6d6d6d}
+#jdh-login .login .ui-p .ui-input{float:left;width:200px;border:1px solid #fff;padding:8px;line-height:20px;height:20px;color:#595959;font-size:12px;vertical-align:middle;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0box-shadow:none}
+#jdh-login .login .ui-tips ul{width:270px}
+#jdh-login .login #interlocution{position:relative}
+#jdh-login .login #interlocution li{width:300px;padding-left:31px;height:30px;font-size:16px}
+#jdh-login .login #interlocution li span{color:#fff}
+#jdh-login .login #interlocution .usertour{padding-top:20px;padding-bottom:20px;font-size:13px;color:#fe5500}
+#interlocution li .selectque{width:170px;height:30px;line-height:30px;border:1px solid #fff}
+#interlocution li .input-answer{width:165px;height:30px;line-height:30px;padding-left:5px;margin-top:30px}
+#jdh-login .login #usertourError{position:absolute;top:100px;left:85px;color:red}
+#jdh-login .ilogData{height:293px;width:311px;position:absolute;top:32px;right:0;z-index:9;display:none;background:url(/images/shouye/login_bg.png) no-repeat;}
+#jdh-login .ilogData #goone{float:left;position:relative}
+#jdh-login .ilogData #goone li{float:left;width:300px;padding-left:11px;color:#fff;padding-top:3px}
+#jdh-login .ilogData #goone li a{color:#fe5500}
+#jdh-login .ilogData #goone li span{width:100%;float:left;text-align:center;color:#d4d6d1;font-size:14px;font-family:sans-serif;margin-top:10px}
+#jdh-login .ilogData #goone .li-a{margin:10px 0 5px 5px;font-size:16px;display:inline}
+#jdh-login .ilogData #goone .li-b{margin:5px 0 5px 5px;font-size:16px;display:inline}
+#jdh-login .ilogData #goone .li-a a,#m_banner .ilogData #goone .li-b a{font-size:14px;color:#fe5500}
+#jdh-login .ilogData #goone .touimg{border:1px solid #ddd;height:100px;position:absolute;right:20px;top:50px;width:100px}
+#jdh-login .bsicon{height:72px;width:311px;position:absolute;top:331px;right:0;z-index:9}
+#jdh-login .bsicon a{text-indent:-9999px;width:70px;height:70px;float:left;margin:0 20px 0 15px;background:url(/images/shouye/sads2.png) no-repeat}
+#jdh-login .bsicon a.a1{background-position:0 -10px}
+#jdh-login .bsicon a.a1:hover{background-position:0 -99px}
+#jdh-login .bsicon a.a2{background-position:-115px -10px}
+#jdh-login .bsicon a.a2:hover{background-position:-115px -99px}
+#jdh-login .bsicon a.a3{margin-right:0;background-position:-227px -10px}
+#jdh-login .bsicon a.a3:hover{background-position:-228px -101px}
+
+/*底部面板*/
+#d-bottomBar{display:none;position:fixed;left:0;bottom:0;width:100%;height:110px;background:rgba(0,0,0,.7);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#B4000000',EndColorStr='#B4000000');z-index:999999}
+:root #d-bottomBar{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#00000000',EndColorStr='#00000000')}
+* html #d-bottomBar{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+#d-bottomBar .d-bottomBar-wrap{width:980px;margin:0 auto;padding-top:20px}
+#d-bottomBar .d-bottomBar-wrap:after{display:block;clear:both;content:'\20'}
+#d-bottomBar .d-signin,#d-bottomBar .d-signup,#d-bottomBar .d-signup1,#d-closeBottomBar{_display:inline;overflow:hidden;background:url(/images/shouye/sads1.png) no-repeat;text-indent:-99999em}
+#d-bottomBar .d-signin{float:left;width:420px;height:70px;background-position:0 0}
+#d-bottomBar .d-signup{float:left;width:125px;height:54px;margin:8px 30px 0 70px;background-position:0 -89px;margin-bottom:10px}
+#d-bottomBar .d-signup1{margin-top:8px;float:left;width:124px;height:54px;background-position:-144px -89px;margin-bottom:10px}
+#d-bottomBar .signup_c{_display:inline;overflow:hidden;background:url(/images/shouye/sads1.png) no-repeat;text-indent:-99999em;float:left;width:146px;height:38px;margin:0 30px 0 70px;background-position:0 -170px;margin-bottom:10px}
+#d-closeBottomBar{display:block;overflow:hidden;position:absolute;right:42px;top:35px;width:50px;height:51px;background-position:-458px 0;cursor:pointer}
+
+/*任务流程*/
+.row .col-9,.row .col-3{float:left}
+.col-9{width:75%}
+.col-3{width:25%}
+.mar-tb-10{margin-top:10px;margin-bottom:10px}
+.market h2 .green-border{border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#39a200;padding-bottom:6px}
+.market .liucheng{background:url(/images/shouye/liucheng.jpg) no-repeat left bottom;margin:30px auto auto 30px;height:260px;position:relative}
+.market .liucheng div{position:absolute;font-weight:bold}
+.market .liucheng_1{left:115px;font-size:14px;top:148px;color:#f39700}
+.market .liucheng_2{left:70px;font-size:14px;top:0;color:#fa4657}
+.market .liucheng_3{left:200px;font-size:14px;top:0;color:#ef3643}
+.market .liucheng_4{left:300px;font-size:14px;top:190px;color:#707070}
+.market .liucheng_5{left:405px;font-size:14px;top:0;color:#78b9cd}
+.market .liucheng_6{left:545px;font-size:14px;top:0;color:#5fa5bd}
+.market .liucheng_7{width:65px;font-size:14px;left:500px;top:153px;color:#c1c1c1}
+.market .notic{left:220px;top:220px;font-size:18px;font-weight:bold;color:#f40}
+.market .right-content{border-left-width:1px;border-left-style:solid;border-left-color:#dcdcdc;padding-top:10px;padding-left:10px}
+.market h2{border-bottom-color:#eee;border-bottom-width:2px;border-bottom-style:solid;line-height:40px;font-size:20px;color:#8a8888}
+.market .task-list{height:213px;overflow:hidden;position:relative}
+.font-12{font-size:12px}
+.lh-2{line-height:2em}
+.text-muted{color:#999}
+.text-warning{color:#c09853}
+.text-success{color:#468847}
+.mar-tb-20{margin-top:5px;margin-bottom:5px}
+.btn{background-color:#428bca;border-color:#357ebd;color:#fff;display:inline-block;padding:1px 8px;margin-bottom:0;line-height:1.4;text-align:center;white-space:nowrap;border:0}
+.btn-lg{padding:8px 35px;font-size:18px;line-height:1.33}
+.text-danger {color: #b94a48;}
+
+
+.data-list{display:none;overflow:hidden;padding:10px 0 20px}
+.data-list.on{display:block}
+.data-list li{position:relative;float:left;width:33%;height:60px;text-align:center;border-right:1px solid #ededed}
+.data-list .tit{position:absolute;top:45px;left:0;width:100%;color:#999;text-indent:48px}
+.data-list .num{display:inline-block;vertical-align:middle;color:#999}
+.data-list .num b{font-size:30px;color:#4c4f53}
+.data-list .ico{display:inline-block;vertical-align:middle;margin-right:5px;width:60px;height:50px;background:url(/images/shouye/ico-total.png) no-repeat}
+.data-list li.data-deal .ico{background-position:5px -50px}
+.data-list li.data-amount{border-right:0}
+.data-list li.data-amount .ico{background-position:3px -100px}
+.slg{font-size:20px;padding:15px 0;text-align:center}
+
+
+
+#d-bottomBar{display:none;position:fixed;left:0;bottom:0;width:100%;height:110px;background:rgba(0,0,0,.7);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#B4000000',EndColorStr='#B4000000');z-index:999999}
+:root #d-bottomBar{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr='#00000000',EndColorStr='#00000000')}
+* html #d-bottomBar{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+#d-bottomBar .d-bottomBar-wrap{width:980px;margin:0 auto;padding-top:20px}
+#d-bottomBar .d-bottomBar-wrap:after{display:block;clear:both;content:'\20'}
+#d-bottomBar .d-signin,#d-bottomBar .d-signup,#d-bottomBar .d-signup1,#d-closeBottomBar{_display:inline;overflow:hidden;background:url(/images/shouye/bottomBar.png) no-repeat;text-indent:-99999em}
+#d-bottomBar .d-signin{float:left;width:420px;height:70px;background-position:0 0}
+#d-bottomBar .d-signup{float:left;width:125px;height:54px;margin:8px 30px 0 70px;background-position:0 -89px;margin-bottom:10px}
+#d-bottomBar .d-signup1{margin-top:8px;float:left;width:124px;height:54px;background-position:-144px -89px;margin-bottom:10px}
+#d-bottomBar .signup_c{_display:inline;overflow:hidden;background:url(/images/shouye/bottomBar.png) no-repeat;text-indent:-99999em;float:left;width:146px;height:38px;margin:0 30px 0 70px;background-position:0 -170px;margin-bottom:10px}
+#d-closeBottomBar{display:block;overflow:hidden;position:absolute;right:42px;top:35px;width:50px;height:51px;background-position:-458px 0;cursor:pointer}

@@ -1,0 +1,70 @@
+{sub h}
+<br />
+<div id="dialog" style="display:none">
+	<div id="dialog_message"></div>
+</div>
+<script language="javascript">
+
+function copyComment(text,tip) {
+    if (tip == void(0)) tip = '复制成功';
+    if(is_ie) {
+		clipboardData.setData('Text', text);
+		alert(tip);
+	} else if(prompt('请你使用 Ctrl+C 复制到剪贴板', text)) {
+		alert(tip);
+	}
+	return false;
+}
+</script>
+
+{if $method=='index'}
+<form method="post" enctype="application/x-www-form-urlencoded">
+	$sys_hash_code
+	<table class="tb tb2 fixpadding">
+		<tr class="header">
+			<th>删？</th>
+			<th>真实姓名</th>
+            <th>平台账户</th>
+			<th>身份证号码</th>
+			<th>创建时间</th>
+			<th>认证时间</th>
+			<th>认证费用</th>
+			<th>查看图片</th>
+            <th>删除图片</th>
+			<th>状态</th>
+		</tr>
+		{loop $list $v}
+		<tr class="hover">
+			<td><input type="checkbox" name="del[]" value="$v[id]" class="checkbox" /></td>
+			<td>$v[truename]</td>
+            <td>$v[username]</td>
+			<td>$v[idcard]</td>			
+			<td>{if $v[ctimestamp]}{date $v[ctimestamp]}{/if}</td>
+			<td>{if $v[utimestamp]}{date $v[utimestamp]}{/if}</td>
+			<td>$v[cost]</td>
+			<td>            
+            {if $v[fileroad]}<a href="{rewrite}/dialog/chakanverify/?sid=$v[id]" target="_blank">查看上传图片</a>{else}认证者未上传图片{/if}
+            </td>            
+			<td>{if !$v[status]}待认证{else}{date $v[utimestamp]}{/if}</td>
+			<td>
+			{if $v[status]==0}			
+			<a href="$base_url&method=$method&setStatus=3&sid=$v[id]" onclick="return confirm('确定吗？')">拒绝</a>
+			<a href="$base_url&method=$method&setStatus=1&sid=$v[id]" onclick="return confirm('确定吗？')">认证</a>
+			{elseif $v[status]==1}
+			<a href="$base_url&method=$method&setStatus=2&sid=$v[id]" onclick="return confirm('确定吗？')">撤销</a>
+            {else}
+            $status[$v[status]]
+			{/if}
+			</td>
+		</tr>
+		{/loop}
+		<tr>
+			<td colspan="10">$multipage</td>
+		</tr>
+		<tr>
+			<td colspan="9"><input type="submit" value="删除" class="btn" /></td>
+		</tr>
+	</table>
+</form>
+{/if}
+{sub f}

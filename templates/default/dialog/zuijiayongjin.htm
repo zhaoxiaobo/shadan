@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="../css/dialog.css" rel="stylesheet" />
+<style type="text/css">
+.tbl td {border-bottom:1px solid #E8F2FC;}
+.bar_dl {margin:0px !important;}
+</style>
+{teval
+echo css::get_css('dialog', 'dialog');
+echo css::get_css('task', 'task');
+echo javascript::get_js('task', 'index');
+}
+{js_select jquery,common}
+<title>追加信币</title>
+</head>
+<body>
+<div class="main_dl">
+	{if $_showmessage}<div class='msg_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}	
+	<div class="bar_dl">追加信币</div>
+<form name="myForm" method="post" id="myForm" onsubmit="return checkForm();">
+<div>$sys_hash_code2</div>
+
+  <table class="tbl" width='100%' border='0' cellspacing='0' cellpadding='6'>
+	
+    <tr>
+      <td width='80' class='f_b_green' valign="top" align="right">任务ID：</td>
+      <td>
+		{$task[id]}
+      </td>
+    </tr>    
+    <tr>
+      <td width='80' class='f_b_green' valign="top" align="right">追加：</td>
+      <td><input name="pointExtsj" type="text" id="pointExtsj" value="{$taskzhuijiageshu}" class="textbox" maxlength="50">
+      <span style="color:red;">个信币（必须为正整数，不能带小数点。）</span></td>
+    </tr>
+    <tr>
+      <td width='80' class='f_b_green' valign="top" align="right">操作码：</td>
+      <td><INPUT id="pwd2" class="aninput" name="pwd2" type="password"></td>
+    </tr>
+    <tr>
+      <td width='80' class='f_b_green' valign="top" align="right">提交：</td>
+      <td><input type="submit" name="btnSubmit" value="确认追加" /></td>
+    </tr>
+  </table>
+  </form>
+	<div style="padding-top:20px;text-align:center;">
+		<input name="goon" class="btn_2" type="button" id="goon" onclick="parent.doCut2();" value="关闭" />
+	</div>
+</div>
+<SCRIPT type="text/javascript">
+function is_number(str)
+{
+	exp=/[^0-9()-]/g;
+	if(str.search(exp) != -1)
+	{
+		return false;
+	}
+	return true;
+}
+function checkForm() {
+
+	if ($('#pointExtsj').val()==''){
+		alert('请输入追加的信币个数!');
+		$('#pointExtsj').focus(); 
+		return false;
+	}
+	if(!is_number($('#pointExtsj').val())){
+		alert("信币个数必须是正整数，不能带小数点！");
+		$('#pointExtsj').focus();
+		return false;
+	}
+	if ($('#pointExtsj').val()<=0){
+		alert('信币个数必须是正整数，不能带小数点！');
+		$('#pointExtsj').focus(); 
+		return false;
+	}
+	if ($('#pwd2').val()==''){
+		alert('请输入操作码!');
+		$('#pwd2').focus(); 
+		return false;
+	}
+
+	return confirm('您确定要追加了吗？');
+}
+</SCRIPT>
+</body>
+</html>

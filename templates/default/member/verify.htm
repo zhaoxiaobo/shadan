@@ -1,0 +1,367 @@
+{teval
+	$title       = '我的个人中心 - {webName}';
+	$keywords    = '';
+	$description = '';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description));
+}
+{sub ../header}
+<link href="/css/bbs/layout_huiyuan.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.tbl_edit td {line-height:18px;}
+.option {}
+.option td {vertical-align:top;}
+.option:hover {background:#FFFCCC;}
+.answer {background:url(/images/msg_bg.png) 0px -250px no-repeat; height:16px; width:16px; vertical-align:middle; font-size:1px; display:-moz-inline-box;display:inline-block; overflow:hidden;}
+.msg_ok {border:1px solid #4dbf00; background:#f0ffe5 url(/images/msg_bg.png) 12px -988px no-repeat; color: #404040; padding:17px 10px 17px 56px; line-height: 22px; font-size: 14px; font-weight:bold;}
+.msg_tip {border:1px solid #ffcc7f; background:#ffffe5 url(/images/msg_bg.png) 15px -888px no-repeat; color: #404040; padding:17px 10px 17px 56px; line-height: 22px; font-size: 14px; font-weight:bold;}
+.msg_error {border:1px solid #ff8080; background:#fff2f2 url(/images/msg_bg.png) 12px -388px no-repeat; color: #404040; padding:17px 10px 17px 56px; line-height: 22px; font-size: 14px; font-weight:bold;}
+.msg_attention {border:1px solid #40b3ff; background:#e5f5ff url(/images/msg_bg.png) 12px -488px no-repeat; color: #404040; padding:17px 10px 17px 56px; line-height: 22px; font-size: 14px; font-weight:bold;}
+.msg_question {border:1px solid #bfbfbf; background:#f2f2f2 url(/images/msg_bg.png) 12px -788px no-repeat; color: #404040; padding:17px 10px 17px 56px; line-height: 22px; font-size: 14px; font-weight:bold;}
+</style>
+<div class="cle"></div>
+<div id="content">
+{if $indexMessage}<script type="text/javascript">showInfo('$indexMessage');</script>{/if}
+{if $_showmessage}<script type="text/javascript">showInfo('$_showmessage');</script>{/if}
+  {sub menu}
+  <div class="right">
+    <div class="mh_tishi">
+    1. 实名认证即为核实用户的真实身份，简称"加<img src="/images/v.gif" class="ico_v" />认证"；<br />
+      2. 加入实名认证是加入商保认证的前提条件，要加入商保认证必须先进行加<img src="/images/v.gif" class="ico_v" />认证；<br />
+      <span class="f_red">3.申请每次费用为{echo cfg::getFloat('sys', 'next_money')}元</span> 
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:15px;">
+      <tr>
+        <td valign="top"><table width="98%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="10" height="37" class="txjl_bg1"></td>
+              <td width="63%" height="37" align="left" valign="middle" class="txjl_bg2" style="color:#333;">&nbsp; 加<img src="/images/v.gif" class="ico_v" />认证 </td>
+
+              <td width="40%" height="37" align="center" valign="middle" class="txjl_bg2"></td>
+              <td width="10" height="37" class="txjl_bg3"></td>
+            </tr>
+            <tr>
+              <td height="35">&nbsp;</td>
+              <td colspan="2" align="left" valign="top">
+            {if $memberfields[isVerify] == 1}
+            <table width="100%" cellpadding="0" cellspacing="0">
+            	<tr>
+					<td class="msg_ok">已认证</td>
+                </tr>
+            </table>
+			{elseif $memberfields[isVerify] == 2}
+            <table width="100%" cellpadding="0" cellspacing="0">
+            	<tr>
+					<td class="msg_ok">认证审核中</td>
+                </tr>
+            </table>
+			{elseif !$re && $memberfields[isVerify] == 3}
+            <table width="100%" cellpadding="0" cellspacing="0">
+            	<tr>
+					<td class="msg_error">审核失败，<a href="$thisUrl?re=1">点击重新认证</a></td>
+                </tr>
+            </table>
+			{else}
+            
+            <form name="myForm" method="post" id="myForm" enctype="multipart/form-data" onsubmit="return checkForm();">
+			$sys_hash_code2
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td width="0%">&nbsp;</td>
+                  <td width="17%" height="35" align="right" valign="middle" class="mh_xxian">申请人：</td>
+                  <td width="21%" align="" valign="middle" class="mh_xxian"><input name="username" type="text" class="text_normal" value="$member[username]" disabled="disabled" /></td>
+                  <td width="61%" align="center" class="mh_xxian"><input name="usernameh" type="hidden"  value="$member[username]" /></td>
+                  <td width="1%">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td height="35" align="right" valign="middle" class="mh_xxian">真实姓名：</td>
+                  <td align="" valign="middle" class="mh_xxian"><input name="truename" type="text" class="text_normal" id="truename" maxlength="4" /></td>
+                  <td align="left" class="mh_xxian">{if cfg::getMoney('verify', 'where_money') > 0}{if cfg::getFloat('verify', 'where_day') > 0}{cfg verify,where_day}天内{else}历史累积{/if}累计提现必须达{cfg verify,where_money}元{/if}</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td height="35" align="right" valign="middle" class="mh_xxian">身份证号码：</td>
+                  <td align="" valign="middle" class="mh_xxian"><input name="idcard" type="text" class="text_normal" id="idcard" /><br /></td>
+                  <td align="left" class="mh_xxian"><span class="f_gray">请填写15或是18位的真实身份证号码</span></td>
+                  <td>&nbsp;</td>
+                </tr>
+                
+                <tr>
+                <td colspan="5"><br>
+                上传身份证正面，不要超过2M。
+                </td>
+                </tr>   
+                <tr>
+                <td colspan="5">
+                <DIV style="width:490px;">
+					<style type="text/css">
+                    <!--
+                    .uploadIco {
+                        background:transparent url(/css/uploadIco.gif) no-repeat 16px 16px;
+                        background-position:2px 2px;
+                    }
+                    -->
+                    </style>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor-zh-cn.min.js"></script>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor_plugins/ubb.min.js"></script>
+                    <textarea name="remark" id="remark" style="width:490px;height:220px"></textarea>
+                    <script language="javascript">
+                    var editor;
+                    $(function(){editor=$('#remark').xheditor({
+                        plugins:{
+                            Upload:{c:'uploadIco',t:'上传图片(Ctrl+U)',s:'ctrl+u',e:function(){
+                                var _this=this;
+                                _this.showIframeModal('上传图片','/dialog/upload/',function(rs){
+                                    _this.loadBookmark();
+                                        if (rs.id) {
+                                            var attach={'type':rs.type,'src':rs.src};
+                                            attachList[rs.id] = attach;
+                                            switch(attach.type){
+                                                case 'img':
+                                                    _this.pasteHTML('<img src="'+attach.src+'" attach="'+rs.id+'" />');
+                                                break;
+                                                default:
+                                                    _this.pasteHTML('<a href="'+attach.src+'" attach="'+rs.id+'">下载附件</a>');
+                                                break;
+                                            }
+                                        }
+                                    },468,150);
+                                }
+                            }
+                        },
+                        tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,Align,Upload',
+                        emotPath:'/img/e/',
+                        emotMark:true,
+                        emots:{qq:{name:'QQ',count:77,width:24,height:24,line:11,index:-1}},
+                        defEmot:'qq',
+                        hideDefEmot:true,
+                        beforeSetSource:ubb2html,
+                        beforeGetSource:html2ubb,
+                        upImgUrl:'/ajax/upload.php?action=image',
+                        upImgExt:'jpg,jpeg,gif,png'
+                    });});
+                    </script>
+	  			</DIV>
+                </td>
+                </tr> 
+                <tr>
+                <td colspan="5"><br>
+                上传身份证反面，不要超过2M。
+                </td>
+                </tr>   
+                <tr>
+                <td colspan="5">
+                <DIV style="width:490px;">
+					<style type="text/css">
+                    <!--
+                    .uploadIco {
+                        background:transparent url(/css/uploadIco.gif) no-repeat 16px 16px;
+                        background-position:2px 2px;
+                    }
+                    -->
+                    </style>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor-zh-cn.min.js"></script>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor_plugins/ubb.min.js"></script>
+                    <textarea name="remark1" id="remark1" style="width:490px;height:220px"></textarea>
+                    <script language="javascript">
+                    var editor;
+                    $(function(){editor=$('#remark1').xheditor({
+                        plugins:{
+                            Upload:{c:'uploadIco',t:'上传图片(Ctrl+U)',s:'ctrl+u',e:function(){
+                                var _this=this;
+                                _this.showIframeModal('上传图片','/dialog/upload/',function(rs){
+                                    _this.loadBookmark();
+                                        if (rs.id) {
+                                            var attach={'type':rs.type,'src':rs.src};
+                                            attachList[rs.id] = attach;
+                                            switch(attach.type){
+                                                case 'img':
+                                                    _this.pasteHTML('<img src="'+attach.src+'" attach="'+rs.id+'" />');
+                                                break;
+                                                default:
+                                                    _this.pasteHTML('<a href="'+attach.src+'" attach="'+rs.id+'">下载附件</a>');
+                                                break;
+                                            }
+                                        }
+                                    },468,150);
+                                }
+                            }
+                        },
+                        tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,Align,Upload',
+                        emotPath:'/img/e/',
+                        emotMark:true,
+                        emots:{qq:{name:'QQ',count:77,width:24,height:24,line:11,index:-1}},
+                        defEmot:'qq',
+                        hideDefEmot:true,
+                        beforeSetSource:ubb2html,
+                        beforeGetSource:html2ubb,
+                        upImgUrl:'/ajax/upload.php?action=image',
+                        upImgExt:'jpg,jpeg,gif,png'
+                    });});
+                    </script>
+	  			</DIV>
+                </td>
+                </tr>  
+                <tr>
+                <td colspan="5"><br>
+                上传生活照，不要超过2M。
+                </td>
+                </tr>              
+				<tr>
+                <td colspan="5">
+                <DIV style="width:490px;">
+					<style type="text/css">
+                    <!--
+                    .uploadIco {
+                        background:transparent url(/css/uploadIco.gif) no-repeat 16px 16px;
+                        background-position:2px 2px;
+                    }
+                    -->
+                    </style>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor-zh-cn.min.js"></script>
+                    <script type="text/javascript" src="/js_lib/xheditor/xheditor_plugins/ubb.min.js"></script>
+                    <textarea name="remark2" id="remark2" style="width:490px;height:220px"></textarea>
+                    <script language="javascript">
+                    var editor;
+                    $(function(){editor=$('#remark2').xheditor({
+                        plugins:{
+                            Upload:{c:'uploadIco',t:'上传图片(Ctrl+U)',s:'ctrl+u',e:function(){
+                                var _this=this;
+                                _this.showIframeModal('上传图片','/dialog/upload/',function(rs){
+                                    _this.loadBookmark();
+                                        if (rs.id) {
+                                            var attach={'type':rs.type,'src':rs.src};
+                                            attachList[rs.id] = attach;
+                                            switch(attach.type){
+                                                case 'img':
+                                                    _this.pasteHTML('<img src="'+attach.src+'" attach="'+rs.id+'" />');
+                                                break;
+                                                default:
+                                                    _this.pasteHTML('<a href="'+attach.src+'" attach="'+rs.id+'">下载附件</a>');
+                                                break;
+                                            }
+                                        }
+                                    },468,150);
+                                }
+                            }
+                        },
+                        tools:'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,Align,Upload',
+                        emotPath:'/img/e/',
+                        emotMark:true,
+                        emots:{qq:{name:'QQ',count:77,width:24,height:24,line:11,index:-1}},
+                        defEmot:'qq',
+                        hideDefEmot:true,
+                        beforeSetSource:ubb2html,
+                        beforeGetSource:html2ubb,
+                        upImgUrl:'/ajax/upload.php?action=image',
+                        upImgExt:'jpg,jpeg,gif,png'
+                    });});
+                    </script>
+	  			</DIV>
+                </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td height="35" align="right" valign="middle" class="mh_xxian">认证费用：</td>
+                  <td align="" valign="middle" class="mh_xxian"><input name="cost" type="text" class="text_short" id="cost" value="{echo cfg::getFloat('sys', 'next_money')}" disabled="disabled" /></td>
+                  <td align="left" class="mh_xxian">元</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+				<td colspan="5" style="padding-top:20px;" class="mh_xxian"><strong>{$sys_gongsimc}放单平台加V认证（实名认证）协议：</strong><br />
+					  <textarea name="agreement" style="width:100%; height:100px;" readonly>{sub verify_protocol}</textarea><br />
+					  <input type="checkbox" name="isAgree" id="isAgree" value="1" />
+                      <label for="isAgree" class="f_b_red">我已阅读并同意此协议</label>				  
+					</td>
+                </tr>
+                <tr>
+                    <td colspan="5" align="center" style="padding-top:10px;"></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td height="35" align="right" valign="middle"></td>
+                  <td align="" valign="middle"><input name="btnSave" type="submit" class="btn_1" id="btnSave" value="提交加V申请" /></td>
+                  <td align="left"></td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            </form>
+            {/if}
+             
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+          </table></td>
+        <td width="250" align="right" valign="top">
+        
+
+        
+        
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="cle"></div>
+<!-- page content end and footer st --> 
+<script type="text/javascript">
+
+  function checkForm() {
+    if (!getObj("isAgree").checked) {
+      alert("对不起，要申请加V认证，必须同意该协议！");
+      return false;
+    }
+    var checks = [
+	["isLength", "truename", "真实姓名", 2, 10],
+	["isEmpty", "idcard", "身份证号码"],
+	["isEmpty", "remark", "身份证正面"],
+	["isEmpty", "remark1", "身份证反面"],
+	["isEmpty", "remark2", "清晰生活照"]];
+    var result = doCheck(checks);
+    if (result) {
+      if (!isMatch(/^(([0-9]{15})|([0-9]{18})|([0-9]{17}(x|X)))$/, getValue("idcard").replace(/\s/g, "")))
+        return doAlert("身份证号码必须为15位或是18位有效号码", getObj("idcard"));
+    }
+    if (result)
+      return confirm("您确定您填写的信息都正确无误了么？\n\n请核对你的身份证号码，并保证选择了照片，谢谢合作！");
+    return result;
+  }
+</script>
+{if $member['status'] == '0'}
+  <script type='text/javascript'>
+  art.dialog({
+    id:'EF893L',
+    content: '系统检测到您还没有通过手机认证，请先进行手机认证！',
+    button: [
+        {
+            name: '立即认证',
+            callback: function () {
+                art.dialog.open('/dialog/active/',{title:'手机短信激活帐户',width:460,height:460,fixed: true,cancel:false,});
+                parent.art.dialog.list['EF893L'].close();
+                return false;
+            },
+            focus: true
+        },
+        {
+            name: '暂时不认证',
+            callback: function () {
+                window.location.href="/member/";
+            }
+        }
+    ],
+    cancel:false,
+    fixed: true,
+    lock: true
+  })
+</script>
+{/if}
+
+</div>
+<div class="cle"></div>
+{sub ../footer}

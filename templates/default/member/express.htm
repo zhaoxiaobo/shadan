@@ -1,0 +1,624 @@
+{teval
+
+	$title       = '获取真实快递单号 - {webName}';
+
+	$keywords    = '';
+
+	$description = '';
+
+	$title       = common::replaceVars($title);
+
+	$keywords    = common::replaceVars($keywords);
+
+	$description = common::replaceVars($description);
+
+	$cssList     = array(css::getUrl('member', 'member'));
+
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList));
+
+}
+
+{sub ../header}
+
+
+
+
+
+<!--菜单开始-->
+
+<SCRIPT type="text/javascript">
+
+function is_number(str)
+
+{
+
+	exp=/[^0-9()-]/g;
+
+	if(str.search(exp) != -1)
+
+	{
+
+		return false;
+
+	}
+
+	return true;
+
+}
+
+
+
+function checkForm() {
+
+
+
+	if ($('#ComName').val()==''){
+
+		alert('请输入快递公司!');
+
+		$('#ComName').focus(); 
+
+		return false;
+
+    }
+
+	if ($('#FHUserName').val()==''){
+
+		alert('请输入发货人真实姓名!');
+
+		$('#FHUserName').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#FHMobile').val()==''){
+
+		alert('请输入发货人电话!');
+
+		$('#FHMobile').focus(); 
+
+		return false;
+
+	}
+
+	if(!is_number($('#FHMobile').val())){
+
+		alert("发货人电话必须是数字！");
+
+		$('#FHMobile').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#province').val()==''){
+
+		alert('请输入发货省市县!');
+
+		$('#province').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#city').val()==''){
+
+		alert('请输入发货省市县!');
+
+		$('#city').focus(); 
+
+		return false;
+
+	}	
+
+	if ($('#area').val()==''){
+
+		alert('请输入发货省市县!');
+
+		$('#area').focus(); 
+
+		return false;
+
+	}
+
+	
+
+	if ($('#FHUserNameshou').val()==''){
+
+		alert('请输入收货人真实姓名!');
+
+		$('#FHUserNameshou').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#FHMobileshou').val()==''){
+
+		alert('请输入收货人电话!');
+
+		$('#FHMobileshou').focus(); 
+
+		return false;
+
+	}
+
+	if(!is_number($('#FHMobileshou').val())){
+
+		alert("收货人电话必须是数字！");
+
+		$('#FHMobileshou').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#addressshou').val()==''){
+
+		alert('请输入收货省市县!');
+
+		$('#ss1').focus(); 
+
+		return false;
+
+	}
+
+	else{
+
+		if($('#addressshou').val().indexOf('地级市')!=-1){
+
+			alert('请选择 地级市!');
+
+			$('#ss2').focus(); 
+
+			return false;
+
+		}
+
+
+
+
+
+		if($('#addressshou').val().indexOf('县/区')!=-1){
+
+			alert('请选择 县/区!');
+
+			$('#ss3').focus(); 
+
+			return false;
+
+		}
+
+	}	
+
+
+
+	if ($('#MDCity').val()==''){
+
+		alert('请输入收货地址!');
+
+		$('#MDCity').focus(); 
+
+		return false;
+
+	}
+
+	if ($('#pwd3').val()==''){
+
+		alert('请输入操作码!');
+
+		$('#pwd3').focus(); 
+
+		return false;
+
+	}
+
+	return confirm('您确定要订购了吗？\n\n 1、此次定制费用在随后的提示信息里显示，订购以后不能撤销，并且无法退款；\n\n 2、提交购买成功以后，请到“已发货空包”里面查看并复制您的空包单号！直接使用该单号即可去淘宝发货，第二天淘宝物流追踪即可显示对应物流信息。');
+
+}
+
+function copyComment(text, tip) {
+
+	if (tip == void(0)) tip = '复制成功';
+
+    if(is_ie) {
+
+		clipboardData.setData('Text', text);
+
+		alert(tip);
+
+	} else if(prompt('请你使用 Ctrl+C 复制到剪贴板', text)) {
+
+		alert(tip);
+
+	}
+
+	return false;
+
+}
+
+</SCRIPT>
+
+<script type="text/javascript" src="/javascript/index/kuaidi/Province_City_Areashou.js"></script>
+
+<script type="text/javascript" src="/javascript/index/WdatePicker.js"></script>
+
+
+
+<DIV id="content">
+
+  <!-- 左边栏 -->
+
+  {sub menu}
+
+<DIV class="right">
+
+<DIV class="bq_menu">
+
+<A {if $type==1} class="nov"{/if} href="{rewrite}/member/express/?type=1">我要发空包</A>
+
+<A {if $type==2} class="nov"{/if} href="{rewrite}/member/express/?type=2">已发货空包</A>
+
+</DIV>
+
+ {if $type==1}
+
+<form method="post" name="myForm" id="myForm">
+
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+
+<div>$sys_hash_code2</div>
+
+<tbody><tr class="tdbg" height="30">
+
+  	<td height="4" colspan="2" align="left" style="color:blue; font-size:14px;">  {if $_showmessage}<div class='error_panel'><div style="color:blue;">$_showmessage</div></div>{/if}{if $indexMessage}<div class='error_panel'><div style="color:blue;">$indexMessage</div></div>{/if}</td>
+
+    </tr>
+
+<tr class="tdbg" height="30">
+
+  	<td height="19" colspan="2" align="left" style="color:red; font-size:14px;"><div class='error_panel'>说明：<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卖家朋友注意啦！为了打造不可删除的信誉，为了打造不可降权的爆款！川山岭跟几大快递公司洽谈合作，特推出空包单号定制业务，包裹全部由快递员代签！完美匹配淘宝交易信息！且万一遇到降权，平台还可免费提供条形码完全匹配的真实快递底单（绝非PS底单）供卖家朋友申诉，申诉通过率接近100%！<br>
+----------------------------------------------------------------------------------------------<br>
+1、卖家朋友购买空包单号以后，可以立即拿到属于自己的发货单号！第二天即可在淘宝物流追踪处看到单号对应的物流信息！<br>
+
+2、真实空包价格：<BR>{eval $__list = cfg::getList('sys', 'kuaidiType');}
+
+{loop $__list $v}
+
+&nbsp;{$v[key]}：普通会员{$v[value]}元每单，一级VIP会员{$v[value]-0.1}元每单，钻石VIP会员{$v[value]-0.2}元每单，皇冠VIP{$v[value]-0.3}元每单。<br>
+
+{/loop}
+
+所以卖家朋友如果需要大量定制快递单号，充值成为VIP将是一个不错的选择哦！
+
+好了，进入正题，要定制快递单号的卖家朋友，请填写您的发货信息：</div><br>
+
+</td>
+
+   </tr>
+
+  <tr class="tdbg" height="32">
+
+    <td width="24%" height="30" align="right"><strong>账户余额：</strong></td>
+
+    <td>&nbsp;<span style="color:#FF5500; font-size:14px">{$memberfields[money]}</span> 元 &nbsp;<a href="/member/topup/" target="_blank"><img src="/images/fill.gif" align="absmiddle" border="0"></a> &nbsp; &nbsp;<strong>信币：</strong><span style="color:#FF5500; font-size:14px">{$memberfields[fabudian]}</span> 个</td>
+
+  </tr>
+
+
+
+<tr class="tdbg">
+
+	<td width="24%" height="40" align="right"><strong>快递公司：</strong></td>
+
+	<td>
+
+			 <select name="ComName"  id="ComName" class="txbk" name="bankType">
+
+						{eval $__list = cfg::getList('sys', 'kuaidiType');}
+
+						{loop $__list $v}
+
+						<option value="$v[key]" {if $v[checked]} selected="selected"{/if}>$v[key]</option>
+
+						{/loop}
+
+			</select>
+
+    </td>
+
+</tr>
+
+<tr class="tdbg">
+
+	<td width="24%" height="40" align="right"><strong>发货人真实姓名：</strong></td>
+
+	<td><input name="FHUserName" type="text" id="FHUserName" value="{$member[truename]}" class="textbox" maxlength="10"></td>
+
+</tr>
+
+<tr class="tdbg">
+
+	<td width="24%" height="34" align="right"><strong>发货人电话：</strong></td>
+
+	<td><input name="FHMobile" type="text" id="FHMobile" value="$member[mobilephone]" class="textbox" maxlength="20"></td>
+
+</tr>
+
+<tr class="tdbg">
+
+	<td width="24%" height="40" rowspan="3" align="right"><strong>发货省/市/县区：</strong></td>
+
+	<td>
+
+    	<input name="province" type="text" id="province" value="$member[fasheng]" class="textbox" maxlength="15">        
+
+    </td>
+
+</tr>
+
+<tr class="tdbg">
+
+  <td>
+
+  	<input name="city" type="text" id="city" value="$member[fashi]" class="textbox" maxlength="15" />
+
+    &nbsp;&nbsp;<a href="/member/userdata/?type=fahuoshsx" style="color:red; font-size:14px;" >点这里设置默认发货省市县</a>
+
+  </td>
+
+</tr>
+
+<tr class="tdbg">
+
+  <td><input name="area" type="text" id="area" value="$member[faxian]" class="textbox" maxlength="15" /></td>
+
+</tr>
+
+<tr class="tdbg">
+
+	<td width="24%" height="40" align="right"><strong>收货人真实姓名：</strong></td>
+
+	<td><input name="FHUserNameshou" type="text" id="FHUserNameshou" class="textbox" maxlength="10"></td>
+
+</tr>
+
+<tr class="tdbg">
+
+	<td width="24%" height="34" align="right"><strong>收货人电话：</strong></td>
+
+	<td><input name="FHMobileshou" type="text" id="FHMobileshou" class="textbox" maxlength="20"></td>
+
+</tr>
+
+<tr class="tdbg">
+
+  <td width="24%" height="14" align="right"><strong>收货地址：</strong></td>
+
+  <td><select class="textbox" name="provinceshou" id="ss1"><option value=" 请选择省份 "> 请选择省份 </option><option value="北京">北京</option><option value="天津">天津</option><option value="上海">上海</option><option value="重庆">重庆</option><option value="河北省">河北省</option><option value="山西省">山西省</option><option value="内蒙古">内蒙古</option><option value="辽宁省">辽宁省</option><option value="吉林省">吉林省</option><option value="黑龙江省">黑龙江省</option><option value="江苏省">江苏省</option><option value="浙江省">浙江省</option><option value="安徽省">安徽省</option><option value="福建省">福建省</option><option value="江西省">江西省</option><option value="山东省">山东省</option><option value="河南省">河南省</option><option value="湖北省">湖北省</option><option value="湖南省">湖南省</option><option value="广东省">广东省</option><option value="广西">广西</option><option value="海南省">海南省</option><option value="四川省">四川省</option><option value="贵州省">贵州省</option><option value="云南省">云南省</option><option value="西藏">西藏</option><option value="陕西省">陕西省</option><option value="甘肃省">甘肃省</option><option value="青海省">青海省</option><option value="宁夏">宁夏</option><option value="新疆">新疆</option><option value="香港">香港</option><option value="澳门">澳门</option><option value="台湾省">台湾省</option></select> 
+
+<select class="textbox" name="cityshou" id="ss2"><option value=" 地级市 "> 地级市 </option></select> 
+
+<select class="textbox" name="areashou" id="ss3"><option value=" 县/区 "> 县/区 </option></select> 
+
+<input id="addressshou" name="CFCity" type="hidden" value="">
+
+<script language="javascript">setupshou();
+
+  function SetAddressshou(addressshou){
+
+	if(addressshou!=''){
+
+		var tmpArray = addressshou.split(' ');
+
+		if(tmpArray.length==3){
+
+			preselectshou(tmpArray[0]);
+
+			document.getElementById("ss2").value=tmpArray[1];
+
+			document.getElementById("ss3").options.add(new Option(tmpArray[2], tmpArray[2],false,true));
+
+			promptinfoshou();
+
+			$("#del_address").show();
+
+		}
+
+	}
+
+	else{
+
+		$("#del_address").hide();
+
+	}
+
+}
+
+function del_address(){
+
+	if($("#Deliver_Address").val()!=''){
+
+		if(confirm('确定不保存这条发货地址吗？')){
+
+			document.location.href="?Action=del_address&addressshou=" + escape($("#Deliver_Address").val());
+
+			}
+
+		
+
+		}
+
+	}
+
+</script>
+
+
+
+</td>
+
+</tr>
+
+
+
+</tbody></table>
+
+
+
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="1" class="center_tbl">
+
+  <tbody>
+
+    <!--<tr class="tdbg" align="center"><td height="15" colspan="2" align="center">在淘宝后台——已卖出宝贝——等待发货——点详情——再点收货和物流信息</td></tr>
+    -->
+    <tr class="tdbg">
+
+      <td width="24%" height="19" align="right"><strong>收货地址信息：</strong></td>
+
+      <td><span style="line-height:22px; color:#09F">收货地址格式统一为：姓名，电话号码，省 市 县具体地址，邮编<br>
+
+        例：李明，18826602838，四川省 宜宾市 南溪县 罗龙镇2组18号 ，644104 <br>
+
+        </span>
+
+        <textarea name="MDCity" cols="80" rows="10" class="textarea" id="MDCity" style="width:550px" title="注：如选了“我要单独购买”可批量订购，一行一条收货信息；选了“我有任务编号”仅限填写一条收货信息！"></textarea></td>
+
+    </tr>
+
+    <tr class="tdbg">
+
+      <td width="24%" height="29" align="right">操作码：</td>
+
+      <td><INPUT id="pwd3" class="aninput" name="pwd2" type="password"></td>
+
+    </tr>
+
+    
+
+    
+
+    <tr>
+
+      <td colspan="2" align="center" bgcolor="#EEF1F1" style="height:60px; line-height:60px;"> 
+
+        <input type="image" name="Save" src="/images/ConfirmButton.gif" onclick="return checkForm();"></td>
+
+    </tr>
+
+    
+
+  </tbody>
+
+</table>
+
+</form>
+
+{elseif $type=='2'}
+
+<div>$sys_hash_code2</div>
+
+<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%">
+
+  <TBODY>
+
+<tr class="tdbg" height="35">
+
+  	<TD colspan="11" align="center" style="color:blue; font-size:14px;">{if $indexMessage}<div class='error_panel'><div style="color:blue;">$indexMessage</div></div>{/if}</td>
+
+    </tr>
+
+  <TR height="40">
+
+    <TD colspan="11" align="center">
+
+<FORM>
+
+<input name="type" type="hidden" value="2" >
+
+ <H4>单号：<input name="eidcha" type="text" class="txbk" maxlength="10">&nbsp;&nbsp;&nbsp;&nbsp;开始时间：<input type="text" name="planDate" id="planDate" class="txbk" readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" />&nbsp;&nbsp;&nbsp;&nbsp;结束时间：<input type="text" name="planDate1" id="planDate1" class="txbk"  readonly onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'});" />&nbsp;&nbsp;<input type="submit" value="提交" id="zhuijiabt"  /></H4></FORM>
+
+    </TD>    
+
+    </TR>
+
+  <TR height="40">
+
+    <TD width="35">&nbsp;</TD>    
+
+    <TD class="strong" vAlign="middle" width="100">快递公司</TD>
+
+    <TD class="strong" vAlign="middle" width="50">重量</TD>
+
+    <TD class="strong" vAlign="middle" width="150">发货时间</TD>
+
+    <TD class="strong" vAlign="middle" width="120">快递单号</TD>
+
+    <TD class="strong" vAlign="middle" width="100">发货人</TD>
+
+    <TD class="strong" vAlign="middle" width="120">发货城市</TD>
+
+    <TD class="strong" vAlign="middle" width="100">收货人</TD>
+
+   <TD class="strong" vAlign="middle" width="120">收货人电话</TD>
+
+    <TD class="strong" vAlign="middle" width="120">收货城市</TD>
+
+    <TD class="strong" vAlign="middle" width="180">收货地址</TD>
+
+    <TD width="35">&nbsp;</TD>
+
+   </TR>
+
+ {loop $list $v}    
+
+  <TR height="40">
+
+    <TD width="35">&nbsp;</TD>    
+
+    <TD class="strong" vAlign="middle" width="100">{$v[ename]}</TD>
+
+    <TD class="strong" vAlign="middle" width="50">{$v[weight]}</TD>
+
+    <TD class="strong" vAlign="middle" width="150">{echo  string::fun_date('Y-m-d',$v[useTime])}</TD>
+
+    <TD class="strong" vAlign="middle" width="120"><a href="javascript:;" style="color:blue;" onclick="return copyComment('$v[eid]','复制成功')">{$v[eid]}</a></TD>
+
+    <TD class="strong" vAlign="middle" width="100">{$v[username]}</TD>
+
+    <TD class="strong" vAlign="middle" width="120">{$v[fashi]}</TD>
+
+    <TD class="strong" vAlign="middle" width="100">{$v[shouname]}</TD>
+
+    <TD class="strong" vAlign="middle" width="120">{$v[shoutel]}</TD>
+
+    <TD class="strong" vAlign="middle" width="120">{$v[shoushi]}</TD>
+
+    <TD class="strong" vAlign="middle" width="180">{$v[shoudizhi]}</TD>
+
+    <TD width="35">&nbsp;</TD>
+
+   </TR>
+
+ {/loop}
+
+    <tr>
+
+        <td colspan="10">$multipage</td>
+
+    </tr>
+
+</TBODY></TABLE>
+
+{/if}
+
+</DIV>
+
+
+
+<DIV class="cle"></DIV>
+
+{subtemplate ../footer}
+
+</BODY></HTML>

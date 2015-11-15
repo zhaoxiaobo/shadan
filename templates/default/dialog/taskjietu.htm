@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{teval
+echo css::get_css('dialog', 'dialog');
+}
+{js_select jquery,common}
+<title>
+	上传截图
+</title>
+<style>
+<!--图片上传需要用到的CSS-->
+.demo{width:760px; margin:40px auto 0 auto; min-height:150px;}
+.preview{width:200px;border:solid 1px #dedede; margin:10px;padding:10px;}
+.preview1{width:200px;border:solid 1px #dedede; margin:10px;padding:10px;}
+.preview2{width:200px;border:solid 1px #dedede; margin:10px;padding:10px;}
+.demo p{line-height:26px}
+.btn{position: relative;overflow: hidden;margin-right: 4px;display:inline-block;*display:inline;padding:4px 10px 4px;font-size:14px;line-height:18px;*line-height:20px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.btn input {position: absolute;top: 0; right: 0;margin: 0;border: solid transparent;opacity: 0;filter:alpha(opacity=0); cursor: pointer;}
+</style>
+</head>
+<body>
+<!--上传图片加载JS-->
+<script type="text/javascript" src="/tupian/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/tupian/jquery.wallform.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#photoimg').die('click').live('change', function(){
+		var status = $("#up_status");
+		var btn = $("#up_btn");
+		$("#imageform").ajaxForm({
+			target: '#preview', 
+			beforeSubmit:function(){
+				status.show();
+				btn.hide();
+			}, 
+			success:function(){
+				status.hide();
+				btn.show();
+			}, 
+			error:function(){
+				status.hide();
+				btn.show();
+		} }).submit();
+	});	
+	
+});
+</script>
+<div class="main_dl"> 
+	{if $_showmessage}<div class='msg_panel'><div>$_showmessage</div></div>{/if}
+	{if $indexMessage}<div class='error_panel'><div>$indexMessage</div></div>{/if}
+<div class="bar_dl" style="margin:3px;">上传截图，每个流程都可以上传多张图，但整个流程上传截图不能超过10张。</div>
+<div style="height:290px;width:580px;overflow:auto;">
+    <table border="0" cellspacing="0" cellpadding="2">
+      <tr>
+        <td align="right">任务ID：</td>
+        <td><input name="taskId" type="text" disabled="disabled" class="text_normal" id="textfield3" value="$task[id]" /></td>
+      </tr>
+      <tr>
+        <td align="right" valign="top">上传：</td>
+        <td valign="top">
+        <div class="demo">
+        <form id="imageform" method="post" enctype="multipart/form-data" action="/tupian/upload.php">
+			<div id="up_status" style="display:none"><img src="loader.gif" alt="uploading"/></div>
+			<div id="up_btn" class="btn">
+				<span>点一次上传一张截图</span>
+				<input id="photoimg" type="file" name="photoimg">
+			</div>
+		</form>
+        <p style="padding-top:15px;">最大2MB，支持jpg，gif，png。</p>
+		<div id="preview"></div>        
+   		</div>
+        </td>
+      </tr>      
+    </table>  
+</div>
+</div>
+<div style="padding-top:20px;text-align:center;">
+<form name="myForm" method="post" id="myForm" onsubmit="return checkForm();">
+<table border="0" cellspacing="0" cellpadding="2">
+<div>$sys_hash_code2</div>
+<input type="hidden" name="remark" id="remark" /> 
+<tr>
+<td width="80">&nbsp;</td>
+<td><input name="btnSubmit" type="submit" class="btn_2" id="btnSubmit" value="确定" />
+  <input name="btnCancel" type="button" class="btn_2" onclick="parent.doCut();" id="btnCancel" value="取消" /></td>
+</tr>
+</table>
+</form>
+</div>
+<script type="text/javascript">
+function checkForm() {
+    document.getElementById("remark").value=document.getElementById("preview").innerHTML; 
+    var checks = [
+        ["isEmpty", "remark", "上传截图"] ];
+	var result = doCheck(checks);
+	if (result) 
+	    result = confirm("您确定填写完成了么？");
+	if (result)avoidReSubmit();
+	return result;
+}
+</script>
+</body>
+</html>

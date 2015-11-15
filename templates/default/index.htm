@@ -1,0 +1,387 @@
+﻿
+{teval
+	$title       = '川山岭';
+	$keywords    = '{webName2}';
+	$description = '{webName}';
+	$title       = common::replaceVars($title);
+	$keywords    = common::replaceVars($keywords);
+	$description = common::replaceVars($description);
+	$cssList     = array(css::getUrl('index_sy', 'index'));
+	$jsList      = array(javascript::getUrl('silde', 'index'));
+	echo string::getStaticCode(array('title' => $title, 'keywords' => $keywords, 'description' => $description,'cssList'=>$cssList, 'jsList'=>$jsList));
+}
+{sub headerBase}
+    <script type="text/javascript" src="/images/index.js"></script>
+    <script type="text/javascript" src="/images/touchSlider.js"></script>
+    <SCRIPT type="text/javascript" src="/images/tinyslider.js"></SCRIPT>
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+<!--banner 登录框开始-->
+<div id="m_banner">
+        <div class="banner" id="banner">
+            <div class="slider" id="slider" >
+            <ul>					
+				<li class="bannerbg1">
+					<span class="banner-1">
+					
+						<div class="banner-button">
+							<a class="button-1" target="_blank" href="{rewrite}/member/reg/"></a>
+						</div>
+						<img src="/images/banner-1.jpg" width="1000" height="406" alt="加入川山岭"/>
+					</span>
+				</li>
+				<li class="bannerbg2">
+					<span class="banner-2"> 
+						<div class="banner-button">
+							<a class="button-2"target="_blank" href="{rewrite}/member/reg/"></a>
+						</div>
+						<img src="/images/banner-2.jpg" width="1000" height="406" alt="立即注册"/>
+					</span>
+				</li>
+				<li class="bannerbg3">
+					<span class="banner-3">
+						<div class="banner-button">
+							<a class="button-3" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$kefu_qq}&site=qq&menu=yes"></a>
+							
+						</div>
+						<img src="/images/banner-3.gif" width="1000" height="406" alt="店铺托管"/>
+					</span>
+				</li>
+			</ul>
+			<a href="javascript:;" id="btn_prev"></a> 
+			<a href="javascript:;" id="btn_next"></a>
+            </div>
+            <div class="mbc">
+            <ul class="slider_nav" id="slider_nav">
+                <a class="" href="javascript:void(0)" onclick="slideshow.pos(0)">1</a>
+                <a class="activeSlide" href="javascript:void(0)" onclick="slideshow.pos(1)">2</a>
+                <a class="" href="javascript:void(0)" onclick="slideshow.pos(2)">3</a>
+            </ul>
+          </div>  
+        </div>
+     <div class="mbc">    
+        <div class="login">
+		{if $memberLogined}
+	
+			<ul id="goone">
+			<li style="">
+			<span style="width: 100%; float: left; text-align: center; font-size: 14px;color:#fff; margin-top:8px;">一个真实的淘宝信誉平台期待您的加入</span></li>
+			<li style="margin: 10px 0 5px 5px;font-size:16px;display:inline;color:#fff;">用户名：<font style="font-size: 14px;color:#fe5500">$member[username]</font></li>
+			<li style="margin: 5px 0 5px 5px;font-size:16px;display:inline;color:#fff;">存款：
+			<a href="{rewrite}/member/topup/" style="font-size: 14px;color:#fe5500">$memberfields[money]</a></li>
+			<li style="margin: 5px 0 5px 5px;font-size:16px;display:inline;color:#fff;">信币：
+			<a href="{rewrite}/member/PayDetails/?type=2" style="font-size: 14px;color:#fe5500">$memberfields[fabudian]</a></li>
+			<li style="margin: 5px 0 5px 5px;font-size:16px;display:inline;color:#fff;">积分：
+			<a href="{rewrite}/member/PayDetails/?type=3" style="font-size: 14px;color:#fe5500">$memberfields[credits]</a></li>
+			<li style="margin: 5px 0 5px 5px;font-size:16px;display:inline;color:#fff;">登陆次数：
+			<a href="" style="font-size: 14px;color:#fe5500">$member[log_count]</a></li>
+			<li style="text-align: center; margin-left:15px;margin-top: 10px ;font-size:16px;">
+			<a href="{rewrite}/task/tao/"><img  src="images/goone.png" height="49/" width="275"></a></li>
+			<div class="touimg"><a href="{rewrite}/member/"><img src="$memberfields[avatar]" height="100" width="100"></a></div>
+			</ul>
+		{else}
+		
+            <form method="post" name="myForm" id="myForm" onsubmit="return checkForm();">
+              <div> $sys_hash_code2 </div>
+               <ul>
+                    <li><a href="{rewrite}/member/reg/" class="reg">&nbsp;</a></li>
+                    <li class="t1">用户名：</li>
+                    <li><input name="username" id="lusername" class="u_bk" maxlength="16" type="text" value="{echo isset($username) ? $username : (isset($cookie[loginUsername]) ? $cookie[loginUsername] : '')}">
+                 </li>
+                    <li class="t2" id="username_msg">平台用户名</li>
+                    <li class="t1">密&nbsp;&nbsp; 码：</li>
+                    <li><input name="password" id="lpassword" class="u_bk" maxlength="16" type="password"></li>
+                    <li class="t2" id="password_msg">输入6位以上密码</li>
+					<center>{if $indexMessage}<div style="color:#FF0000">$indexMessage</div>{/if}</center>
+                    <li>
+                   <input class="l_btn" id="login_sub" type="submit" name="btnSubmit">
+                      <p class="jz">
+					  <input type="checkbox" name="cookietime" id="cookietime" value="{teval echo 365 * 86400;}" /> 记住我 
+					  <a href="{rewrite}/member/forgotpwd/" target="_blank" class="chengse">忘记密码?</a>
+					  </p>
+                    </li>
+              </ul>
+            </form>
+			{/if}
+        </div>
+    </div>
+</div>
+
+<div id="content">		
+<!--发布方，接收方开始-->
+		<div id="webdata">
+		<div class="slg">全国最大的淘宝网商互动平台</div>
+		<ul class="data-list on" style="display: block;">
+			<li class="data-worker">
+				<i class="ico"></i>
+				<span class="tit">用户数</span>
+				<span class="num"><b id="total-num-0">{$yonghushu}</b> 人</span>
+			</li>
+			<li class="data-deal">
+				<i class="ico"></i>
+				<span class="tit">任务需求</span>
+				<span class="num"><b id="total-num-1">{$renwuxuqiushu}</b> 个</span>
+			</li>
+			<li class="data-amount">
+				<i class="ico"></i>
+				<span class="tit">交易金额</span>
+				<span class="num"><b id="total-num-2">{$jiaoyijine}</b> 元</span>
+			</li>
+		</ul>
+	</div>
+	<!-- <div id="maimai"></div>-->
+	<!-- 图文教程 -->
+	<div id="course">
+		<ul class="course-fbf">
+			<li><a class="fbf-1" href="/member/BuyPoint/" target="_blank"></a></li>
+			<li><a class="fbf-2" href="/task/taobao/" target="_blank"></a></li>
+			<li><a class="fbf-3" href="/" target="_blank"></a></li>
+		</ul>
+		<p class="fbf-p"><a href="/" target="_blank"></a></p>
+		<ul class="course-jsf">
+			<li><a class="jsf-1" href="/" target="_blank"></a></li>
+			<li><a class="jsf-2" href="/" target="_blank"></a></li>
+			<li><a class="jsf-3" href="/member/spread/" target="_blank"></a></li>
+		</ul>
+		<p class="jsf-p"><a href="/" target="_blank"></a></p>
+	</div>   
+          
+<script>
+		var lastTime=1;
+		var allData=[];
+		function _getNowTask(){
+			var data={};
+			if (lastTime==1){
+				data = {frist:1};
+			}else
+				data = {lastTime:lastTime};
+				
+			$.post('/ajax/getNowTask.php',data,function(request){
+				lastTime = request.nowLookTime;
+				_addData(request.data);
+			},'json');
+		}
+		
+		function _addData(newData){
+			var count=0;
+			var str,newStr;
+			if (newData!=null){
+				str=_renderData(allData,false);
+				newStr = _renderData(newData,true);
+				$('.ajax_i li').remove();
+				$('.c_info .bt2').after(str);
+				$('.c_info .bt2').after(newStr);
+				$("[info='new']").fadeIn(2000);
+				if (allData.length==0)
+					allData = newData;
+				else{
+					for(var i=newData.length-1;i>=0;i--)
+						allData.unshift(newData[i]);
+				}
+				allData = allData.slice(0,7);
+			}else{
+				str=_renderData(allData,false);
+				$('.ajax_i li').remove();
+				$('.c_info .bt2').after(str);
+			}
+		}
+		
+		function _renderData(Data,type){
+			var str='',info='';
+			if (type){
+				info='info="new" style="display:none"';
+			}
+			for(var key in Data){
+				str +="<li "+info+" ><a href='/user/info/?username="+encodeURI(Data[key].susername)+"' class='lanse' target='_blank'>"+Data[key].susername+"</a><span style='float:left'>  发布任务获得信誉 <strong class='chengse'>+1</strong></span><span class='date'>"
+				if (lastTime-Data[key].ctimestamp>3000)
+					 str+='';
+				 else if (lastTime-Data[key].ctimestamp<60)
+					 str+=lastTime-Data[key].ctimestamp+3+'秒前';
+				 else
+					 str+=parseInt((lastTime-Data[key].ctimestamp)/60)+'分钟前';
+				 str+= '</span></li>';
+			}
+			return str;
+		}
+		//setInterval(_getNowTask,3000);
+		
+
+		
+	$(document).ready(         
+        function(){
+			$("#m_banner").hover(function(){
+				$("#btn_prev,#btn_next").fadeIn();
+			},function(){
+				$("#btn_prev,#btn_next").fadeOut();
+			})
+			dragBln = false;
+			$("#slider").touchSlider({
+				flexible : true,
+				speed : 400,
+				btn_prev : $("#btn_prev"),
+				btn_next : $("#btn_next"),
+				paging : $("#slider_nav a"),
+				counter : function (e) {
+					$("#slider_nav a").removeClass("activeSlide").eq(e.current-1).addClass("activeSlide");
+				}
+			});
+			$("#slider").bind("mousedown", function() {
+				dragBln = false;
+			})
+			$("#slider").bind("dragstart", function() {
+				dragBln = true;
+			})
+			$("#slider a").click(function() {
+				if(dragBln) {
+					return false;
+				}
+			})
+			timer = setInterval(function() { $("#btn_next").click();}, 10000);
+			$("#m_banner").hover(function() {
+				clearInterval(timer);
+			}, function() {
+				timer = setInterval(function() { $("#btn_next").click();}, 10000);
+			})
+			$("#m_banner").bind("touchstart", function() {
+				clearInterval(timer);
+			}).bind("touchend", function() {
+				timer = setInterval(function() { $("#btn_next").click();}, 10000);
+			})
+		});
+
+
+		</script>
+    
+    
+    <div class="market row mar-tb-10">
+        <div class="col-9">
+        	<div style="border-bottom: 2px solid #ddd;">
+            	<div style="display:block;margin:10px 0 10px 0px;width: 108px;height: 19px;background: url(/images/shouye/liuchengtu.png) no-repeat 0 0;"></div>
+            </div>
+            <div class="liucheng">
+                <div class="liucheng_1">发布任务</div>
+                <div class="liucheng_2">买家接手</div>
+                <div class="liucheng_3">双方沟通</div>
+                <div class="liucheng_4">买家付款</div>
+                <div class="liucheng_5">卖家发货</div>
+                <div class="liucheng_6">买家收货</div>
+                <div class="liucheng_7">卖家审核任务完成</div>
+                <div class="notic">川山岭平台为您全程提供资金保护</div>
+            </div>
+        </div>
+        <div class="col-3">
+        	<div style="border-bottom: 2px solid #ddd;">
+        		<div style="display:block;margin:10px 0 10px 10px ;width: 73px;height: 19px;background: url(/images/shouye/newtask.png) no-repeat 0 0;"></div>
+            </div>
+            <div class="right-content">
+            	
+                <div class="task-list lh-2 font-12">
+	                <ul style="left:15px;overflow:hidden;" class="c_info ajax_i">
+						<h4 class="bt2"></h4>
+                        {loop $nowList $v}
+                        <li class="text-muted"><span class="text-warning">{$v[susername]}</span>发布任务网店提升<strong class="chengse">+1</strong></li>
+                        {/loop}
+					</ul>                    
+                </div>
+                <div class="mar-tb-20"><a href="/task/tabtao/" class="btn btn-lg" target="_blank">进入任务大厅</a></div>
+                <div class="text-muted font-14"></div>
+            </div>
+        </div>
+    </div>
+	<div id="fontImg">
+		<div class="depict"><img src="/images/td-help.png" alt="服务指南"/></div>
+		<div class="bricks">
+            <a class="itm1 itm-L" href="{rewrite}/task/tao/" target="_blank">
+            	<img src="/images/ban1.gif">
+            </a>
+            <a class="itm2 itm-S" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$kefu_qq}&amp;site=qq&amp;menu=yes" target="_blank">
+            	<img src="/images/ban2.gif">
+            </a>
+            <a class="itm3 itm-S" href="{rewrite}/tuoguan/" target="_blank">
+            	<img src="/images/ban3.gif">
+            </a>
+            <a class="itm4 itm-S" href="{rewrite}/fuwu/" target="_blank">
+            	<img src="/images/ban4.gif">
+            </a>
+        </div>
+	</div>
+	<!-- 选择我们 --> 
+	<div class="choice">
+		<ul class="yelkuang">
+			<li class="li_first" style="background: rgb(113, 199, 250);"><span class="bgtxt0 allimg">川山岭的优势</span></li>
+			<li><a href=""><span class="allimg bghide1 bgtxt1">领先的互动平台</span></a></li>
+			<li><a href=""><span class="allimg bghide2 bgtxt2">精准的营销服务</span></a></li>
+			<li class="li_first"><a href=""><span class="allimg bghide3 bgtxt3">超人气平台</span></a></li>
+			<li><a href=""><span class="allimg bghide4 bgtxt4">完善的安全保证</span></a></li>
+			<li><a href="http://wpa.qq.com/msgrd?v=3&uin=158213339&site=qq&menu=yes" target="_blank">
+				<span class="allimg bghide5 bgtxt5">企业QQ</span></a>
+			</li>
+		</ul>
+		<div class="rigdata"> 
+			<div class="namehead">
+				<span class="left allimg">加入时间</span>
+			</div>
+			<ul class="zhanggui">
+				{loop $userList $v}					
+				<li><a target="_blank" href="{rewrite}/member/info.php?username={$v[username]}">{$v[username]}</a><span>刚刚加入</span></li>
+				{/loop}					
+			</ul>
+			<div class="tuig allimg" style="background-position: -587px -56px;margin: 8px 0 0 10px;">
+				<span>修改为 推荐一个会员最高可得<b>100</b>元丰厚收入</span>
+				<ul class="line" style="float: left;height: 25px;overflow: hidden;width: 208px;margin-top: 2px;text-align:center;">
+				<li style="color: rgb(255, 153, 0); margin-top: -0.846006769666791px;">hoso123 获得推广提成5元</li>
+                </ul>
+                
+                <a class="one" href="{rewrite}/member/info.php?username=wuha">wuha</a>
+				<a href="{rewrite}/member/info.php?username=hoso123">hoso123</a>
+				<a class="three" href="{rewrite}/member/info.php?username=wang988">wang988</a>
+				<a href="/member/spread/" class="tg_btn" title="加入川山岭推广" alt="加入川山岭推广"></a>
+			</div>
+		</div>
+	</div>
+    
+ 	<div class="choice">
+		
+		<div class="whatjdh">
+			<span class="txt allimg">为什么选择川山岭</span>
+			<div class="xzthree">
+				<a href="javascript:;" class="allimg">担保交易</a>
+				<a href="javascript:;" class="noleft allimg">消费者保障</a>
+				<a href="javascript:;" class="noright allimg">威客认证</a>
+			</div>
+		</div>
+	</div>	
+	</div>
+	<div class="cle"></div>        
+    
+<div style="display: block;" class="_bottom_bg">
+</div>
+	<div style="display: block;" class="_bottom">
+		<div class="_c">
+			<div class="_c_i">
+				<div style="background: url(/images/zcfb.png) repeat scroll 0% 0% transparent; width: 500px; height: 25px; float: left; margin-top: 15px;"></div>
+			</div>
+			<div class="_c_b">
+			<a id="loginimg" href="{rewrite}/member/login/">
+				<img src="/images/dxh.gif" style="margin: 10px 15px;">
+			</a>
+			<a id="zhuceimg" href="{rewrite}/member/reg/">&nbsp;</a></div>
+			<div class="_c_cl"></div>
+		</div>
+	</div>
+{sub footer}
+{if cfg::get('sys', 'shifouxianshi')}
+<script type='text/javascript'>dialog(860,398,'公告','/gonggao/membertishi/');</script>
+{/if} 
+<script >
+$(window).scroll( function(){
+	var z_userinfo;
+	var h = $(this).scrollTop(),o=$('._bottom_bg,._bottom');
+	if (h>=160 && z_userinfo==null ){
+		o.show();
+	}else
+		o.hide();
+});
+$('._c_cl').click(function(){
+	$('._bottom_bg,._bottom').hide();
+})
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$sys_gongsimc}卖家服务_{$sys_gongsimc}</title>
+    <meta name="description" content="{$sys_gongsimc}淘宝卖家服务,提共淘宝优化培训,网店托管,视频教程,店铺收藏,等服务。" />
+    <meta name="keywords" content="$keywords" />
+    <link rel="shortcut icon" href="{rewrite}/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"><link rel="stylesheet" type="text/css" href="/static/css/fuwu/main.css">
+</head>
+<style>
+.service-bricks { width:1000px;margin:20px auto 0;}
+.service-bricks ul{ float:left;}
+.service-bricks ul li{ float: left;}
+.service-bricks ul li:hover{ opacity: 0.8;}
+</style>
+<body>
+{sub ../headerBasefuwu}
+<div class="service-bricks">
+    <ul>
+        <li><a href="{rewrite}/member/BuyPoint/" target="_blank"><img src="/static/images/fuwu/fontnew/brick1.jpg" alt="谷粒悬赏"></a></li>
+        <li><a href="{rewrite}/tuoguan/" target="_blank"><img src="/static/images/fuwu/fontnew/brick2.jpg" alt="网店托管"></a></li>
+        <li><a href="{rewrite}/fuwu/dmseo/" target="_blank"><img src="/static/images/fuwu/fontnew/brick3.jpg" alt="网店培训"></a></li>
+        <li><a href="{rewrite}/fuwu/video/" target="_blank"><img src="/static/images/fuwu/fontnew/brick4.jpg" alt="视频教学"></a></li>
+        <li><a href="{rewrite}/collect/" target="_blank"><img src="/static/images/fuwu/fontnew/brick5.jpg" alt="流量收藏"></a></li>
+    </ul>
+</div>
+{sub ../footer1}
+<script type="text/javascript" data-main="/static/js/main" src="/static/js/require.js"></script>
+<script type="text/javascript">
+var _delay = [];
+_delay.push(function(){
+    $(".topdao ul li:eq(1)").removeClass("borderImg1").addClass("borderImg");
+    $(".topdao ul li:eq(3)").removeClass("borderImg").addClass("borderImg1");
+});
+</script>
+</body>
+</html>
